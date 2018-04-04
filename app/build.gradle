@@ -38,10 +38,11 @@ android {
             }
         }
     }
+    buildToolsVersion '27.0.2'
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.0.2'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.android.support:support-v4:27.0.2'
@@ -59,14 +60,10 @@ dependencies {
     compile 'io.nlopez.smartlocation:rx:3.3.1'
     compile 'com.firebase:firebase-jobdispatcher:0.8.5'
     compile 'com.google.android.gms:play-services-maps:11.4.2'
-
-
-
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     testImplementation 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
 }
 
 
