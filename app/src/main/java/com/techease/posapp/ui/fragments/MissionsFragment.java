@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +62,6 @@ public class MissionsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_missions, container, false);
-
 
         unbinder = ButterKnife.bind(this, v);
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
@@ -119,7 +119,6 @@ public class MissionsFragment extends Fragment {
                             model.setJob_time(time);
                             model.setJob_image(image);
                             job_model_list.add(model);
-
 
                         }
                         jobs_adapter.notifyDataSetChanged();

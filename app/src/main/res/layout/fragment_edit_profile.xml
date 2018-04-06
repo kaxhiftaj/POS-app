@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.EditProfileFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Edit Profile"
+        android:layout_marginTop="70dp"
+        android:textColor="#00A0F1"
+        android:textSize="40dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="First Name"
+        android:paddingLeft="30dp"
+        android:id="@+id/edit_firstName"
+        android:background="@drawable/round_back_edittext"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Last Name"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:inputType="text"
+        android:id="@+id/edit_lastName"
+        android:background="@drawable/round_back_edittext"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Email"
+        android:paddingLeft="30dp"
+        android:background="@drawable/round_back_edittext"
+        android:layout_marginTop="10dp"
+        android:id="@+id/edit_email"
+        android:inputType="textEmailAddress"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Mobile No"
+        android:paddingLeft="30dp"
+        android:background="@drawable/round_back_edittext"
+        android:layout_marginTop="10dp"
+        android:id="@+id/edit_mobileNo"
+        android:inputType="number"/>
+
+    <Button
+        android:id="@+id/edit_done"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/round_back_create_button"
+        android:text="Done"
+        android:textColor="#fff"
+        android:layout_marginTop="10sp"/>
+</LinearLayout>

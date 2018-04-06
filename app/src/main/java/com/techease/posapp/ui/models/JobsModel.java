@@ -29,8 +29,6 @@ public class JobsModel {
         this.longitude = longitude;
     }
 
-
-
     public String getJob_title() {
         return job_title;
     }

@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.techease.posapp.R;
 import com.techease.posapp.ui.fragments.HomeFragment;
+import com.techease.posapp.ui.fragments.UserProfileFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,7 +33,6 @@ public class MainActivity extends AppCompatActivity
         fragment = new HomeFragment();
         getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).commit();
         setTitle("HOME");
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_completed) {
 
         } else if (id == R.id.nav_profile ){
-
+           fragment = new UserProfileFragment();
         } else if (id == R.id.nav_privacy ){
 
         } else if (id == R.id.nav_settings) {

@@ -6,9 +6,10 @@
 
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_jobs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rv_jobs"
-        ></android.support.v7.widget.RecyclerView>
+        android:orientation="vertical">
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

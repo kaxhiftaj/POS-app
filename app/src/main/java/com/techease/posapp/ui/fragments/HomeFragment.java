@@ -26,10 +26,8 @@ public class HomeFragment extends Fragment {
 
     @BindView(R.id.missions_tab)
     TabLayout tabLayout;
-
     @BindView(R.id.missions_pager)
     ViewPager viewPager;
-
     Unbinder unbinder;
     android.support.v7.app.AlertDialog alertDialog;
     SharedPreferences sharedPreferences;
@@ -72,10 +70,8 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
         return v;
     }
-
 
     public static void reduceMarginsInTabs(TabLayout tabLayout, int marginOffset) {
 
@@ -93,7 +89,6 @@ public class HomeFragment extends Fragment {
             tabLayout.requestLayout();
         }
     }
-
 
     public class PagerAdapter extends FragmentStatePagerAdapter {
         int mNumOfTabs;
