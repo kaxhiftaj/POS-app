@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -20,6 +21,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -36,6 +39,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
@@ -119,21 +123,11 @@ public class MapFragment extends Fragment {
                     }
                     googleMap.setMyLocationEnabled(true);
                     LatLng sydney = new LatLng(lattitude,longitude );
-                    googleMap.addMarker(new MarkerOptions().position(sydney).title("My Current Location"));
+                    googleMap.addMarker(new MarkerOptions().position(sydney).title("My Current Location").snippet("This is My Current Location"));
                     CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(12).build();
                     googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                     googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
-                    //api lat and lng
-                    sharedPreferences=getActivity().getSharedPreferences(Configuration.MY_PREF,Context.MODE_PRIVATE);
-                    editor=sharedPreferences.edit();
-                    String latitud = sharedPreferences.getString("apilat","null");
-                    String longitude = sharedPreferences.getString("apilng","null");
-
-                    double lat = Double.parseDouble(latitud);
-                    double lng = Double.parseDouble(longitude);
-                    LatLng api = new LatLng(lat,lng);
-                    mMap.addMarker(new MarkerOptions().position(api).title("My Current Location"));
                 }
             });
         }
@@ -145,15 +139,23 @@ public class MapFragment extends Fragment {
         return v;
     }
 
-    public void showMarker(String lat, String lng){
+    public void showMarker(String lat, String lng, final String title, final String description) {
         double latt = Double.parseDouble(lat);
         double lngg = Double.parseDouble(lng);
-        Log.d("apilat",lat);
-        LatLng r = new LatLng(latt,lngg);
-        Marker my_current_location = googleMap.addMarker(new MarkerOptions().position(r).title("My Current Location"));
+        LatLng apiLatLng = new LatLng(latt, lngg);
+        final Marker my_marker = googleMap.addMarker(new MarkerOptions().position(apiLatLng).title(title).snippet(description));
+        googleMap.setInfoWindowAdapter(new InfoWindowCustom(getActivity()));
+      /*  googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Log.d("snippet",my_marker.getSnippet());
+                AlertsUtils.showErrorDialog(getActivity(),my_marker.getSnippet());
+                return false;
+            }
+        });*/
+
+
     }
-
-
     @Override
     public void onResume() {
         super.onResume();
@@ -245,7 +247,6 @@ public class MapFragment extends Fragment {
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getActivity(), "Abdullah "+response, Toast.LENGTH_SHORT).show();
                 if (response.contains("200")) {
                     try {
                         if (alertDialog != null)
@@ -266,7 +267,7 @@ public class MapFragment extends Fragment {
                             model.setJob_desc(description);
                             model.setLatitude(latitude);
                             model.setLongitude(longitude);
-                            showMarker(latitude,longitude);
+                            showMarker(latitude,longitude,job_title,description);
                         
                         }
 
@@ -322,6 +323,50 @@ public class MapFragment extends Fragment {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         mRequestQueue.add(stringRequest);
 
+    }
+
+    public class InfoWindowCustom implements GoogleMap.InfoWindowAdapter {
+        Context context;
+        LayoutInflater inflater;
+        public InfoWindowCustom(Context context) {
+            this.context = context;
+        }
+        @Override
+        public View getInfoContents(Marker marker) {
+            return null;
+        }
+        @Override
+        public View getInfoWindow(Marker marker) {
+            inflater = (LayoutInflater)
+                    context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View v = inflater.inflate(R.layout.custom_info_window, null);
+
+          //  TextView title = (TextView) v.findViewById(R.id.myTitle);
+          //  TextView subtitle = (TextView) v.findViewById(R.id.description);
+          //  Button accept = v.findViewById(R.id.accept);
+          //  Button reject = v.findViewById(R.id.reject);
+          //  title.setText(marker.getTitle());
+          //  subtitle.setText(marker.getSnippet());
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle(marker.getTitle());
+            builder.setMessage(marker.getSnippet());
+           // builder.setView(R.layout.custom_info_window);
+            builder.setCancelable(false);
+            builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(getActivity(), "you Accepted", Toast.LENGTH_SHORT).show();
+                }
+            });
+            builder.setNegativeButton("Reject", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                   Toast.makeText(getActivity(),"you Rejected",Toast.LENGTH_SHORT).show();
+                }
+            });
+            builder.show();
+            return v;
+        }
     }
 
 }

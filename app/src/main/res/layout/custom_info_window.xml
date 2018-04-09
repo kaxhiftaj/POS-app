@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300sp"
+    android:layout_height="wrap_content"
+    android:background="#3399ff"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+  <!--  <TextView
+        android:id="@+id/myTitle"
+        android:layout_width="300dp"
+        android:layout_height="80sp"
+        android:textSize="30sp"
+        android:maxLines="2"
+        android:gravity="center"
+        android:textColor="#ffcc00"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:text="title"/>
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="300sp"
+        android:layout_height="150sp"
+        android:textSize="20sp"
+        android:background="#fff"
+        android:maxLines="5"
+        android:gravity="center"
+        android:textColor="#000"
+        android:layout_gravity="center"
+        android:text="desctiption"/>
+    <LinearLayout
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="#fff"
+        android:padding="5sp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_back_create_button"
+            android:textColor="#ffcc00"
+            android:text="Accept"/>
+        <Button
+            android:id="@+id/reject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_back_create_button"
+            android:textColor="#ff1a1a"
+            android:layout_marginLeft="10sp"
+            android:text="Reject"/>
+    </LinearLayout>
+    -->
+</LinearLayout>

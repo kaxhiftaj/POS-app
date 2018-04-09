@@ -91,10 +91,11 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new RegsiterFragment();
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.replace(R.id.fragment_container, fragment);
-                transaction.addToBackStack("tag").commit();
+               // FragmentManager fm = getFragmentManager();
+               // FragmentTransaction transaction = fm.beginTransaction();
+               // transaction.replace(R.id.fragment_container, fragment);
+               // transaction.addToBackStack("tag").commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack("").commit();
             }
         });
 
@@ -140,7 +141,7 @@ public class LoginFragment extends Fragment {
 
     public void apiCall() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,  Configuration.USER_URL+"login"
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,  Configuration.USER_LOGIN
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -214,6 +215,8 @@ public class LoginFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+                Log.d("email",strEmail);
+                Log.d("passwd",strPassword);
                 params.put("email", strEmail);
                 params.put("password", strPassword);
                 //   params.put("Accept", "application/json");

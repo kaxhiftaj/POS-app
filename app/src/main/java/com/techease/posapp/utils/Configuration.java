@@ -5,6 +5,7 @@ package com.techease.posapp.utils;
  */
 
 public class Configuration {
+        public static  String USER_LOGIN = "http://techeasesol.com/pos_app/pos_apis/login";
         public static String USER_URL = "http://techeasesol.com/pos_app/pos_apis/";
         public static String USER_PROFILE = "http://techeasesol.com/pos_app/pos_apis/user_profile";
         public static String USER_EDIT_PROFILE = "http://techeasesol.com/pos_app/pos_apis/edit_profile";

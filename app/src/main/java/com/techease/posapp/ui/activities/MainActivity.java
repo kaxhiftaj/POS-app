@@ -1,6 +1,7 @@
 package com.techease.posapp.ui.activities;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,8 @@ import android.view.MenuItem;
 
 import com.techease.posapp.R;
 import com.techease.posapp.ui.fragments.HomeFragment;
+import com.techease.posapp.ui.fragments.LoginFragment;
+import com.techease.posapp.ui.fragments.RegsiterFragment;
 import com.techease.posapp.ui.fragments.UserProfileFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -99,6 +102,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_about) {
 
         }else if (id == R.id.nav_invite) {
+        }
+        else if (id == R.id.nav_logout) {
+           startActivity(new Intent(MainActivity.this,FullScreenActivity.class));
         }
 
         getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("tag").commit();

@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="20dp">
 
             <TextView
@@ -33,6 +33,7 @@
                 android:hint="Email"
                 android:paddingLeft="30dp"
                 android:id="@+id/signup_email"
+                android:inputType="textEmailAddress"
                 android:background="@drawable/round_back_edittext"
                 android:layout_marginTop="30dp"/>
 
@@ -70,7 +71,7 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="Create"
                 android:gravity="center"
                 android:layout_gravity="center"
@@ -84,20 +85,21 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="Or"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:paddingLeft="40dp"
+                android:textAllCaps="true"
                 android:paddingRight="40dp"
-                android:textSize="40dp"
+                android:textSize="25sp"
                 android:textColor="#0497DF"
                 android:background="@color/white"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="15dp"/>
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="Sign up with Facebook"
                 android:textColor="@color/white"
                 android:drawableLeft="@drawable/facebook"
@@ -106,11 +108,11 @@
                 android:gravity="center"
                 android:id="@+id/signup_fb"
                 android:background="@drawable/round_back_facebook"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="15dp"/>
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="Sign up with Gmail"
                 android:textColor="@color/white"
                 android:drawableLeft="@drawable/gmail"
@@ -119,7 +121,7 @@
                 android:gravity="center"
                 android:id="@+id/signup_google"
                 android:background="@drawable/round_back_gmail"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="10dp"/>
 
 
             <TextView

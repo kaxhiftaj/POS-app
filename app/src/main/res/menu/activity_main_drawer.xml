@@ -50,6 +50,10 @@
                 android:id="@+id/nav_invite"
                 android:icon="@drawable/invite"
                 android:title="Invite a Freind" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/invite"
+                android:title="Logout" />
         </menu>
     </item>
 
