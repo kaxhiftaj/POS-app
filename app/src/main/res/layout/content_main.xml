@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_main"
+    android:layout_marginTop="56dp"
     tools:context="com.techease.posapp.ui.activities.MainActivity">
+
 
 </FrameLayout>

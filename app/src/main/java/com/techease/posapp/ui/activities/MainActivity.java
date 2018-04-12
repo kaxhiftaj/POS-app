@@ -15,8 +15,10 @@ import android.view.MenuItem;
 
 import com.techease.posapp.R;
 import com.techease.posapp.ui.fragments.HomeFragment;
+import com.techease.posapp.ui.fragments.JobCompletedFragment;
 import com.techease.posapp.ui.fragments.LoginFragment;
 import com.techease.posapp.ui.fragments.RegsiterFragment;
+import com.techease.posapp.ui.fragments.UserAcceptedFragment;
 import com.techease.posapp.ui.fragments.UserProfileFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -87,8 +89,11 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_missions) {
             fragment = new HomeFragment();
-        } else if (id == R.id.nav_completed) {
-
+        } else if (id == R.id.nav_user_accepted) {
+            fragment = new UserAcceptedFragment();
+        }
+        else if (id == R.id.nav_completed) {
+          fragment = new JobCompletedFragment();
         } else if (id == R.id.nav_profile ){
            fragment = new UserProfileFragment();
         } else if (id == R.id.nav_privacy ){

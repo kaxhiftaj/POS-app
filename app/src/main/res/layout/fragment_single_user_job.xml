@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.techease.posapp.ui.fragments.SingleUserJobFragment">
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/UsermapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:apiKey="AIzaSyB-nlOb637v1IdygX_9_iyhlTpPgrLRQ1A">
+    </com.google.android.gms.maps.MapView>
+
+    <TextView
+        android:id="@+id/distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hello"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:layout_gravity="center"/>
+</FrameLayout>

@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,10 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.techease.posapp.R;
+import com.techease.posapp.ui.fragments.SingleUserJobFragment;
 import com.techease.posapp.ui.models.JobsModel;
 import com.techease.posapp.utils.Configuration;
 
@@ -42,7 +45,7 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
         final JobsModel model = jobsModelArrayList.get(position);
         Glide.with(context).load(model.getJob_image()).into(holder.job_image);
         holder.job_title.setText(model.getJob_title());
@@ -50,40 +53,19 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.MyViewHolder> 
         holder.job_time.setText(model.getJob_time());
         holder.editor.putString("apilat",model.getLatitude()).commit();
         holder.editor.putString("apilng",model.getLongitude()).commit();
-        Log.d("zmaLat",model.getLatitude());
-        Log.d("zmaLng",model.getLongitude());
+        holder.iv_map_navigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.editor.putString("selectedLatitude",String.valueOf(model.getLatitude())).commit();
+                holder.editor.putString("selectedLongitude",String.valueOf(model.getLongitude())).commit();
+                holder.editor.putString("title",String.valueOf(model.getJob_title())).commit();
+                holder.editor.putString("descp",String.valueOf(model.getJob_desc())).commit();
 
-//        holder.appointments_layout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new AppointmentDetails();
-//                String merchant_id = model.getMerchant_id();
-//                String client_name = model.getClient_name();
-//                String service_name = model.getService_name();
-//                String booking_start_time = model.getBooking_start_time();
-//                String booking_end_time = model.getBooking_end_time();
-//                String appointment_status = model.getAppointment_status();
-//                String appointment_type = model.getAppointment_type();
-//                String price = model.getPrice();
-//                String payment_status =  model.getPayment_status();
-//                String booking_date = model.getBooking_date();
-//                Bundle bundle=new Bundle();
-//                bundle.putString("merchant_id",merchant_id);
-//                bundle.putString("client_name",client_name);
-//                bundle.putString("service_name",service_name);
-//                bundle.putString("booking_start_time",booking_start_time);
-//                bundle.putString("booking_end_time",booking_end_time);
-//                bundle.putString("appointment_status",appointment_status);
-//                bundle.putString("appointment_type",appointment_type);
-//                bundle.putString("price",price);
-//                bundle.putString("payment_status",payment_status);
-//                bundle.putString("booking_date",booking_date);
-//                fragment.setArguments(bundle);
-//                Activity activity = (FullScreenActivity) context;
-//                activity.getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("view").commit();
-//
-//            }
-//        });
+                Fragment fragment = new SingleUserJobFragment();
+                ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).addToBackStack("").commit();
+            }
+        });
+
     }
     @Override
     public int getItemCount() {
@@ -92,14 +74,16 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.MyViewHolder> 
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-
+        RelativeLayout individual_layout;
         TextView job_title, job_desc, job_time;
-        ImageView job_image ;
+        ImageView job_image,iv_map_navigation;
         SharedPreferences sharedPreferences;
         SharedPreferences.Editor editor;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+           // individual_layout = (RelativeLayout) itemView.findViewById(R.id.individual_layout);
+            iv_map_navigation = itemView.findViewById(R.id.map_navigation);
             job_title = (TextView) itemView.findViewById(R.id.job_title);
             job_desc = (TextView) itemView.findViewById(R.id.job_desc);
             job_image = (ImageView)itemView.findViewById(R.id.job_image);

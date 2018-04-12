@@ -9,6 +9,10 @@
             android:icon="@drawable/missions"
             android:title="Missions" />
         <item
+            android:id="@+id/nav_user_accepted"
+            android:icon="@drawable/missions"
+            android:title="User Accepted" />
+        <item
             android:id="@+id/nav_completed"
             android:icon="@drawable/completed"
             android:title="Completed" />

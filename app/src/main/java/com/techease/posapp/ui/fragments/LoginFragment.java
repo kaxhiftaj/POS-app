@@ -86,7 +86,6 @@ public class LoginFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-
         new_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,6 +155,7 @@ public class LoginFragment extends Fragment {
                         String api_token = jsonObject.getString("api_token");
                         String user_id = jsonObject.getString("id");
                         String user_email=jsonObject.getString("email");
+
                         editor.putString("api_token", api_token);
                         editor.putString("user_id", user_id);
                         editor.putString("user_email",user_email);
@@ -215,8 +215,6 @@ public class LoginFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                Log.d("email",strEmail);
-                Log.d("passwd",strPassword);
                 params.put("email", strEmail);
                 params.put("password", strPassword);
                 //   params.put("Accept", "application/json");

@@ -124,9 +124,11 @@ public class MapFragment extends Fragment {
                     googleMap.setMyLocationEnabled(true);
                     LatLng sydney = new LatLng(lattitude,longitude );
                     googleMap.addMarker(new MarkerOptions().position(sydney).title("My Current Location").snippet("This is My Current Location"));
-                    CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(12).build();
-                    googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-                    googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                  //  CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(10).build();
+                   // googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                   // googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(sydney,12);
+                    googleMap.animateCamera(cameraUpdate);
 
                 }
             });
@@ -199,7 +201,6 @@ public class MapFragment extends Fragment {
 
                 lattitude = latti;
                 longitude = longi;
-
 
             } else  if (location1 != null) {
                 double latti = location1.getLatitude();
