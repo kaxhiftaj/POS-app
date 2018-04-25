@@ -24,8 +24,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 import com.techease.posapp.R;
 import com.techease.posapp.ui.adapters.JobsAdapter;
+import com.techease.posapp.ui.models.AllJobsDataModel;
+import com.techease.posapp.ui.models.AllJobsResponse;
 import com.techease.posapp.ui.models.JobsModel;
 import com.techease.posapp.utils.AlertsUtils;
 import com.techease.posapp.utils.Configuration;
@@ -36,7 +39,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -56,7 +61,6 @@ public class MissionsFragment extends Fragment {
 
     @BindView(R.id.rv_jobs)
     RecyclerView recyclerView;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,6 +72,8 @@ public class MissionsFragment extends Fragment {
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("api_token", "");
         userID = sharedPreferences.getString("user_id","");
+        Log.d("your",token);
+        Log.d("your",userID);
 
         if (InternetUtils.isNetworkConnected(getActivity())) {
 
@@ -91,35 +97,42 @@ public class MissionsFragment extends Fragment {
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("all",response);
+                alertDialog.dismiss();
+                Log.d("response",response);
+
                 if (response.contains("200")) {
                     try {
                         if (alertDialog != null)
                             alertDialog.dismiss();
 
                         JSONObject jsonObject = new JSONObject(response);
-                        JSONArray jsonArr = jsonObject.getJSONArray("jobs");
+                        JSONArray jsonArr = jsonObject.getJSONArray("All_jobs");
                         for (int i = 0; i < jsonArr.length(); i++) {
                             JSONObject temp = jsonArr.getJSONObject(i);
 
                             JobsModel model = new JobsModel();
                             String job_id = temp.getString("job_id");
-                            editor.putString("job_id",job_id).commit();
                             String job_title = temp.getString("job_title");
-                            String description = temp.getString("description");
+                            String companyName = temp.getString("company_name");
+                            String short_description = temp.getString("shot_desc");
+                            String brief_description = temp.getString("brief_desc");
+                            String payPerJob = temp.getString("pay_per_job");
+                            String featured_image = temp.getString("featured_img");
                             String latitude = temp.getString("latitude");
                             String longitude = temp.getString("longitude");
-                            String time = temp.getString("time");
-                            String image = temp.getString("image");
+                            String date = temp.getString("date");
 
+                            model.setJob_id(job_id);
                             model.setJob_title(job_title);
-                            model.setJob_desc(description);
+                            model.setCompany_name(companyName);
+                            model.setShort_desc(short_description);
+                            model.setBrief_desc(brief_description);
+                            model.setPay_per_job(payPerJob);
                             model.setLatitude(latitude);
                             model.setLongitude(longitude);
-                            model.setJob_time(time);
-                            model.setJob_image(image);
+                            model.setFeature_image(featured_image);
+                            model.setJob_time(date);
                             job_model_list.add(model);
-
                         }
                         jobs_adapter.notifyDataSetChanged();
 

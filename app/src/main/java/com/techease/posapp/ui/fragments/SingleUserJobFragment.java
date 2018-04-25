@@ -76,7 +76,7 @@ public class SingleUserJobFragment extends Fragment {
         editor = sharedPreferences.edit();
         apiToken = sharedPreferences.getString("api_token", "null");
         user_id = sharedPreferences.getString("user_id", "null");
-        job_id = sharedPreferences.getString("job_id", "null");
+        job_id = sharedPreferences.getString("selectedJob", "null");
         Log.d("zma_token",apiToken);
         Log.d("zma_user_id",user_id);
         Log.d("job_id",job_id);
@@ -110,6 +110,8 @@ public class SingleUserJobFragment extends Fragment {
                 String lng = sharedPreferences.getString("selectedLongitude", "");
                 final String title = sharedPreferences.getString("title", "");
                 final String description = sharedPreferences.getString("descp", "");
+                Log.d("selectlat",Lat);
+                Log.d("selectlng",lng);
 
                 if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
@@ -203,7 +205,6 @@ public class SingleUserJobFragment extends Fragment {
                 public String getBodyContentType() {
                     return "application/x-www-form-urlencoded;charset=UTF-8";
                 }
-
 
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {

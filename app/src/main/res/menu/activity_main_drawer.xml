@@ -19,9 +19,9 @@
 
         <menu>
         <item
-            android:id="@+id/nav_profile"
+            android:id="@+id/nav_profile_Info"
             android:icon="@drawable/profile"
-            android:title="Profile" />
+            android:title="Profile Info" />
         <item
             android:id="@+id/nav_privacy"
             android:icon="@drawable/privacy"

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.VerificationCodeFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Verify Code"
+        android:textColor="#00A0F1"
+        android:textSize="30dp"
+        android:layout_marginTop="30sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Enter your verification code"
+        android:paddingLeft="30dp"
+        android:gravity="center"
+        android:background="@drawable/round_back_edittext"
+        android:id="@+id/verification_code"
+        android:inputType="number"
+        android:layout_marginTop="50dp"
+        android:layout_margin="16sp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Verify"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:textSize="30dp"
+        android:id="@+id/btn_verify_code"
+        android:textColor="@color/white"
+        android:background="@drawable/round_back_create_button"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>

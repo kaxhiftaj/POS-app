@@ -6,213 +6,240 @@
     android:orientation="vertical"
     tools:context=".ui.fragments.JobCompletedFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#EEEEEE"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mission:"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_gravity="center"
-            android:text="Show picture of Flow Express Terminals" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5sp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/image1"
-            android:layout_width="80sp"
-            android:layout_height="100sp"
-            android:layout_weight="1"
-            android:src="@drawable/image1" />
-
-        <View
-            android:layout_width="5sp"
-            android:layout_height="100sp"
-            android:background="#BDBDBD" />
-
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/image2"
-                android:layout_width="80sp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#EEEEEE"
+                android:gravity="center_horizontal"
+                android:paddingTop="10sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mission:"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Show picture of Flow Express Terminals" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0sp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_first_image"
+                    android:layout_width="80sp"
+                    android:layout_height="100sp"
+                    android:layout_weight="1"
+                    android:src="@drawable/image1" />
+
+                <View
+                    android:layout_width="5sp"
+                    android:layout_height="110sp"
+                    android:background="#BDBDBD" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_second_image"
+                        android:layout_width="80sp"
+                        android:layout_height="100sp"
+                        android:src="@drawable/camera" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Take photo" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_comments"
+                android:layout_width="match_parent"
                 android:layout_height="100sp"
-                android:src="@drawable/camera" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Take photo" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="100sp"
-        android:layout_marginTop="10sp"
-        android:background="#EEEEEE"
-        android:gravity="left"
-        android:hint="Coments:"
-        android:inputType="textMultiLine"
-        android:paddingLeft="20sp"
-        android:paddingTop="5sp"
-        android:textAlignment="gravity" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_margin="10sp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1.3"
-                android:text="Confirm loction"
-                android:textSize="20dp" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="40dp"
-                android:layout_weight="0.5"
-                android:src="@drawable/marker" />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="0.5"
-                android:src="@drawable/checked" />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1sp"
-            android:background="#BDBDBD" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1.3"
-                android:text="Confirm time"
-                android:textSize="20dp" />
-
-            <ImageView
-                android:layout_width="10dp"
-                android:layout_height="40dp"
                 android:layout_marginTop="10sp"
-                android:layout_weight="0.5"
-                android:src="@drawable/clock" />
+                android:background="#EEEEEE"
+                android:gravity="left"
+                android:hint="Comments:"
+                android:inputType="textMultiLine"
+                android:paddingLeft="20sp"
+                android:paddingTop="5sp"
+                android:textAlignment="gravity" />
 
-            <ImageView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:layout_weight="0.5"
-                android:src="@drawable/checked" />
+                android:layout_marginTop="15sp"
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.3"
+                        android:text="Confirm loction"
+                        android:textSize="20dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_current_location"
+                        android:layout_width="20dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/marker" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/iv_current_check_location"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/checked" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:layout_marginLeft="20sp"
+                    android:background="#BDBDBD" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.3"
+                        android:text="Confirm time"
+                        android:textSize="20dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_current_time"
+                        android:layout_width="10dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10sp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/clock" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/iv_current_check_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/checked" />
+
+                </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5sp"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5sp"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1sp"
+                        android:layout_marginLeft="30sp"
+                        android:layout_weight="2"
+                        android:background="#BDBDBD" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.3"
+                        android:text="Authenticate"
+                        android:textSize="20dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_authentication"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="5sp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/authenticate" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/iv_check_authentication"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/checked" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
-                android:layout_weight="1"
+                android:layout_marginLeft="20sp"
                 android:background="#BDBDBD" />
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30sp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_back_create_button">
+
+
+                <Button
+                    android:id="@+id/btn_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/round_back_create_button"
+                    android:text="Send"
+                    android:textColor="#ffffff" />
+
+            </FrameLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1.3"
-                android:text="Authenticate"
-                android:textSize="20dp" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="5sp"
-                android:layout_weight="0.5"
-                android:src="@drawable/authenticate" />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="0.5"
-                android:src="@drawable/checked" />
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1sp"
-            android:layout_weight="2"
-            android:background="#BDBDBD" />
-    </LinearLayout>
-    
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Send"
-        android:textColor="#fff"
-        android:layout_marginTop="10sp"
-        android:background="@drawable/round_back_create_button"/>
 </LinearLayout>

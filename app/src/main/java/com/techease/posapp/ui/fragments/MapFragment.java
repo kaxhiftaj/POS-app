@@ -88,6 +88,7 @@ public class MapFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_map, container, false);
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+
         token = sharedPreferences.getString("api_token", "");
 
         unbinder = ButterKnife.bind(this,v );
@@ -115,6 +116,8 @@ public class MapFragment extends Fragment {
                 @Override
                 public void onMapReady(GoogleMap mMap) {
                     googleMap = mMap;
+                    editor.putString("currentLat", String.valueOf(longitude)).commit();
+                    editor.putString("currentLng",String.valueOf(lattitude)).commit();
                     LatLng latLng = new LatLng(lattitude,longitude);
                     // For showing a move to my location button
                     if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -124,9 +127,6 @@ public class MapFragment extends Fragment {
                     googleMap.setMyLocationEnabled(true);
                     LatLng sydney = new LatLng(lattitude,longitude );
                     googleMap.addMarker(new MarkerOptions().position(sydney).title("My Current Location").snippet("This is My Current Location"));
-                  //  CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(10).build();
-                   // googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-                   // googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                     CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(sydney,12);
                     googleMap.animateCamera(cameraUpdate);
 

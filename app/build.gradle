@@ -37,8 +37,24 @@ android {
                 }
             }
         }
+        lintOptions {
+            checkReleaseBuilds false
+            disable 'MissingTranslation'
+        }
     }
     buildToolsVersion '27.0.3'
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
 }
 
 dependencies {
@@ -60,8 +76,14 @@ dependencies {
     implementation 'io.nlopez.smartlocation:rx:3.3.1'
     implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
     implementation 'com.google.android.gms:play-services-maps:11.4.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.github.Shashank02051997:FancyAlertDialog-Android:0.1'
+    implementation 'com.hbb20:ccp:1.7.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     testImplementation 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation files('libs/httpclient-4.3.6.jar')
+    implementation 'com.google.code.gson:gson:2.7'
+
 }

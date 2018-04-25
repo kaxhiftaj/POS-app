@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,11 +42,15 @@ public class UserProfileFragment extends Fragment {
     SharedPreferences.Editor editor;
     TextView first_name,last_name,email,phone_no;
     Button edit_profile;
+    FrameLayout setNames_Layout;
+    LinearLayout firstLastNames_layout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_user_profile, container, false);
+        setNames_Layout = view.findViewById(R.id.setName_layout);
+        firstLastNames_layout = view.findViewById(R.id.firstLastNames_layout);
         first_name = (TextView) view.findViewById(R.id.first_name);
         last_name = (TextView)view.findViewById(R.id.last_name);
         email = (TextView)view.findViewById(R.id.email);
@@ -55,6 +61,13 @@ public class UserProfileFragment extends Fragment {
         token = sharedPreferences.getString("api_token", "");
         user_id = sharedPreferences.getString("user_id","");
         apicall();
+
+        setNames_Layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firstLastNames_layout.setVisibility(View.VISIBLE);
+            }
+        });
         edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +83,6 @@ public class UserProfileFragment extends Fragment {
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getActivity(), "" + response, Toast.LENGTH_SHORT).show();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONObject temp = jsonObject.getJSONObject("user_data");

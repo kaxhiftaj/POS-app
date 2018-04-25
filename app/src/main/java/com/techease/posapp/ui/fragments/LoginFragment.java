@@ -5,16 +5,20 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -29,6 +33,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.hbb20.CountryCodePicker;
 import com.techease.posapp.R;
 import com.techease.posapp.ui.activities.MainActivity;
 import com.techease.posapp.utils.AlertsUtils;
@@ -48,34 +53,27 @@ import butterknife.Unbinder;
 public class LoginFragment extends Fragment {
 
 
-    @BindView(R.id.signin_email)
-    EditText signin_email;
+    @BindView(R.id.signin_phone_no)
+    EditText etSignin_phone;
 
+   /* @BindView(R.id.first_name)
+    EditText etFistName;
 
-    @BindView(R.id.signin_pass)
-    EditText signin_pass;
-
-    @BindView(R.id.signin_confirmpass)
-    EditText signin_confirmpass;
+    @BindView(R.id.last_name)
+    EditText etLastName;
+    */
 
     @BindView(R.id.signin)
     Button signin;
-
-    @BindView(R.id.signin_fb)
-    Button signin_fb;
-
-    @BindView(R.id.signin_google)
-    Button signin_google;
-
-    @BindView(R.id.new_user)
-    TextView new_user ;
-
-    String strEmail, strPassword ;
+    TextView tvSignIn;
+    Typeface typeface;
+    String strPhone;
     Unbinder unbinder ;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     android.support.v7.app.AlertDialog alertDialog;
-
+    String countryCodeAndroid = "91";
+    CountryCodePicker ccp;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -83,54 +81,36 @@ public class LoginFragment extends Fragment {
         View v=  inflater.inflate(R.layout.fragment_login, container, false);
         unbinder = ButterKnife.bind(this, v);
 
+        ccp = (CountryCodePicker) v.findViewById(R.id.country_code);
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-
-        new_user.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new RegsiterFragment();
-               // FragmentManager fm = getFragmentManager();
-               // FragmentTransaction transaction = fm.beginTransaction();
-               // transaction.replace(R.id.fragment_container, fragment);
-               // transaction.addToBackStack("tag").commit();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack("").commit();
-            }
-        });
-
-
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onDataInput();
+                Toast.makeText(getActivity(), ""+countryCodeAndroid, Toast.LENGTH_SHORT).show();
             }
         });
-
-//        tv_forgot.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Fragment fragment = new ForgetPassFragment();
-//                FragmentManager fm = getFragmentManager();
-//                FragmentTransaction transaction = fm.beginTransaction();
-//                transaction.replace(R.id.fragment_container, fragment);
-//                transaction.addToBackStack("tag").commit();
-//            }
-//        });
-
+        ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                countryCodeAndroid = ccp.getSelectedCountryCode();
+            }
+        });
 
         return v ;
     }
 
-
-
     public void onDataInput() {
-        strEmail = signin_email.getText().toString();
-        strPassword = signin_pass.getText().toString();
-        if ((!android.util.Patterns.EMAIL_ADDRESS.matcher(strEmail).matches())) {
-            signin_email.setError("Please enter valid email id");
-        } else if (strPassword.equals("")) {
-            signin_pass.setError("Please enter your password");
-        } else {
+        strPhone = etSignin_phone.getText().toString().trim();
+        editor.putString("phone_no",strPhone).commit();
+        if (strPhone.equals("")) {
+            etSignin_phone.setError("Please enter valid phone number");
+        }/* else if (strFirstName.equals("")) {
+            etFistName.setError("Please enter your FirstName");
+        }else if (strLastName.equals("")) {
+                etLastName.setError("Please enter your Last Name");
+        }*/ else {
             if (alertDialog == null)
                 alertDialog = AlertsUtils.createProgressDialog(getActivity());
             alertDialog.show();
@@ -139,30 +119,36 @@ public class LoginFragment extends Fragment {
     }
 
     public void apiCall() {
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST,  Configuration.USER_LOGIN
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("zma log ", response);
+                Log.d("zma response", response);
+                editor.putString("response",response).commit();
+                if(response.contains("false")){
+                    if (alertDialog != null)
+                        alertDialog.dismiss();
 
-                if (response.contains("true")) {
+                    Fragment fragment = new VerificationCodeFragment();
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack("").commit();
+                }
+
+                else if (response.contains("true")) {
                     try {
                         if (alertDialog != null)
                             alertDialog.dismiss();
-
                         JSONObject jsonObject = new JSONObject(response).getJSONObject("user_data");
                         String api_token = jsonObject.getString("api_token");
-                        String user_id = jsonObject.getString("id");
-                        String user_email=jsonObject.getString("email");
+                        int user_id = jsonObject.getInt("user_id");
+                        Log.d("my",api_token);
+                        Log.d("my",api_token);
+                        Log.d("my",String.valueOf(user_id));
 
                         editor.putString("api_token", api_token);
-                        editor.putString("user_id", user_id);
-                        editor.putString("user_email",user_email);
+                        editor.putString("user_id", String.valueOf(user_id));
                         editor.commit();
-                        startActivity(new Intent(getActivity(), MainActivity.class));
-                        getActivity().finish();
-
+                        Fragment fragment = new VerificationCodeFragment();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -182,7 +168,6 @@ public class LoginFragment extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 }
             }
 
@@ -204,20 +189,19 @@ public class LoginFragment extends Fragment {
                     AlertsUtils.showErrorDialog(getActivity(), "Parsing Error");
                 }
 
-
             }
         }) {
             @Override
             public String getBodyContentType() {
                 return "application/x-www-form-urlencoded;charset=UTF-8";
             }
-
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("email", strEmail);
-                params.put("password", strPassword);
-                //   params.put("Accept", "application/json");
+              //  params.put("first_name", strFirstName);
+              //  params.put("last_name",strLastName);
+                params.put("mobile_no",strPhone);
+
                 return params;
             }
 

@@ -80,7 +80,7 @@ public class UserAcceptedFragment extends Fragment {
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("all",response);
+                Log.d("abdul",response);
                 if (response.contains("200")) {
                     try {
                         if (alertDialog != null)
@@ -92,16 +92,17 @@ public class UserAcceptedFragment extends Fragment {
                             JSONObject temp = jsonArr.getJSONObject(i);
 
                             UserAcceptedModel model = new UserAcceptedModel();
+                            String jobId =temp.getString("job_id");
                             String firstName = temp.getString("first_name");
                             String lastName = temp.getString("last_name");
-                            String email = temp.getString("email");
                             String usersId = temp.getString("users_id");
-                            String jobTitle = temp.getString("job_title");
+                            String jobTitle = temp.getString("mission_title");
                             String description = temp.getString("description");
                             String lat = temp.getString("latitude");
                             String lng = temp.getString("longitude");
                             String image = temp.getString("image");
 
+                            model.setJob_id(jobId);
                             model.setJob_title(jobTitle);
                             model.setDescription(description);
                             model.setImage(image);
@@ -115,7 +116,6 @@ public class UserAcceptedFragment extends Fragment {
                         if (alertDialog != null)
                             alertDialog.dismiss();
                     }
-
 
                 } else {
 
@@ -153,6 +153,8 @@ public class UserAcceptedFragment extends Fragment {
                 Map<String, String> params = new HashMap<>();
                 params.put("api_token", strApi_token);
                 params.put("users_id",strUserID);
+                Log.d("token",strApi_token);
+                Log.d("token",strUserID);
                 return params;
             }
 

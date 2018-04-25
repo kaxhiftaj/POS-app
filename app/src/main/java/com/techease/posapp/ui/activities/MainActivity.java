@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_completed) {
           fragment = new JobCompletedFragment();
-        } else if (id == R.id.nav_profile ){
+        } else if (id == R.id.nav_profile_Info ){
            fragment = new UserProfileFragment();
         } else if (id == R.id.nav_privacy ){
 

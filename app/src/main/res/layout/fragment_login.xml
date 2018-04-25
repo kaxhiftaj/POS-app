@@ -7,9 +7,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     tools:context="com.techease.posapp.ui.activities.FullScreenActivity">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,43 +25,48 @@
                 android:textColor="#00A0F1"
                 android:textSize="40dp"/>
 
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/country_code"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:countryPreference="US,IN,NZ,PK"
+                app:defaultCode="91"
+                android:layout_marginTop="50dp"/>
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:hint="Email"
+                android:hint="Mobile Number"
                 android:paddingLeft="30dp"
                 android:background="@drawable/round_back_edittext"
-                android:id="@+id/signin_email"
+                android:id="@+id/signin_phone_no"
+                android:inputType="number"
+                android:layout_marginTop="10sp"
+               />
+
+        <!--    <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="First Name"
+                android:paddingLeft="30dp"
+                android:background="@drawable/round_back_edittext"
+                android:id="@+id/first_name"
                 android:inputType="textEmailAddress"
-                android:layout_marginTop="30dp"/>
-
-
-
+                android:layout_marginTop="10dp"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:hint="Password"
-                android:paddingLeft="30dp"
-                android:id="@+id/signin_pass"
-                android:background="@drawable/round_back_edittext"
-                android:layout_marginTop="10dp"
-                android:inputType="textPassword"/>
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="Confirm Password"
+                android:hint="Last Number"
                 android:paddingLeft="30dp"
                 android:background="@drawable/round_back_edittext"
-                android:layout_marginTop="10dp"
-                android:id="@+id/signin_confirmpass"
-                android:inputType="textPassword"/>
-
+                android:id="@+id/last_name"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="10dp"/>
+                       -->
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="Login"
+                android:layout_height="40dp"
+                android:text="Send"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:paddingLeft="40dp"
@@ -74,58 +77,6 @@
                 android:background="@drawable/round_back_create_button"
                 android:layout_marginTop="20dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="Or"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                android:textSize="40dp"
-                android:textColor="#0497DF"
-                android:background="@color/white"
-                android:layout_marginTop="20dp"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Sign up with Facebook"
-                android:textColor="@color/white"
-                android:drawableLeft="@drawable/facebook"
-                android:paddingLeft="30dp"
-                android:paddingRight="40dp"
-                android:gravity="center"
-                android:id="@+id/signin_fb"
-                android:background="@drawable/round_back_facebook"
-                android:layout_marginTop="20dp"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Sign up with Gmail"
-                android:textColor="@color/white"
-                android:drawableLeft="@drawable/gmail"
-                android:paddingLeft="30dp"
-                android:paddingRight="40dp"
-                android:gravity="center"
-                android:id="@+id/signin_google"
-                android:background="@drawable/round_back_gmail"
-                android:layout_marginTop="15dp"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:text="Don't have an acount? Sign up"
-                android:id="@+id/new_user"
-                />
-
-
         </LinearLayout>
-    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

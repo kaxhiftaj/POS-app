@@ -86,7 +86,6 @@ public class HomeFragment extends Fragment {
                     ((ViewGroup.MarginLayoutParams) tabView.getLayoutParams()).rightMargin = marginOffset;
                 }
             }
-
             tabLayout.requestLayout();
         }
     }

@@ -26,7 +26,7 @@
 
             <TextView
                 android:id="@+id/accepted_job_title"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="10dp"
@@ -34,16 +34,19 @@
                 android:nextFocusRight="@id/accepted_job_image"
                 android:text="Title "
                 android:textSize="15dp"
+                android:layout_marginTop="10sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/accepted_job_desc"
-                android:layout_width="180sp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/accepted_job_title"
                 android:layout_centerVertical="true"
+                android:layout_below="@+id/accepted_job_title"
                 android:layout_gravity="bottom"
                 android:gravity="bottom"
+                android:layout_marginTop="5sp"
                 android:maxLines="5"
                 android:text="Description" />
 

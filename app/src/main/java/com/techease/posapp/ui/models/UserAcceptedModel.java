@@ -1,6 +1,7 @@
 package com.techease.posapp.ui.models;
 
 public class UserAcceptedModel {
+    String job_id;
     String first_name;
     String last_name;
     String email;
@@ -10,6 +11,13 @@ public class UserAcceptedModel {
     String latitude;
     String longitude;
     String image;
+
+    public String getJob_id() {
+        return job_id;
+    }
+    public void setJob_id(String job_id) {
+        this.job_id = job_id;
+    }
 
     public String getFirst_name() {
         return first_name;

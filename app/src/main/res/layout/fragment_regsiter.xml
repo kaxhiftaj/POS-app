@@ -7,11 +7,7 @@
     android:background="#ffffff"
     tools:context="com.techease.posapp.ui.activities.FullScreenActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+          <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -27,49 +23,37 @@
                 android:textColor="#00A0F1"
                 android:textSize="40dp"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="Email"
-                android:paddingLeft="30dp"
-                android:id="@+id/signup_email"
-                android:inputType="textEmailAddress"
-                android:background="@drawable/round_back_edittext"
-                android:layout_marginTop="30dp"/>
+              <EditText
+                  android:layout_width="match_parent"
+                  android:layout_height="40dp"
+                  android:hint="Mobile Number"
+                  android:paddingLeft="30dp"
+                  android:background="@drawable/round_back_edittext"
+                  android:id="@+id/user_phone_no"
+                  android:inputType="number"
+                  android:layout_marginTop="50dp"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="Mobile Number"
-                android:paddingLeft="30dp"
-                android:layout_marginTop="10dp"
-                android:inputType="number"
-                android:id="@+id/signup_mobile"
-                android:background="@drawable/round_back_edittext"
-               />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="Password"
-                android:paddingLeft="30dp"
-                android:background="@drawable/round_back_edittext"
-                android:layout_marginTop="10dp"
-                android:id="@+id/signup_pass"
-                android:inputType="textPassword"/>
+              <EditText
+                  android:layout_width="match_parent"
+                  android:layout_height="40dp"
+                  android:hint="First Name"
+                  android:paddingLeft="30dp"
+                  android:background="@drawable/round_back_edittext"
+                  android:id="@+id/user_first_name"
+                  android:inputType="textEmailAddress"
+                  android:layout_marginTop="10dp"/>
+              <EditText
+                  android:layout_width="match_parent"
+                  android:layout_height="40dp"
+                  android:hint="Last Number"
+                  android:paddingLeft="30dp"
+                  android:background="@drawable/round_back_edittext"
+                  android:id="@+id/user_last_name"
+                  android:inputType="textEmailAddress"
+                  android:layout_marginTop="10dp"/>
 
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="Confirm Password"
-                android:paddingLeft="30dp"
-                android:background="@drawable/round_back_edittext"
-                android:layout_marginTop="10dp"
-                android:id="@+id/signup_confirmpass"
-                android:inputType="textPassword"/>
-
-            <Button
+              <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Create"
@@ -83,45 +67,6 @@
                 android:background="@drawable/round_back_create_button"
                 android:layout_marginTop="20dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Or"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:paddingLeft="40dp"
-                android:textAllCaps="true"
-                android:paddingRight="40dp"
-                android:textSize="25sp"
-                android:textColor="#0497DF"
-                android:background="@color/white"
-                android:layout_marginTop="15dp"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sign up with Facebook"
-                android:textColor="@color/white"
-                android:drawableLeft="@drawable/facebook"
-                android:paddingLeft="30dp"
-                android:paddingRight="40dp"
-                android:gravity="center"
-                android:id="@+id/signup_fb"
-                android:background="@drawable/round_back_facebook"
-                android:layout_marginTop="15dp"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sign up with Gmail"
-                android:textColor="@color/white"
-                android:drawableLeft="@drawable/gmail"
-                android:paddingLeft="30dp"
-                android:paddingRight="40dp"
-                android:gravity="center"
-                android:id="@+id/signup_google"
-                android:background="@drawable/round_back_gmail"
-                android:layout_marginTop="10dp"/>
 
 
             <TextView
@@ -136,6 +81,5 @@
 
 
         </LinearLayout>
-    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

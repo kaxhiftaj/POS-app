@@ -1,58 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300sp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#3399ff"
     android:layout_gravity="center"
-    android:gravity="center"
     android:orientation="vertical">
 
-  <!--  <TextView
-        android:id="@+id/myTitle"
-        android:layout_width="300dp"
-        android:layout_height="80sp"
-        android:textSize="30sp"
-        android:maxLines="2"
-        android:gravity="center"
-        android:textColor="#ffcc00"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:text="title"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        >
+        <TextView
+            android:id="@+id/companyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company Name"
+            android:layout_marginTop="8sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15sp"
+            android:textStyle="bold"
+            android:typeface="serif"
+            android:textSize="18sp"
+            android:textColor="#fff"
+            />
+        <TextView
+            android:id="@+id/pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pay Per Job"
+            android:layout_alignParentRight="true"
+            android:textColor="#fff"
+            android:typeface="sans"
+            android:layout_marginRight="10sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10sp"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/pay_per_job"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pay"
+            android:layout_alignParentRight="true"
+            android:textColor="#fff"
+            android:layout_marginRight="15sp"
+            android:layout_below="@id/pay"
+            android:layout_marginTop="8sp"
+            android:textSize="14sp"/>
+        <TextView
+            android:id="@+id/myTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job Title"
+            android:layout_marginLeft="15sp"
+            android:layout_below="@id/companyName"
+            android:textColor="#fff"
+            android:typeface="sans"
+            android:layout_marginTop="8sp"
+            android:layout_marginBottom="8sp"
+            android:textSize="17sp"/>
+
+    </RelativeLayout>
+
     <TextView
-        android:id="@+id/description"
-        android:layout_width="300sp"
-        android:layout_height="150sp"
-        android:textSize="20sp"
-        android:background="#fff"
-        android:maxLines="5"
-        android:gravity="center"
-        android:textColor="#000"
-        android:layout_gravity="center"
-        android:text="desctiption"/>
+        android:id="@+id/tvShortDes"
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:text="Short Description"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:maxLines="2"
+        android:textStyle="bold"
+        android:layout_marginTop="8sp"
+        android:textSize="15sp"/>
+
+      <TextView
+          android:id="@+id/description"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp"
+          android:autoSizeTextType="uniform"
+          android:typeface="sans"
+          android:text="Brief description" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_images"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="10sp"
+        android:orientation="horizontal">
+    </android.support.v7.widget.RecyclerView>
+
     <LinearLayout
-        android:layout_width="300sp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:background="#fff"
-        android:padding="5sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="10sp"
         android:orientation="horizontal">
         <Button
             android:id="@+id/accept"
-            android:layout_width="wrap_content"
+            android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:background="@drawable/round_back_create_button"
-            android:textColor="#ffcc00"
-            android:text="Accept"/>
+            android:text="Accept"
+            android:layout_marginRight="10sp"
+            android:textColor="#fff"
+            />
         <Button
             android:id="@+id/reject"
-            android:layout_width="wrap_content"
+            android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:background="@drawable/round_back_create_button"
-            android:textColor="#ff1a1a"
+            android:text="Reject"
             android:layout_marginLeft="10sp"
-            android:text="Reject"/>
+            android:textColor="#fff"
+            />
     </LinearLayout>
-    -->
 </LinearLayout>
