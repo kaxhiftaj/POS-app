@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 app:countryPreference="US,IN,NZ,PK"
-                app:defaultCode="91"
+                app:defaultCode="1"
                 android:layout_marginTop="50dp"/>
 
             <EditText

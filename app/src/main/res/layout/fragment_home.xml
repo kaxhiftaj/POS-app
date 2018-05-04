@@ -9,7 +9,8 @@
         tools:context="com.techease.posapp.ui.fragments.HomeFragment">
 
 
-    <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.design.widget.AppBarLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
@@ -49,13 +50,5 @@
             </android.support.v4.view.ViewPager>
         </FrameLayout>
 
-  <!--  <android.support.design.widget.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:backgroundTint=""
-        app:menu="@menu/nav_items"/>
-        -->
 </LinearLayout>
 

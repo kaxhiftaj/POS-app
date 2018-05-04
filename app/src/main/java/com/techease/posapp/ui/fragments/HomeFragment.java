@@ -51,6 +51,7 @@ public class HomeFragment extends Fragment {
 
         viewPager.setAdapter(new PagerAdapter(((FragmentActivity) getActivity()).getSupportFragmentManager(), tabLayout.getTabCount()));
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        viewPager.setCurrentItem(0);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         reduceMarginsInTabs(tabLayout, 20);
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -127,6 +128,12 @@ public class HomeFragment extends Fragment {
         public int getCount() {
             return mNumOfTabs;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        viewPager.setCurrentItem(0);
     }
 }
 

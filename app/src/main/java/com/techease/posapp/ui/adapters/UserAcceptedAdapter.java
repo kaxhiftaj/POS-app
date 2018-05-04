@@ -43,6 +43,7 @@ public class UserAcceptedAdapter extends RecyclerView.Adapter<UserAcceptedAdapte
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final UserAcceptedModel model = acceptedModelArrayList.get(position);
+        holder.name.setText(model.getCompany_name());
         Glide.with(context).load(model.getImage()).into(holder.imageView);
         holder.title.setText(model.getJob_title());
         holder.description.setText(model.getDescription());
@@ -50,6 +51,8 @@ public class UserAcceptedAdapter extends RecyclerView.Adapter<UserAcceptedAdapte
             @Override
             public void onClick(View v) {
                 holder.editor.putString("jobID",model.getJob_id()).commit();
+                holder.editor.putString("missionTitle",model.getJob_title()).commit();
+                holder.editor.putString("missionDesc",model.getDescription()).commit();
                 Fragment fragment = new JobCompletedFragment();
                 ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).addToBackStack("").commit();
             }
@@ -63,7 +66,7 @@ public class UserAcceptedAdapter extends RecyclerView.Adapter<UserAcceptedAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
-        TextView title,description;
+        TextView name,title,description,date;
         RelativeLayout relativeLayout;
         SharedPreferences sharedPreferences;
         SharedPreferences.Editor editor;
@@ -71,6 +74,7 @@ public class UserAcceptedAdapter extends RecyclerView.Adapter<UserAcceptedAdapte
         public ViewHolder(View itemView) {
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.accepted_job_image);
+            name = itemView.findViewById(R.id.name);
             title = (TextView) itemView.findViewById(R.id.accepted_job_title);
             description = (TextView) itemView.findViewById(R.id.accepted_job_desc);
             relativeLayout = itemView.findViewById(R.id.individual_layout);

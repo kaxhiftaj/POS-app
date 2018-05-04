@@ -1,17 +1,9 @@
 package com.techease.posapp.ui.adapters;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
-import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,11 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,13 +26,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
-import com.google.gson.JsonObject;
 import com.techease.posapp.R;
 import com.techease.posapp.ui.fragments.SingleUserJobFragment;
-import com.techease.posapp.ui.models.AllJobImagesModel;
-import com.techease.posapp.ui.models.AllJobsDataModel;
-import com.techease.posapp.ui.models.AllJobsResponse;
-import com.techease.posapp.ui.models.AllJobsResponse;
 import com.techease.posapp.ui.models.JobImagesModel;
 import com.techease.posapp.ui.models.JobsModel;
 import com.techease.posapp.utils.Configuration;
@@ -54,13 +38,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.zip.Inflater;
-
-import butterknife.BindView;
-
-import static com.techease.posapp.R.layout.custom_info_window;
 
 /**
  * Created by kaxhiftaj on 4/4/18.
@@ -115,6 +93,7 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.MyViewHolder> 
             public void onClick(View v) {
                 dialog = new Dialog(context);
                 dialog.setContentView(R.layout.custom_info_window);
+
                 final String userJobId = model.getJob_id();
                 RecyclerView rv_images = dialog.findViewById(R.id.rv_images);
                 LinearLayoutManager layoutManager = new LinearLayoutManager(rv_images.getContext());

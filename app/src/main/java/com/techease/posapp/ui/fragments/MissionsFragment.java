@@ -2,18 +2,14 @@ package com.techease.posapp.ui.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -24,11 +20,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
 import com.techease.posapp.R;
 import com.techease.posapp.ui.adapters.JobsAdapter;
-import com.techease.posapp.ui.models.AllJobsDataModel;
-import com.techease.posapp.ui.models.AllJobsResponse;
 import com.techease.posapp.ui.models.JobsModel;
 import com.techease.posapp.utils.AlertsUtils;
 import com.techease.posapp.utils.Configuration;
@@ -39,9 +32,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -187,6 +178,32 @@ public class MissionsFragment extends Fragment {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         mRequestQueue.add(stringRequest);
+
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+//        job_model_list.clear();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        job_model_list.clear();
+        if (job_model_list.size()>0){
+            Log.d("zma list size", ">0");
+        }else {
+
+            jobs_adapter = new JobsAdapter(getActivity(), job_model_list);
+            recyclerView.setAdapter(jobs_adapter);
+            apicall();
+            Log.d("zma list size", "0");
+        }
+//        if (alertDialog == null)
+//            alertDialog = AlertsUtils.createProgressDialog(getActivity());
+//        alertDialog.show();
 
     }
 

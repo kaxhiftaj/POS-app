@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="330sp"
+    android:layout_height="310sp"
+    android:background="#f3f3f3">
+
+
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="250sp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="1"
+        android:layout_marginTop="5sp"
+        android:verticalSpacing="10dp" >
+    </GridView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="5sp"
+        android:layout_marginBottom="5sp"
+        android:layout_below="@id/gridview">
+        <Button
+            android:id="@+id/btnPicture"
+            android:layout_width="140sp"
+            android:layout_height="45sp"
+            android:background="@drawable/round_back_create_button"
+            android:text="Change Pictures"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="10sp"
+            android:layout_marginLeft="10sp"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/btnDone"
+            android:layout_width="140sp"
+            android:layout_height="45sp"
+            android:background="@drawable/round_back_create_button"
+            android:text="Done"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="10sp"
+            android:layout_marginLeft="10sp"
+            android:layout_below="@id/gridview"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+   <!-- <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/linearLayout1" >
+
+        <GridView
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:horizontalSpacing="10dp"
+            android:numColumns="3"
+            android:padding="10dp"
+            android:verticalSpacing="10dp" >
+        </GridView>
+
+    </FrameLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:padding="10dp" >
+
+        <Button
+            android:id="@+id/btnPicture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:background="@drawable/round_back_create_button"
+            android:text="Select Pictures"
+            android:textColor="#7c0405" />
+
+    </LinearLayout>
+    -->
+</RelativeLayout>

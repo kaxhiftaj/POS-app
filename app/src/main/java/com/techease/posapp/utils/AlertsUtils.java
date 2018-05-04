@@ -62,7 +62,7 @@ public class AlertsUtils {
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.gravity = Gravity.CENTER;
-        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_box);
+        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.dialoge_box);
         alertDialog.getWindow().setAttributes(lp);
         pd.setVisibility(View.VISIBLE);
         return alertDialog;

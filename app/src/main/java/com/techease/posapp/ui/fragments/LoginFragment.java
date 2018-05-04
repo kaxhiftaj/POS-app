@@ -56,13 +56,6 @@ public class LoginFragment extends Fragment {
     @BindView(R.id.signin_phone_no)
     EditText etSignin_phone;
 
-   /* @BindView(R.id.first_name)
-    EditText etFistName;
-
-    @BindView(R.id.last_name)
-    EditText etLastName;
-    */
-
     @BindView(R.id.signin)
     Button signin;
     TextView tvSignIn;
@@ -81,6 +74,7 @@ public class LoginFragment extends Fragment {
         View v=  inflater.inflate(R.layout.fragment_login, container, false);
         unbinder = ButterKnife.bind(this, v);
 
+
         ccp = (CountryCodePicker) v.findViewById(R.id.country_code);
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -88,7 +82,6 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 onDataInput();
-                Toast.makeText(getActivity(), ""+countryCodeAndroid, Toast.LENGTH_SHORT).show();
             }
         });
         ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
@@ -140,7 +133,6 @@ public class LoginFragment extends Fragment {
                         JSONObject jsonObject = new JSONObject(response).getJSONObject("user_data");
                         String api_token = jsonObject.getString("api_token");
                         int user_id = jsonObject.getInt("user_id");
-                        Log.d("my",api_token);
                         Log.d("my",api_token);
                         Log.d("my",String.valueOf(user_id));
 
@@ -198,8 +190,6 @@ public class LoginFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-              //  params.put("first_name", strFirstName);
-              //  params.put("last_name",strLastName);
                 params.put("mobile_no",strPhone);
 
                 return params;

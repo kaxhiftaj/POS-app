@@ -161,7 +161,7 @@ public class MapFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mMapView.onResume();
+//        mMapView.onResume();
     }
 
     @Override

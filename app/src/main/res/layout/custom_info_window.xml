@@ -46,7 +46,7 @@
             android:textColor="#fff"
             android:layout_marginRight="15sp"
             android:layout_below="@id/pay"
-            android:layout_marginTop="8sp"
+            android:layout_marginTop="5sp"
             android:textSize="14sp"/>
         <TextView
             android:id="@+id/myTitle"
@@ -54,6 +54,7 @@
             android:layout_height="wrap_content"
             android:text="Job Title"
             android:layout_marginLeft="15sp"
+            android:layout_marginRight="8sp"
             android:layout_below="@id/companyName"
             android:textColor="#fff"
             android:typeface="sans"
@@ -82,6 +83,7 @@
           android:layout_marginLeft="10dp"
           android:layout_marginRight="10dp"
           android:autoSizeTextType="uniform"
+          android:paddingRight="5sp"
           android:typeface="sans"
           android:text="Brief description" />
 

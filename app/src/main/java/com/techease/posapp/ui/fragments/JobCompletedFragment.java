@@ -2,16 +2,17 @@ package com.techease.posapp.ui.fragments;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.Icon;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -23,20 +24,38 @@ import android.os.Looper;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
-import android.util.Base64;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.google.gson.JsonObject;
 import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.techease.posapp.R;
+import com.techease.posapp.ui.adapters.RelatedImagesAdapter;
+import com.techease.posapp.ui.models.JobImagesModel;
+import com.techease.posapp.ui.models.JobsModel;
 import com.techease.posapp.utils.AlertsUtils;
 import com.techease.posapp.utils.Configuration;
 import com.techease.posapp.utils.HTTPMultiPartEntity;
@@ -46,10 +65,17 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.ByteArrayBody;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -57,7 +83,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -96,6 +125,10 @@ public class JobCompletedFragment extends Fragment {
     SharedPreferences.Editor editor;
     double lattitude, longitude;
     LocationManager locationManager;
+    String completedJob_id;
+    Dialog dialog;
+    ArrayList<JobImagesModel> related_image_list;
+    RelatedImagesAdapter relatedImagesAdapter;
     private static final int REQUEST_LOCATION = 100;
 
     @Override
@@ -131,66 +164,83 @@ public class JobCompletedFragment extends Fragment {
         ivFirstImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fancydialo();
-                flagFirstImage = true;
-                flagSecondImage = false;
+                dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.custom_image_dialogue);
+                ImageView iv_cancel = dialog.findViewById(R.id.cancel);
+                RecyclerView rv_relatedImages = dialog.findViewById(R.id.rv_job_completedImages);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(rv_relatedImages.getContext());
+                layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                rv_relatedImages.setLayoutManager(layoutManager);
+                related_image_list = new ArrayList<>();
+
+                ApiCallImages(str_JobID);
+                relatedImagesAdapter = new RelatedImagesAdapter(getActivity(), related_image_list);
+                rv_relatedImages.setAdapter(relatedImagesAdapter);
+                dialog.show();
+                iv_cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
             }
         });
         ivSecondImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fancydialo();
+                fancydialog();
                 flagSecondImage = true;
                 flagFirstImage = false;
             }
         });
-       ivCurrentLocation.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               strLatitude = String.valueOf(lattitude);
-               strLongitude = String.valueOf(longitude);
+        ivCurrentLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                strLatitude = String.valueOf(lattitude);
+                strLongitude = String.valueOf(longitude);
 
-               if(strLatitude != null && strLongitude != null){
-                   check_location.setVisibility(View.VISIBLE);
-               }
-               flagLocation = true;
-           }
-       });
-       ivCurrentTime.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               getDataTime();
-               if(strCurrentDateandTime != null){
-                   ivCheckTime.setVisibility(View.VISIBLE);
-               }
+                if(strLatitude != null && strLongitude != null){
+                    check_location.setVisibility(View.VISIBLE);
+                }
+                flagLocation = true;
+            }
+        });
+        ivCurrentTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getDataTime();
+                if(strCurrentDateandTime != null){
+                    ivCheckTime.setVisibility(View.VISIBLE);
+                }
 
-               flagTime = true;
-           }
-       });
-       ivAuthentication.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               ivCheckAuthentication.setVisibility(View.VISIBLE);
-               flagAuthentication = true;
-           }
-       });
+                flagTime = true;
+            }
+        });
+        ivAuthentication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ivCheckAuthentication.setVisibility(View.VISIBLE);
+                flagAuthentication = true;
+            }
+        });
         btnSend.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               if(fileFirstImage == null || fileSecondImage == null || etComments.getText().toString() == null
-                       || strCurrentDateandTime == null || str_JobID == null || strLongitude == null || strLatitude == null){
-                   Toast.makeText(getActivity(), "Missing Some Parameter", Toast.LENGTH_SHORT).show();
-               }
-               else {
-                   new UploadFileToServer().execute();
-               }
+            @Override
+            public void onClick(View v) {
+                if(etComments.getText().toString() == null
+                        || strCurrentDateandTime == null || str_JobID == null || strLongitude == null || strLatitude == null){
+                    Toast.makeText(getActivity(), "Missing Some Parameter", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    firstApiCall();
+                }
 
-           }
-       });
+            }
+        });
         return parentView;
     }
 
-    private void fancydialo() {
+    private void fancydialog() {
         new FancyAlertDialog.Builder(getActivity())
                 .setTitle("Upload Images")
                 .setBackgroundColor(Color.parseColor("#3aC6ee"))  //Don't pass R.color.colorvalue
@@ -233,72 +283,71 @@ public class JobCompletedFragment extends Fragment {
 
             case 0://camera
 
-                    if (resultCode == RESULT_OK) {
+                if (resultCode == RESULT_OK) {
 
-                        Bitmap bm = (Bitmap) imageReturnedIntent.getExtras().get("data");
-                        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                        bm.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+                    Bitmap bm = (Bitmap) imageReturnedIntent.getExtras().get("data");
+                    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                    bm.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
 
-                        File sourceFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Pos/img.jpg");
-
-
-                        FileOutputStream fo;
-                        try {
-                            sourceFile.createNewFile();
-                            fo = new FileOutputStream(sourceFile);
-                            fo.write(bytes.toByteArray());
-                            fo.close();
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        if (flagFirstImage) {
-
-                            ivFirstImage.setImageBitmap(bm);
-                            strFirstImage = sourceFile.getAbsolutePath().toString();
-                            fileFirstImage = new File(strFirstImage);
-
-                        }
-                        if (flagSecondImage) {
-                            ivSecondImage.setImageBitmap(bm);
-                            strSecondImage = sourceFile.getAbsolutePath().toString();
-                            fileSecondImage = new File(strSecondImage);
-                        }
+                    File sourceFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Pos/img.jpg");
 
 
-                    } else {
+                    FileOutputStream fo;
+                    try {
+                        sourceFile.createNewFile();
+                        fo = new FileOutputStream(sourceFile);
+                        fo.write(bytes.toByteArray());
+                        fo.close();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                        Toast.makeText(getActivity(), "No Image Selected", Toast.LENGTH_SHORT).show();
+                    if (flagFirstImage) {
+
+                        ivFirstImage.setImageBitmap(bm);
+                        strFirstImage = sourceFile.getAbsolutePath().toString();
+                        fileFirstImage = new File(strFirstImage);
 
                     }
-                    break;
+                    if (flagSecondImage) {
+                        ivSecondImage.setImageBitmap(bm);
+                        strSecondImage = sourceFile.getAbsolutePath().toString();
+                        fileSecondImage = new File(strSecondImage);
+                    }
 
 
-                    case 1://gallery
-                        if (resultCode == RESULT_OK) {
-                            image_uri = imageReturnedIntent.getData();
-                            if (flagFirstImage) {
+                } else {
 
-                                ivFirstImage.setImageURI(image_uri);
-                                strFirstImage = getImagePath(image_uri);
-                                fileFirstImage = new File(strFirstImage);
+                    Toast.makeText(getActivity(), "No Image Selected", Toast.LENGTH_SHORT).show();
+
+                }
+                break;
 
 
-                            }
-                            if (flagSecondImage) {
-                                ivSecondImage.setImageURI(image_uri);
-                                strSecondImage = getImagePath(image_uri);
-                                fileSecondImage = new File(strFirstImage);
-                            }
+            case 1://gallery
+                if (resultCode == RESULT_OK) {
+                    image_uri = imageReturnedIntent.getData();
+                    if (flagFirstImage) {
+
+                        ivFirstImage.setImageURI(image_uri);
+                        strFirstImage = getImagePath(image_uri);
+                        fileFirstImage = new File(strFirstImage);
+
+                    }
+                    if (flagSecondImage) {
+                        ivSecondImage.setImageURI(image_uri);
+                        strSecondImage = getImagePath(image_uri);
+                        fileSecondImage = new File(strSecondImage);
+                    }
 
 
-                        } else {
-                            Toast.makeText(getActivity(), "No Image Selected", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "No Image Selected", Toast.LENGTH_SHORT).show();
 
-                        }
-                        break;
+                }
+                break;
 
         }
     }
@@ -340,22 +389,21 @@ public class JobCompletedFragment extends Fragment {
 
                             }
                         });
-                entity.addPart("image1", new FileBody(fileFirstImage));
-                entity.addPart("image2", new FileBody(fileSecondImage));
+              //  entity.addPart("files", new FileBody(fileFirstImage));
+                entity.addPart("files", new FileBody(fileSecondImage));
                 Looper.prepare();
                 entity.addPart("api_token", new StringBody(strApiToken));
-                entity.addPart("job_id", new StringBody(str_JobID));
-                entity.addPart("comment", new StringBody(etComments.getText().toString()));
-                entity.addPart("latitude", new StringBody(strLatitude));
-                entity.addPart("longitude", new StringBody(strLongitude));
-                entity.addPart("current_time", new StringBody(strCurrentDateandTime));
+                entity.addPart("job_id", new StringBody(completedJob_id));
+//                entity.addPart("comment", new StringBody(etComments.getText().toString()));
+//                entity.addPart("latitude", new StringBody(strLatitude));
+//                entity.addPart("longitude", new StringBody(strLongitude));
+//                entity.addPart("current_time", new StringBody(strCurrentDateandTime));
 
                 httppost.setEntity(entity);
                 HttpResponse response = httpclient.execute(httppost);
                 HttpEntity r_entity = response.getEntity();
                 int statusCode = response.getStatusLine().getStatusCode();
                 responseString = EntityUtils.toString(r_entity);
-
 
                 Toast.makeText(getActivity(), "Successful", Toast.LENGTH_LONG).show();
 
@@ -452,6 +500,146 @@ public class JobCompletedFragment extends Fragment {
         alert.show();
     }
 
+
+    public void firstApiCall(){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.JOB_COMPLETED
+                , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("response",response);
+
+                if(response.contains("true")){
+                    try {
+                        JSONObject json = new JSONObject(response);
+                        completedJob_id = json.getString("job_completed_id");
+                        new UploadFileToServer().execute();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+               else if(response.contains("Distance is out of 200 km")){
+                    Toast.makeText(getActivity(), "Distance is out of 200 km", Toast.LENGTH_SHORT).show();
+                }
+                else if(response.contains("This job already completed")){
+                    Toast.makeText(getActivity(), "This job already completed", Toast.LENGTH_SHORT).show();
+                }
+                else if(response.contains("Time Interval is Greater than 10 minutes")){
+                    Toast.makeText(getActivity(), "Time Interval is Greater than 10 minutes", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getActivity(), "You got some error", Toast.LENGTH_SHORT).show();
+                }
+
+
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded;charset=UTF-8";
+            }
+
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("api_token", strApiToken);
+                params.put("job_id",str_JobID);
+                params.put("comment",etComments.getText().toString());
+                params.put("latitude",strLatitude);
+                params.put("longitude",strLongitude);
+                params.put("current_time",strCurrentDateandTime);
+//                params.put("latitude","34.168138519353846");
+//                params.put("longitude","71.61093524374996");
+                return params;
+            }
+
+        };
+        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mRequestQueue.add(stringRequest);
+
+    }
+
+    //apiCall for job related images
+    private void ApiCallImages(final String job_id) {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.JOB_RELATED_IMAGES,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray jsonArray = jsonObject.getJSONArray("images");
+                            for (int j = 0; j < jsonArray.length(); j++) {
+                                JSONObject temp = jsonArray.getJSONObject(j);
+                                JobImagesModel jobImagesModel = new JobImagesModel();
+                                String image = temp.getString("images");
+                                jobImagesModel.setJob_images(image);
+                                   String[] zma = {image};
+
+                                   for (int k = 0; k<1; k++){
+                                       JSONObject imageObject = jsonArray.getJSONObject(k);
+                                       String mImage = imageObject.getString("images");
+                                       Glide.with(getActivity()).load(mImage).into(ivFirstImage);
+                                   }
+
+//                                   for(int count=0;count<zma.length;count++){
+//                                       Log.d("arr",zma[0]);
+//                                       Toast.makeText(getActivity(), zma[1], Toast.LENGTH_SHORT).show();
+//                                       }
+                                       
+                                jobImagesModel.setJob_images(image);
+                                related_image_list.add(jobImagesModel);
+
+                            }
+                            relatedImagesAdapter.notifyDataSetChanged();
+
+                        } catch (JSONException e) {
+                            Toast.makeText(getActivity(), String.valueOf(e.getCause()), Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), String.valueOf(error.getCause()), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded;charset=UTF-8";
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                Log.d("khan", job_id);
+                params.put("job_id", job_id);
+                return params;
+            }
+
+        };
+        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mRequestQueue.add(stringRequest);
+
+    }
+    //end
+
+
 }
+
 
 

@@ -58,6 +58,7 @@ public class UserAcceptedFragment extends Fragment {
         editor = sharedPreferences.edit();
         strApi_token = sharedPreferences.getString("api_token","");
         strUserID = sharedPreferences.getString("user_id","");
+        Log.d("my",strUserID);
         if (InternetUtils.isNetworkConnected(getActivity())) {
 
             rv_userAccepted.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -93,6 +94,7 @@ public class UserAcceptedFragment extends Fragment {
 
                             UserAcceptedModel model = new UserAcceptedModel();
                             String jobId =temp.getString("job_id");
+                            String company_name = temp.getString("company_name");
                             String firstName = temp.getString("first_name");
                             String lastName = temp.getString("last_name");
                             String usersId = temp.getString("users_id");
@@ -103,6 +105,7 @@ public class UserAcceptedFragment extends Fragment {
                             String image = temp.getString("image");
 
                             model.setJob_id(jobId);
+                            model.setCompany_name(company_name);
                             model.setJob_title(jobTitle);
                             model.setDescription(description);
                             model.setImage(image);

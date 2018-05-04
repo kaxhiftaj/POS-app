@@ -17,6 +17,7 @@ import com.techease.posapp.R;
 import com.techease.posapp.ui.fragments.HomeFragment;
 import com.techease.posapp.ui.fragments.JobCompletedFragment;
 import com.techease.posapp.ui.fragments.LoginFragment;
+import com.techease.posapp.ui.fragments.MissionCompletedFragment;
 import com.techease.posapp.ui.fragments.RegsiterFragment;
 import com.techease.posapp.ui.fragments.UserAcceptedFragment;
 import com.techease.posapp.ui.fragments.UserProfileFragment;
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity
             fragment = new UserAcceptedFragment();
         }
         else if (id == R.id.nav_completed) {
-          fragment = new JobCompletedFragment();
+          fragment = new MissionCompletedFragment();
         } else if (id == R.id.nav_profile_Info ){
            fragment = new UserProfileFragment();
         } else if (id == R.id.nav_privacy ){

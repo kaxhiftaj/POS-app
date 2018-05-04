@@ -9,32 +9,59 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="5sp">
+        android:layout_margin="10dp">
         <RelativeLayout
             android:id="@+id/individual_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/accepted_job_image"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginLeft="10sp"
-                android:src="@drawable/profile" />
+            <LinearLayout
+                android:id="@+id/details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/accepted_job_image"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="10sp"
+                    android:paddingTop="3sp"
+                    android:paddingBottom="2sp"
+                    android:src="@drawable/profile" />
+
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="8sp"
+                    android:text="Company Name"
+                    android:maxLength="20"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    android:paddingBottom="3sp"/>
+            </LinearLayout>
+
+
 
             <TextView
                 android:id="@+id/accepted_job_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toEndOf="@+id/accepted_job_image"
-                android:nextFocusRight="@id/accepted_job_image"
+                android:layout_marginLeft="12dp"
+                android:layout_toEndOf="@+id/details"
+                android:nextFocusRight="@id/details"
                 android:text="Title "
-                android:textSize="15dp"
-                android:layout_marginTop="10sp"
+                android:maxLength="30"
+                android:maxLines="2"
+                android:textSize="14dp"
+                android:paddingTop="5sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -46,9 +73,24 @@
                 android:layout_below="@+id/accepted_job_title"
                 android:layout_gravity="bottom"
                 android:gravity="bottom"
-                android:layout_marginTop="5sp"
+                android:textSize="13dp"
+                android:maxLength="60"
+                android:layout_marginTop="10sp"
                 android:maxLines="5"
                 android:text="Description" />
+
+           <!-- <TextView
+                android:id="@+id/completed_job_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/accepted_job_title"
+                android:layout_alignParentEnd="true"
+                android:foregroundGravity="right"
+                android:layout_marginRight="15sp"
+                android:text="hour ago"
+                android:textSize="12dp"  />
+
+                -->
 
         </RelativeLayout>
 
