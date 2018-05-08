@@ -12,6 +12,7 @@ public class Configuration {
         public static String JOB_ACCEPTED = "http://techeasesol.com/pos_app/pos_apis/jobs_accepted";
         public static String USER_JOB_ACCEPTED = "http://techeasesol.com/pos_app/pos_apis/user_job_accepted";
         public static String JOB_COMPLETED = "http://techeasesol.com/pos_app/pos_apis/job_completed";
+        public static String INSERT_JOB_IMAGES = "http://techeasesol.com/pos_app/pos_apis/insert_job_completed_images";
         public static String JOB_RELATED_IMAGES = "http://techeasesol.com/pos_app/pos_apis/get_job_images";
         public static String MISSION_COMPLETED = "http://techeasesol.com/pos_app/pos_apis/jobs_details";
         public static String MY_PREF = "com.openspot";

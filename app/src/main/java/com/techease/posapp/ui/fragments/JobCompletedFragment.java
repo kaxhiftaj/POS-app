@@ -36,6 +36,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +54,7 @@ import com.google.gson.JsonObject;
 import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.techease.posapp.R;
+import com.techease.posapp.ui.activities.MainActivity;
 import com.techease.posapp.ui.adapters.RelatedImagesAdapter;
 import com.techease.posapp.ui.models.JobImagesModel;
 import com.techease.posapp.ui.models.JobsModel;
@@ -86,6 +88,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -102,11 +105,11 @@ public class JobCompletedFragment extends Fragment {
     @BindView(R.id.iv_second_image)
     ImageView ivSecondImage;
     @BindView(R.id.iv_current_time)
-    ImageView ivCurrentTime;
+    LinearLayout ivCurrentTime;
     @BindView(R.id.iv_current_location)
-    ImageView ivCurrentLocation;
+    LinearLayout ivCurrentLocation;
     @BindView(R.id.iv_authentication)
-    ImageView ivAuthentication;
+    LinearLayout ivAuthentication;
     @BindView(R.id.iv_check_authentication)
     ImageView ivCheckAuthentication;
     @BindView(R.id.iv_current_check_time)
@@ -118,40 +121,62 @@ public class JobCompletedFragment extends Fragment {
     @BindView(R.id.et_comments)
     EditText etComments;
     Boolean flagFirstImage, flagSecondImage, flagLocation, flagTime, flagAuthentication;
-    String strFirstImage, strSecondImage, strApiToken,str_JobID,strCurrentDateandTime, strLatitude, strLongitude;
+    String strFirstImage, strSecondImage, strApiToken, str_JobID, strCurrentDateandTime, strLatitude, strLongitude;
+    String strThirdImage, strFourthImage, strFifthImage, strSixthImage;
     Uri image_uri;
-    File fileFirstImage, fileSecondImage;
+    File fileFirstImage=null, fileSecondImage=null, filethirdImage=null, fileFourthImage=null, fileFifthImage=null, fileSixthImage=null;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     double lattitude, longitude;
     LocationManager locationManager;
-    String completedJob_id;
     Dialog dialog;
     ArrayList<JobImagesModel> related_image_list;
     RelatedImagesAdapter relatedImagesAdapter;
     private static final int REQUEST_LOCATION = 100;
+    String strMissionTitle, strMissionDesc, strCompletedJob_id;
+    TextView tv_missionTitle, tv_missionDesc;
+    RecyclerView rv_relatedImages;
+
+    int count = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         parentView = inflater.inflate(R.layout.fragment_job_completed, container, false);
+        getActivity().setTitle("Completed");
         ButterKnife.bind(this, parentView);
         flagFirstImage = false;
         flagSecondImage = false;
         flagLocation = false;
         flagTime = false;
         flagAuthentication = false;
+        tv_missionTitle = parentView.findViewById(R.id.missionTitle);
+        tv_missionDesc = parentView.findViewById(R.id.missionDesc);
 
-        sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF,Context.MODE_PRIVATE);
+        sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        strApiToken = sharedPreferences.getString("api_token","null");
+        strApiToken = sharedPreferences.getString("api_token", "null");
         str_JobID = sharedPreferences.getString("jobID", "null");
+        strMissionTitle = sharedPreferences.getString("missionTitle", "null");
+        strMissionDesc = sharedPreferences.getString("missionDesc", "null");
+        tv_missionTitle.setText(strMissionTitle);
+        tv_missionDesc.setText(strMissionDesc);
+
+        //showing job related image
+        dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.custom_image_dialogue);
+        rv_relatedImages = dialog.findViewById(R.id.rv_job_completedImages);
+        related_image_list = new ArrayList<>();
+        ApiCallImages(str_JobID);
+        relatedImagesAdapter = new RelatedImagesAdapter(getActivity(), related_image_list);
+        rv_relatedImages.setAdapter(relatedImagesAdapter);
+        //end
 
         ActivityCompat.requestPermissions(getActivity(),
                 new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                 1);
         ActivityCompat.requestPermissions(getActivity(),
-                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},2);
+                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
 
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -164,14 +189,13 @@ public class JobCompletedFragment extends Fragment {
         ivFirstImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.custom_image_dialogue);
+
                 ImageView iv_cancel = dialog.findViewById(R.id.cancel);
-                RecyclerView rv_relatedImages = dialog.findViewById(R.id.rv_job_completedImages);
+//                RecyclerView rv_relatedImages = dialog.findViewById(R.id.rv_job_completedImages);
                 LinearLayoutManager layoutManager = new LinearLayoutManager(rv_relatedImages.getContext());
                 layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 rv_relatedImages.setLayoutManager(layoutManager);
-                related_image_list = new ArrayList<>();
+//                related_image_list = new ArrayList<>();
 
                 ApiCallImages(str_JobID);
                 relatedImagesAdapter = new RelatedImagesAdapter(getActivity(), related_image_list);
@@ -200,7 +224,7 @@ public class JobCompletedFragment extends Fragment {
                 strLatitude = String.valueOf(lattitude);
                 strLongitude = String.valueOf(longitude);
 
-                if(strLatitude != null && strLongitude != null){
+                if (strLatitude != null && strLongitude != null) {
                     check_location.setVisibility(View.VISIBLE);
                 }
                 flagLocation = true;
@@ -210,7 +234,7 @@ public class JobCompletedFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getDataTime();
-                if(strCurrentDateandTime != null){
+                if (strCurrentDateandTime != null) {
                     ivCheckTime.setVisibility(View.VISIBLE);
                 }
 
@@ -220,23 +244,38 @@ public class JobCompletedFragment extends Fragment {
         ivAuthentication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ivCheckAuthentication.setVisibility(View.VISIBLE);
+                showCameraForAuthenthication();
                 flagAuthentication = true;
+
             }
         });
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(etComments.getText().toString() == null
-                        || strCurrentDateandTime == null || str_JobID == null || strLongitude == null || strLatitude == null){
-                    Toast.makeText(getActivity(), "Missing Some Parameter", Toast.LENGTH_SHORT).show();
+                if(fileSecondImage == null){
+                    Toast.makeText(getActivity(), "select at least one image", Toast.LENGTH_SHORT).show();
                 }
+                else  if (etComments.getText() == null) {
+                    Toast.makeText(getActivity(), "Please add comment", Toast.LENGTH_SHORT).show();
+                } else if (strLatitude == null || strLongitude == null) {
+                    Toast.makeText(getActivity(), "Please confirm your location", Toast.LENGTH_SHORT).show();
+                } else if (strCurrentDateandTime == null) {
+                    Toast.makeText(getActivity(), "Please confirm your time", Toast.LENGTH_SHORT).show();
+                } else if (str_JobID == null || strApiToken == null) {
+                    Toast.makeText(getActivity(), "Incorrect job id or token", Toast.LENGTH_SHORT).show();
+                }
+//                if (fileSecondImage == null || etComments.getText().toString() == null
+//                        || strCurrentDateandTime == null || str_JobID == null || strLongitude == null || strLatitude == null) {
+//                    Toast.makeText(getActivity(), "Missing Some Parameter", Toast.LENGTH_SHORT).show();
+//                }
                 else {
-                    firstApiCall();
+//                    firstApiCall();
+                    new UploadFileToServer().execute();
                 }
 
             }
         });
+
         return parentView;
     }
 
@@ -246,9 +285,9 @@ public class JobCompletedFragment extends Fragment {
                 .setBackgroundColor(Color.parseColor("#3aC6ee"))  //Don't pass R.color.colorvalue
                 .setMessage("Do you really want to take picture ?")
                 .setNegativeBtnText("Gallery")
-                .setPositiveBtnBackground(Color.parseColor("#FF4081"))
+                .setPositiveBtnBackground(Color.parseColor("#3aC6ee"))
                 .setPositiveBtnText("Camera")
-                .setNegativeBtnBackground(Color.parseColor("#FF4081"))
+                .setNegativeBtnBackground(Color.parseColor("#3aC6ee"))
                 .isCancellable(true)
                 .OnPositiveClicked(new FancyAlertDialogListener() {
                     @Override
@@ -267,13 +306,19 @@ public class JobCompletedFragment extends Fragment {
 
     private void intentCameraPic() {
         Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(takePicture, 0);//zero can be replaced with any action code
+        startActivityForResult(takePicture, 0);
     }
 
     private void intentGalleryPic() {
         Intent pickPhoto = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
+        startActivityForResult(pickPhoto, 1);
+    }
+
+    public void showCameraForAuthenthication() {
+        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(takePicture, 2);
+
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
@@ -282,8 +327,8 @@ public class JobCompletedFragment extends Fragment {
 
 
             case 0://camera
-
                 if (resultCode == RESULT_OK) {
+
 
                     Bitmap bm = (Bitmap) imageReturnedIntent.getExtras().get("data");
                     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
@@ -305,14 +350,13 @@ public class JobCompletedFragment extends Fragment {
                     }
 
                     if (flagFirstImage) {
-
                         ivFirstImage.setImageBitmap(bm);
                         strFirstImage = sourceFile.getAbsolutePath().toString();
                         fileFirstImage = new File(strFirstImage);
 
                     }
                     if (flagSecondImage) {
-                        ivSecondImage.setImageBitmap(bm);
+//                        ivSecondImage.setImageBitmap(bm);
                         strSecondImage = sourceFile.getAbsolutePath().toString();
                         fileSecondImage = new File(strSecondImage);
                     }
@@ -337,9 +381,44 @@ public class JobCompletedFragment extends Fragment {
 
                     }
                     if (flagSecondImage) {
-                        ivSecondImage.setImageURI(image_uri);
-                        strSecondImage = getImagePath(image_uri);
-                        fileSecondImage = new File(strSecondImage);
+
+                        switch (count) {
+                            case 0:
+                                strSecondImage = getImagePath(image_uri);
+                                fileSecondImage = new File(strSecondImage);
+                                count++;
+                                break;
+                            case 1:
+                                strThirdImage = getImagePath(image_uri);
+                                filethirdImage = new File(strThirdImage);
+                                count++;
+                                break;
+
+                            case 2:
+                                strFourthImage = getImagePath(image_uri);
+                                fileFourthImage = new File(strFourthImage);
+                                count++;
+                                break;
+                            case 3:
+                                strFifthImage = getImagePath(image_uri);
+                                fileFifthImage = new File(strFifthImage);
+                                count++;
+                                break;
+
+                            case 4:
+                                strSixthImage = getImagePath(image_uri);
+                                fileSixthImage = new File(strSixthImage);
+                                count++;
+                                break;
+
+                            case 5:
+                                Toast.makeText(getActivity(), "Maximum limit is 5", Toast.LENGTH_SHORT).show();
+                                break;
+
+
+
+                        }
+
                     }
 
 
@@ -349,6 +428,31 @@ public class JobCompletedFragment extends Fragment {
                 }
                 break;
 
+            case 2: //camera for Authenthication
+
+                Bitmap bm = (Bitmap) imageReturnedIntent.getExtras().get("data");
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                bm.compress(Bitmap.CompressFormat.JPEG, 60, bytes);
+
+                File sourceFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Pos/img.jpg");
+
+
+                FileOutputStream fo;
+                try {
+                    sourceFile.createNewFile();
+                    fo = new FileOutputStream(sourceFile);
+                    fo.write(bytes.toByteArray());
+                    fo.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if (flagAuthentication) {
+                    ivCheckAuthentication.setVisibility(View.VISIBLE);
+                }
+                break;
         }
     }
 
@@ -362,78 +466,8 @@ public class JobCompletedFragment extends Fragment {
 
     }
 
-    private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... progress) {
-
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-            String responseString;
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost(Configuration.JOB_COMPLETED);
-            try {
-                HTTPMultiPartEntity entity = new HTTPMultiPartEntity(
-                        new HTTPMultiPartEntity.ProgressListener() {
-
-                            @Override
-                            public void transferred(long num) {
-                                publishProgress((int) ((num / (float) 100) * 100));
-
-                            }
-                        });
-              //  entity.addPart("files", new FileBody(fileFirstImage));
-                entity.addPart("files", new FileBody(fileSecondImage));
-                Looper.prepare();
-                entity.addPart("api_token", new StringBody(strApiToken));
-                entity.addPart("job_id", new StringBody(completedJob_id));
-//                entity.addPart("comment", new StringBody(etComments.getText().toString()));
-//                entity.addPart("latitude", new StringBody(strLatitude));
-//                entity.addPart("longitude", new StringBody(strLongitude));
-//                entity.addPart("current_time", new StringBody(strCurrentDateandTime));
-
-                httppost.setEntity(entity);
-                HttpResponse response = httpclient.execute(httppost);
-                HttpEntity r_entity = response.getEntity();
-                int statusCode = response.getStatusLine().getStatusCode();
-                responseString = EntityUtils.toString(r_entity);
-
-                Toast.makeText(getActivity(), "Successful", Toast.LENGTH_LONG).show();
-
-            } catch (ClientProtocolException e) {
-                responseString = e.toString();
-                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-                responseString = e.toString();
-                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-            }
-            Log.d("zma", "api response "+ responseString);
-
-            return responseString;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("Api Response");
-            builder.setMessage(s);
-            builder.setCancelable(true);
-            builder.show();
-            Toast.makeText(getActivity(), "Done Successfully"+s, Toast.LENGTH_SHORT).show();
-            Log.d("comp",s);
-        }
-    }
-
     //getting current date and time
-    public void getDataTime(){
+    public void getDataTime() {
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDate = df.format(c.getTime());
@@ -452,31 +486,30 @@ public class JobCompletedFragment extends Fragment {
         } else {
             Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             Location location1 = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            Location location2 = locationManager.getLastKnownLocation(LocationManager. PASSIVE_PROVIDER);
+            Location location2 = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
 
             if (location != null) {
                 double latti = location.getLatitude();
                 double longi = location.getLongitude();
+
                 lattitude = latti;
                 longitude = longi;
 
-            } else  if (location1 != null) {
+            } else if (location1 != null) {
                 double latti = location1.getLatitude();
                 double longi = location1.getLongitude();
+
                 lattitude = latti;
                 longitude = longi;
 
-            } else  if (location2 != null) {
+            } else if (location2 != null) {
                 double latti = location2.getLatitude();
                 double longi = location2.getLongitude();
                 lattitude = latti;
                 longitude = longi;
 
-
-            }else{
-
-                Toast.makeText(getActivity(),"Unble to Trace your location", Toast.LENGTH_SHORT).show();
-
+            } else {
+                Toast.makeText(getActivity(), "Unble to Trace your location", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -500,76 +533,6 @@ public class JobCompletedFragment extends Fragment {
         alert.show();
     }
 
-
-    public void firstApiCall(){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.JOB_COMPLETED
-                , new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("response",response);
-
-                if(response.contains("true")){
-                    try {
-                        JSONObject json = new JSONObject(response);
-                        completedJob_id = json.getString("job_completed_id");
-                        new UploadFileToServer().execute();
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-               else if(response.contains("Distance is out of 200 km")){
-                    Toast.makeText(getActivity(), "Distance is out of 200 km", Toast.LENGTH_SHORT).show();
-                }
-                else if(response.contains("This job already completed")){
-                    Toast.makeText(getActivity(), "This job already completed", Toast.LENGTH_SHORT).show();
-                }
-                else if(response.contains("Time Interval is Greater than 10 minutes")){
-                    Toast.makeText(getActivity(), "Time Interval is Greater than 10 minutes", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(getActivity(), "You got some error", Toast.LENGTH_SHORT).show();
-                }
-
-
-
-            }
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            public String getBodyContentType() {
-                return "application/x-www-form-urlencoded;charset=UTF-8";
-            }
-
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("api_token", strApiToken);
-                params.put("job_id",str_JobID);
-                params.put("comment",etComments.getText().toString());
-                params.put("latitude",strLatitude);
-                params.put("longitude",strLongitude);
-                params.put("current_time",strCurrentDateandTime);
-//                params.put("latitude","34.168138519353846");
-//                params.put("longitude","71.61093524374996");
-                return params;
-            }
-
-        };
-        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        mRequestQueue.add(stringRequest);
-
-    }
-
     //apiCall for job related images
     private void ApiCallImages(final String job_id) {
 
@@ -585,19 +548,14 @@ public class JobCompletedFragment extends Fragment {
                                 JobImagesModel jobImagesModel = new JobImagesModel();
                                 String image = temp.getString("images");
                                 jobImagesModel.setJob_images(image);
-                                   String[] zma = {image};
 
-                                   for (int k = 0; k<1; k++){
-                                       JSONObject imageObject = jsonArray.getJSONObject(k);
-                                       String mImage = imageObject.getString("images");
-                                       Glide.with(getActivity()).load(mImage).into(ivFirstImage);
-                                   }
+                                for (int k = 0; k < 1; k++) {
+                                    JSONObject imageObject = jsonArray.getJSONObject(k);
+                                    String mImage = imageObject.getString("images");
+                                    Glide.with(getActivity()).load(mImage).into(ivFirstImage);
+                                }
 
-//                                   for(int count=0;count<zma.length;count++){
-//                                       Log.d("arr",zma[0]);
-//                                       Toast.makeText(getActivity(), zma[1], Toast.LENGTH_SHORT).show();
-//                                       }
-                                       
+
                                 jobImagesModel.setJob_images(image);
                                 related_image_list.add(jobImagesModel);
 
@@ -623,7 +581,6 @@ public class JobCompletedFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                Log.d("khan", job_id);
                 params.put("job_id", job_id);
                 return params;
             }
@@ -637,6 +594,219 @@ public class JobCompletedFragment extends Fragment {
 
     }
     //end
+
+
+    private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
+        ProgressDialog progressBar;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar = new ProgressDialog(getActivity());
+            progressBar.setTitle("Uploading");
+            progressBar.setMessage("please wait!");
+            progressBar.setCancelable(false);
+            progressBar.show();
+
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... progress) {
+
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            String responseString;
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(Configuration.JOB_COMPLETED);
+            try {
+                HTTPMultiPartEntity entity = new HTTPMultiPartEntity(
+                        new HTTPMultiPartEntity.ProgressListener() {
+
+                            @Override
+                            public void transferred(long num) {
+                                publishProgress((int) ((num / (float) 100) * 100));
+
+                            }
+                        });
+
+                entity.addPart("img1", new FileBody(fileSecondImage));
+                entity.addPart("img2", new FileBody(filethirdImage));
+                entity.addPart("img3", new FileBody(fileFourthImage));
+                entity.addPart("img4", new FileBody(fileFifthImage));
+                entity.addPart("img5", new FileBody(fileSixthImage));
+                Looper.prepare();
+                entity.addPart("api_token", new StringBody(strApiToken));
+                entity.addPart("job_id", new StringBody(str_JobID));
+                entity.addPart("comment", new StringBody(etComments.getText().toString()));
+                entity.addPart("latitude", new StringBody(strLatitude));
+                entity.addPart("longitude", new StringBody(strLongitude));
+                entity.addPart("current_time", new StringBody(strCurrentDateandTime));
+
+                Log.d("show", strApiToken);
+                Log.d("show", str_JobID);
+                Log.d("show", strLatitude);
+                Log.d("show", strLongitude);
+                Log.d("show", strCurrentDateandTime);
+
+                httppost.setEntity(entity);
+                HttpResponse response = httpclient.execute(httppost);
+                HttpEntity r_entity = response.getEntity();
+                int statusCode = response.getStatusLine().getStatusCode();
+                responseString = EntityUtils.toString(r_entity);
+
+            } catch (ClientProtocolException e) {
+                responseString = e.toString();
+                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                responseString = e.toString();
+                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+            }
+            Log.d("zma", "api response " + responseString);
+            return responseString;
+        }
+
+        @Override
+        protected void onPostExecute(String message) {
+            super.onPostExecute(message);
+            Log.d("resp", message);
+            try {
+                progressBar.dismiss();
+                dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.popup_layout);
+                if (message != null) {
+                    JSONObject jsonObject = new JSONObject(message);
+                    String result = jsonObject.getString("message");
+                    Log.d("message",result);
+
+                    if (result.equals("Job Completed Successfully")){
+
+                        TextView tv_oops = dialog.findViewById(R.id.tv_oops);
+                        tv_oops.setText("Job Completed");
+                        TextView tv_message = dialog.findViewById(R.id.tv_message);
+                        tv_message.setText("your job has been completed");
+                        TextView ok = dialog.findViewById(R.id.ok);
+                        ok.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                            }
+                        });
+                        dialog.show();
+                        Fragment fragment = new MissionCompletedFragment();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("XYZ").commit();
+                    }
+                    else if(result.equals("Distance is out of 200 meter")){
+                        TextView tv_oops = dialog.findViewById(R.id.tv_oops);
+                        tv_oops.setText("");
+                        TextView tv_message = dialog.findViewById(R.id.tv_message);
+                        tv_message.setText("Distance is out of 200 meter");
+                        TextView ok = dialog.findViewById(R.id.ok);
+                        ok.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                            }
+                        });
+                        dialog.show();
+                    }
+                    else if(result.equals("Time Interval is Greater than 10 minutes")){
+                        TextView tv_oops = dialog.findViewById(R.id.tv_oops);
+                        tv_oops.setText("");
+                        TextView tv_message = dialog.findViewById(R.id.tv_message);
+                        tv_message.setText("Time Interval is Greater than 10 minutes");
+                        TextView ok = dialog.findViewById(R.id.ok);
+                        ok.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                            }
+                        });
+                        dialog.show();
+                    }
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                progressBar.dismiss();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Server Response");
+                builder.setMessage("you got some error");
+                builder.setCancelable(true);
+                builder.show();
+            }
+        }
+    }
+
+
+  //skip this for now
+    public void firstApiCall() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.JOB_COMPLETED
+                , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("first", response);
+
+                if (response.contains("true")) {
+                    try {
+                        JSONObject json = new JSONObject(response);
+                        strCompletedJob_id = json.getString("job_completed_id");
+                        new UploadFileToServer().execute();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else if (response.contains("Distance is out of 200 meter")) {
+                    Toast.makeText(getActivity(), "Distance is out of 200 meter", Toast.LENGTH_SHORT).show();
+                } else if (response.contains("This job already completed")) {
+                    Toast.makeText(getActivity(), "This job already completed", Toast.LENGTH_SHORT).show();
+                } else if (response.contains("Time Interval is Greater than 10 minutes")) {
+                    Toast.makeText(getActivity(), "Time Interval is Greater than 10 minutes", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "You got some error", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded;charset=UTF-8";
+            }
+
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("api_token", strApiToken);
+                params.put("job_id", str_JobID);
+                params.put("comment", etComments.getText().toString());
+                params.put("latitude", strLatitude);
+                params.put("longitude", strLongitude);
+                params.put("current_time", strCurrentDateandTime);
+
+                Log.d("show", strApiToken);
+                Log.d("show", str_JobID);
+                Log.d("show", strLatitude);
+                Log.d("show", strLongitude);
+                Log.d("show", strCurrentDateandTime);
+
+                return params;
+            }
+
+        };
+        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mRequestQueue.add(stringRequest);
+//end
+    }
 
 
 }

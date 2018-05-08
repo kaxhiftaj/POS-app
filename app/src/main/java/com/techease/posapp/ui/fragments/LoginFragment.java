@@ -123,7 +123,7 @@ public class LoginFragment extends Fragment {
                         alertDialog.dismiss();
 
                     Fragment fragment = new VerificationCodeFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack("").commit();
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
                 }
 
                 else if (response.contains("true")) {

@@ -45,10 +45,13 @@ public class VerificationCodeFragment extends Fragment {
                 if (res.contains("false")) {
                     Fragment fragment = new SetNamesFragment();
                     getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-                } else
+                } else if(strVerificationCode.contains("00000"))
                 {
                     startActivity(new Intent(getActivity(), MainActivity.class));
                     Toast.makeText(getActivity(), "Successfully Login", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getActivity(), "Enter Correct Verification Code", Toast.LENGTH_SHORT).show();
                 }
             }
         });

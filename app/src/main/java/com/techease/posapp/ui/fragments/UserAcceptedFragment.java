@@ -1,5 +1,6 @@
 package com.techease.posapp.ui.fragments;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -9,9 +10,11 @@ import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -47,18 +50,20 @@ public class UserAcceptedFragment extends Fragment {
     ArrayList<UserAcceptedModel> job_accepted_list;
     UserAcceptedAdapter userAcceptedAdapter;
     String strApi_token, strUserID;
+    Dialog dialog;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user_accepted, container, false);
+        getActivity().setTitle("User Accepted");
         rv_userAccepted = view.findViewById(R.id.rv_user_accepted);
 
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF,Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         strApi_token = sharedPreferences.getString("api_token","");
         strUserID = sharedPreferences.getString("user_id","");
-        Log.d("my",strUserID);
+
         if (InternetUtils.isNetworkConnected(getActivity())) {
 
             rv_userAccepted.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -81,8 +86,8 @@ public class UserAcceptedFragment extends Fragment {
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("abdul",response);
                 if (response.contains("200")) {
+                    Log.d("umer",response);
                     try {
                         if (alertDialog != null)
                             alertDialog.dismiss();
@@ -94,16 +99,16 @@ public class UserAcceptedFragment extends Fragment {
 
                             UserAcceptedModel model = new UserAcceptedModel();
                             String jobId =temp.getString("job_id");
-                            String company_name = temp.getString("company_name");
-                            String firstName = temp.getString("first_name");
-                            String lastName = temp.getString("last_name");
                             String usersId = temp.getString("users_id");
                             String jobTitle = temp.getString("mission_title");
                             String description = temp.getString("description");
                             String lat = temp.getString("latitude");
                             String lng = temp.getString("longitude");
                             String image = temp.getString("image");
+                            String company_name = temp.getString("company_name");
 
+                            Log.d("nido",jobTitle);
+                            Log.d("nido",company_name);
                             model.setJob_id(jobId);
                             model.setCompany_name(company_name);
                             model.setJob_title(jobTitle);
@@ -121,19 +126,35 @@ public class UserAcceptedFragment extends Fragment {
                     }
 
                 } else {
-
+//
                     try {
                         if (alertDialog != null)
                             alertDialog.dismiss();
                         JSONObject jsonObject = new JSONObject(response);
                         String message = jsonObject.getString("message");
-                        AlertsUtils.showErrorDialog(getActivity(), message);
+//                        AlertsUtils.showErrorDialog(getActivity(), "This User ID have no job Accepted Yet");
+                        dialog = new Dialog(getActivity());
+                        dialog.setContentView(R.layout.popup_layout);
+                        TextView tv_oops = dialog.findViewById(R.id.tv_oops);
+                        tv_oops.setText("");
+                        TextView tvMessage = dialog.findViewById(R.id.tv_message);
+                        tvMessage.setText("This User ID have no job\n accepted yet");
+                        tvMessage.setGravity(Gravity.CENTER);
+                        TextView tv_btn = dialog.findViewById(R.id.ok);
+                        tv_btn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                            }
+                        });
+                        dialog.show();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                         if (alertDialog != null)
                             alertDialog.dismiss();
                     }
+
                 }
             }
 

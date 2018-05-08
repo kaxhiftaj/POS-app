@@ -54,7 +54,8 @@ public class UserAcceptedAdapter extends RecyclerView.Adapter<UserAcceptedAdapte
                 holder.editor.putString("missionTitle",model.getJob_title()).commit();
                 holder.editor.putString("missionDesc",model.getDescription()).commit();
                 Fragment fragment = new JobCompletedFragment();
-                ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).addToBackStack("").commit();
+                ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).addToBackStack("asd").commit();
+                ((AppCompatActivity) context).setTitle("Accepted");
             }
         });
     }

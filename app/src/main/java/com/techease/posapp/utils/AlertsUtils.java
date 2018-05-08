@@ -1,6 +1,7 @@
 package com.techease.posapp.utils;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
@@ -67,7 +68,18 @@ public class AlertsUtils {
         pd.setVisibility(View.VISIBLE);
         return alertDialog;
 
+    }
 
+    public static AlertDialog showDialog(Activity activity){
+        Dialog dialog = new Dialog(activity);
+        dialog.setContentView(R.layout.popup_layout);
+        TextView tv_oops = dialog.findViewById(R.id.tv_oops);
+        tv_oops.setText("");
+        TextView tvMessage = dialog.findViewById(R.id.tv_message);
+        tvMessage.setText("This User ID have no job\n completed yet");
+        tvMessage.setGravity(Gravity.CENTER);
+        dialog.show();
+        return (AlertDialog) dialog;
     }
 }
 

@@ -2,63 +2,51 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config />
+      <config>
+        <devices>
+          <device id="pixel_2" />
+          <device id="pixel" />
+          <device id="Nexus 5" />
+        </devices>
+      </config>
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="zma" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="umer" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8043f6bc-1814-4d10-bef1-e997f6986a54" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/MissionCompletedAdapter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/RelatedImagesAdapter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionCompletedFragment.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UploadFragments.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/MissionCompletedModel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/selector.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/cancel.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/dialoge_box.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/location.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/mission_background.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/round_edittext.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/select.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/unselect.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_job_completed.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_upload.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_image_dialogue.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custome_gridview_layout.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mission_completed.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_upload_fragments.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/galleryitem.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/mission_completed_layout.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/related_image_layout.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/vectorsmart.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/popup_layout.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/MainActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/JobsAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/JobsAdapter.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/UserAcceptedAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/UserAcceptedAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/HomeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/HomeFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/EditProfileFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/EditProfileFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/LoginFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/LoginFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MapFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MapFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionCompletedFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionCompletedFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionsFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserAcceptedFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserAcceptedFragment.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/AllJobImagesModel.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/AllJobsDataModel.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/AllJobsResponse.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/UserAcceptedModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/UserAcceptedModel.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserProfileFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserProfileFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/VerificationCodeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/VerificationCodeFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/AlertsUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/AlertsUtils.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/Configuration.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/Configuration.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/dialog_box.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/round_back_create_button.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/round_back_create_button.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/camera.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/camera.png" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/accepted_job_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/accepted_job_layout.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_info_window.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_info_window.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_jobs.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_jobs.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_job_completed.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_job_completed.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_profile.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_verification_code.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_verification_code.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/mission_completed_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/mission_completed_layout.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/related_image_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/related_image_layout.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -92,62 +80,360 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserAcceptedFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserAcceptedFragment.java">
+      <file leaf-file-name="JobCompletedFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="170" column="5" lean-forward="false" selection-start-line="170" selection-start-column="5" selection-end-line="170" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="849">
-              <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+            <state relative-caret-position="407">
+              <caret line="716" column="84" lean-forward="false" selection-start-line="716" selection-start-column="84" selection-end-line="716" selection-end-column="84" />
               <folding>
-                <element signature="e#4152#4172#0" expanded="true" />
-                <element signature="e#4310#4325#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MissionsFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionsFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="200" column="22" lean-forward="false" selection-start-line="200" selection-start-column="22" selection-end-line="200" selection-end-column="22" />
-              <folding>
-                <element signature="e#2484#2501#0" expanded="true" />
-                <element signature="e#3055#3084#0" expanded="true" />
-                <element signature="e#3055#3084#0" expanded="true" />
-                <element signature="e#7528#7541#0" expanded="true" />
-                <element signature="e#7572#7609#0" expanded="true" />
-                <element signature="e#7572#7609#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/HomeFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="135" column="34" lean-forward="false" selection-start-line="135" selection-start-column="34" selection-end-line="135" selection-end-column="34" />
-              <folding>
-                <element signature="e#2042#2069#0" expanded="true" />
-                <element signature="e#2042#2069#0" expanded="true" />
-                <element signature="e#2353#2396#0" expanded="true" />
-                <element signature="e#2378#2395#0" expanded="true" />
-                <element signature="e#2353#2396#0" expanded="true" />
-                <element signature="e#3773#4415#0" expanded="true" />
-                <element signature="e#3773#4415#0" expanded="true" />
-                <element signature="e#3837#3884#1" expanded="true" />
-                <element signature="e#4602#4629#0" expanded="true" />
-                <element signature="e#4602#4629#0" expanded="true" />
+                <element signature="e#5356#5369#0" expanded="true" />
+                <element signature="e#5356#5391#0" expanded="true" />
+                <element signature="e#5356#5391#0" expanded="true" />
+                <element signature="e#5761#5774#0" expanded="true" />
+                <element signature="e#6187#6227#0" expanded="true" />
+                <element signature="e#6187#6227#0" expanded="true" />
+                <element signature="e#6237#6275#0" expanded="true" />
+                <element signature="e#6237#6275#0" expanded="true" />
+                <element signature="e#6342#6355#0" expanded="true" />
+                <element signature="e#6366#6419#0" expanded="true" />
+                <element signature="e#6366#6419#0" expanded="true" />
+                <element signature="e#6527#6544#0" expanded="true" />
+                <element signature="e#6636#6649#0" expanded="true" />
+                <element signature="e#6680#6729#0" expanded="true" />
+                <element signature="e#6680#6729#0" expanded="true" />
+                <element signature="e#6788#6801#0" expanded="true" />
+                <element signature="e#6819#6874#0" expanded="true" />
+                <element signature="e#6819#6874#0" expanded="true" />
+                <element signature="e#6938#6951#0" expanded="true" />
+                <element signature="e#6969#7025#0" expanded="true" />
+                <element signature="e#6969#7025#0" expanded="true" />
+                <element signature="e#7058#7132#0" expanded="true" />
+                <element signature="e#7076#7089#0" expanded="true" />
+                <element signature="e#7142#7375#0" expanded="true" />
+                <element signature="e#7142#7375#0" expanded="true" />
+                <element signature="e#7268#7375#0" expanded="true" />
+                <element signature="e#7268#7375#0" expanded="true" />
+                <element signature="e#7351#7364#0" expanded="true" />
+                <element signature="e#7385#8497#0" expanded="true" />
+                <element signature="e#7417#8496#0" expanded="true" />
+                <element signature="e#7527#7582#1" expanded="true" />
+                <element signature="e#7699#7790#1" expanded="true" />
+                <element signature="e#7759#7788#0" expanded="true" />
+                <element signature="e#7807#7867#0" expanded="true" />
+                <element signature="e#7807#7867#0" expanded="true" />
+                <element signature="e#7885#7933#0" expanded="true" />
+                <element signature="e#7885#7933#0" expanded="true" />
+                <element signature="e#8100#8113#0" expanded="true" />
+                <element signature="e#8152#8201#0" expanded="true" />
+                <element signature="e#8152#8201#0" expanded="true" />
+                <element signature="e#8250#8470#0" expanded="true" />
+                <element signature="e#8279#8469#0" expanded="true" />
+                <element signature="e#8468#8469#0" expanded="true" />
+                <element signature="e#8250#8470#0" expanded="true" />
+                <element signature="e#8495#8496#0" expanded="true" />
+                <element signature="e#7385#8497#0" expanded="true" />
+                <element signature="e#8507#8768#0" expanded="true" />
+                <element signature="e#8540#8767#0" expanded="true" />
+                <element signature="e#8766#8767#0" expanded="true" />
+                <element signature="e#8507#8768#0" expanded="true" />
+                <element signature="e#8778#9234#0" expanded="true" />
+                <element signature="e#8815#9233#0" expanded="true" />
+                <element signature="e#8938#8963#0" expanded="true" />
+                <element signature="e#8938#8963#0" expanded="true" />
+                <element signature="e#8996#9021#0" expanded="true" />
+                <element signature="e#8996#9021#0" expanded="true" />
+                <element signature="e#9040#9172#0" expanded="true" />
+                <element signature="e#9040#9172#0" expanded="true" />
+                <element signature="e#9232#9233#0" expanded="true" />
+                <element signature="e#8778#9234#0" expanded="true" />
+                <element signature="e#9244#9591#0" expanded="true" />
+                <element signature="e#9277#9590#0" expanded="true" />
+                <element signature="e#9386#9399#0" expanded="true" />
+                <element signature="e#9417#9532#0" expanded="true" />
+                <element signature="e#9417#9532#0" expanded="true" />
+                <element signature="e#9589#9590#0" expanded="true" />
+                <element signature="e#9244#9591#0" expanded="true" />
+                <element signature="e#9601#9846#0" expanded="true" />
+                <element signature="e#9637#9845#0" expanded="true" />
+                <element signature="e#9844#9845#0" expanded="true" />
+                <element signature="e#9601#9846#0" expanded="true" />
+                <element signature="e#9856#11355#0" expanded="true" />
+                <element signature="e#9883#11354#0" expanded="true" />
+                <element signature="e#11353#11354#0" expanded="true" />
+                <element signature="e#9856#11355#0" expanded="true" />
+                <element signature="e#11462#11475#0" expanded="true" />
+                <element signature="e#11993#12182#0" expanded="true" />
+                <element signature="e#12181#12182#0" expanded="true" />
+                <element signature="e#12219#12409#0" expanded="true" />
+                <element signature="e#12408#12409#0" expanded="true" />
+                <element signature="e#12489#12554#1" expanded="true" />
+                <element signature="e#12656#12785#1" expanded="true" />
+                <element signature="e#12896#12961#1" expanded="true" />
+                <element signature="e#13200#18124#0" expanded="true" />
+                <element signature="e#13200#18124#0" expanded="true" />
+                <element signature="e#13269#14861#0" expanded="true" />
+                <element signature="e#13269#14861#0" expanded="true" />
+                <element signature="e#13322#13387#1" expanded="true" />
+                <element signature="e#13334#13386#0" expanded="true" />
+                <element signature="e#13343#13374#0" expanded="true" />
+                <element signature="e#13408#13466#1" expanded="true" />
+                <element signature="e#13560#13681#1" expanded="true" />
+                <element signature="e#13979#14079#0" expanded="true" />
+                <element signature="e#13979#14079#0" expanded="true" />
+                <element signature="e#14080#14170#0" expanded="true" />
+                <element signature="e#14080#14170#0" expanded="true" />
+                <element signature="e#14192#14440#0" expanded="true" />
+                <element signature="e#14192#14440#0" expanded="true" />
+                <element signature="e#14238#14269#0" expanded="true" />
+                <element signature="e#14238#14269#0" expanded="true" />
+                <element signature="e#14311#14339#0" expanded="true" />
+                <element signature="e#14461#14715#0" expanded="true" />
+                <element signature="e#14461#14715#0" expanded="true" />
+                <element signature="e#14585#14613#0" expanded="true" />
+                <element signature="e#14779#14792#0" expanded="true" />
+                <element signature="e#14932#17076#0" expanded="true" />
+                <element signature="e#14932#17076#0" expanded="true" />
+                <element signature="e#14995#15024#0" expanded="true" />
+                <element signature="e#15046#15283#0" expanded="true" />
+                <element signature="e#15046#15283#0" expanded="true" />
+                <element signature="e#15093#15128#0" expanded="true" />
+                <element signature="e#15093#15128#0" expanded="true" />
+                <element signature="e#15304#16931#0" expanded="true" />
+                <element signature="e#15304#16931#0" expanded="true" />
+                <element signature="e#15352#16908#0" expanded="true" />
+                <element signature="e#15352#16908#0" expanded="true" />
+                <element signature="e#16776#16789#0" expanded="true" />
+                <element signature="e#16994#17007#0" expanded="true" />
+                <element signature="e#17167#17232#1" expanded="true" />
+                <element signature="e#17179#17231#0" expanded="true" />
+                <element signature="e#17188#17219#0" expanded="true" />
+                <element signature="e#17249#17307#1" expanded="true" />
+                <element signature="e#17393#17514#1" expanded="true" />
+                <element signature="e#17784#17876#0" expanded="true" />
+                <element signature="e#17784#17876#0" expanded="true" />
+                <element signature="e#17877#17959#0" expanded="true" />
+                <element signature="e#17877#17959#0" expanded="true" />
+                <element signature="e#17977#18091#0" expanded="true" />
+                <element signature="e#17977#18091#0" expanded="true" />
+                <element signature="e#18023#18072#0" expanded="true" />
+                <element signature="e#18023#18072#0" expanded="true" />
+                <element signature="e#18183#18236#1" expanded="true" />
+                <element signature="e#18245#18337#1" expanded="true" />
+                <element signature="e#18261#18274#0" expanded="true" />
+                <element signature="e#18261#18295#0" expanded="true" />
+                <element signature="e#18346#18424#1" expanded="true" />
+                <element signature="e#18586#18622#1" expanded="true" />
+                <element signature="e#18599#18621#0" expanded="true" />
+                <element signature="e#18631#18697#1" expanded="true" />
+                <element signature="e#18706#18752#1" expanded="true" />
+                <element signature="e#18739#18750#0" expanded="true" />
+                <element signature="e#18889#20484#0" expanded="true" />
+                <element signature="e#18928#18941#0" expanded="true" />
+                <element signature="e#19093#19106#0" expanded="true" />
+                <element signature="e#18889#20484#0" expanded="true" />
+                <element signature="e#19239#19252#0" expanded="true" />
+                <element signature="e#19254#19308#0" expanded="true" />
+                <element signature="e#19254#19308#0" expanded="true" />
+                <element signature="e#19359#19450#1" expanded="true" />
+                <element signature="e#19463#19551#1" expanded="true" />
+                <element signature="e#19564#19656#1" expanded="true" />
+                <element signature="e#19670#20474#0" expanded="true" />
+                <element signature="e#19670#20474#0" expanded="true" />
+                <element signature="e#19710#19748#1" expanded="true" />
+                <element signature="e#19725#19747#0" expanded="true" />
+                <element signature="e#19765#19804#1" expanded="true" />
+                <element signature="e#19780#19803#0" expanded="true" />
+                <element signature="e#19896#20474#0" expanded="true" />
+                <element signature="e#19896#20474#0" expanded="true" />
+                <element signature="e#19937#19976#1" expanded="true" />
+                <element signature="e#19952#19975#0" expanded="true" />
+                <element signature="e#19993#20033#1" expanded="true" />
+                <element signature="e#20008#20032#0" expanded="true" />
+                <element signature="e#20125#20474#0" expanded="true" />
+                <element signature="e#20125#20474#0" expanded="true" />
+                <element signature="e#20166#20205#1" expanded="true" />
+                <element signature="e#20181#20204#0" expanded="true" />
+                <element signature="e#20222#20262#1" expanded="true" />
+                <element signature="e#20237#20261#0" expanded="true" />
+                <element signature="e#20386#20399#0" expanded="true" />
+                <element signature="e#20547#20622#1" expanded="true" />
+                <element signature="e#20607#20620#0" expanded="true" />
+                <element signature="e#20768#21026#0" expanded="true" />
+                <element signature="e#21025#21026#0" expanded="true" />
+                <element signature="e#21069#21275#0" expanded="true" />
+                <element signature="e#21274#21275#0" expanded="true" />
+                <element signature="e#21286#21329#1" expanded="true" />
+                <element signature="e#21459#23851#1" expanded="true" />
+                <element signature="e#21762#21811#1" expanded="true" />
+                <element signature="e#21840#21896#1" expanded="true" />
+                <element signature="e#21925#22817#0" expanded="true" />
+                <element signature="e#21930#21940#1" expanded="true" />
+                <element signature="e#21925#22817#0" expanded="true" />
+                <element signature="e#22004#22049#1" expanded="true" />
+                <element signature="e#21925#22817#0" expanded="true" />
+                <element signature="e#21925#22817#0" expanded="true" />
+                <element signature="e#22082#22135#1" expanded="true" />
+                <element signature="e#22168#22208#1" expanded="true" />
+                <element signature="e#22241#22276#0" expanded="true" />
+                <element signature="e#22241#22276#0" expanded="true" />
+                <element signature="e#22311#22643#0" expanded="true" />
+                <element signature="e#22316#22326#1" expanded="true" />
+                <element signature="e#22311#22643#0" expanded="true" />
+                <element signature="e#22311#22643#0" expanded="true" />
+                <element signature="e#22311#22643#0" expanded="true" />
+                <element signature="e#22311#22643#0" expanded="true" />
+                <element signature="e#22377#22429#1" expanded="true" />
+                <element signature="e#22466#22514#1" expanded="true" />
+                <element signature="e#22562#22575#0" expanded="true" />
+                <element signature="e#22678#22713#0" expanded="true" />
+                <element signature="e#22678#22713#0" expanded="true" />
+                <element signature="e#22747#22785#0" expanded="true" />
+                <element signature="e#22747#22785#0" expanded="true" />
+                <element signature="e#22918#23134#0" expanded="true" />
+                <element signature="e#22918#23134#0" expanded="true" />
+                <element signature="e#22987#23000#0" expanded="true" />
+                <element signature="e#23017#23029#0" expanded="true" />
+                <element signature="e#23321#23334#0" expanded="true" />
+                <element signature="e#23351#23367#0" expanded="true" />
+                <element signature="e#23703#23748#1" expanded="true" />
+                <element signature="e#23765#23793#0" expanded="true" />
+                <element signature="e#23765#23793#0" expanded="true" />
+                <element signature="e#23765#23793#0" expanded="true" />
+                <element signature="e#23860#23927#1" expanded="true" />
+                <element signature="e#23912#23925#0" expanded="true" />
+                <element signature="e#23936#24108#0" expanded="true" />
+                <element signature="e#23936#24108#0" expanded="true" />
+                <element signature="e#24424#24437#0" expanded="true" />
+                <element signature="e#24452#24485#0" expanded="true" />
+                <element signature="e#24452#24485#0" expanded="true" />
+                <element signature="e#24499#24537#0" expanded="true" />
+                <element signature="e#24499#24537#0" expanded="true" />
+                <element signature="e#24551#24583#0" expanded="true" />
+                <element signature="e#24551#24583#0" expanded="true" />
+                <element signature="e#24845#24893#1" expanded="true" />
+                <element signature="e#24906#24968#1" expanded="true" />
+                <element signature="e#25003#25371#1" expanded="true" />
+                <element signature="e#25081#25369#0" expanded="true" />
+                <element signature="e#25277#25310#0" expanded="true" />
+                <element signature="e#25284#25309#0" expanded="true" />
+                <element signature="e#25291#25302#0" expanded="true" />
+                <element signature="e#25284#25309#0" expanded="true" />
+                <element signature="e#25277#25310#0" expanded="true" />
+                <element signature="e#25368#25369#0" expanded="true" />
+                <element signature="e#25959#25979#0" expanded="true" />
+                <element signature="e#26476#26502#0" expanded="true" />
+                <element signature="e#26476#26502#0" expanded="true" />
+                <element signature="e#26520#26573#1" expanded="true" />
+                <element signature="e#26590#26633#1" expanded="true" />
+                <element signature="e#26612#26632#0" expanded="true" />
+                <element signature="e#26650#26708#1" expanded="true" />
+                <element signature="e#26667#26691#0" expanded="true" />
+                <element signature="e#26667#26707#0" expanded="true" />
+                <element signature="e#26789#26968#0" expanded="true" />
+                <element signature="e#26789#26968#0" expanded="true" />
+                <element signature="e#26903#26916#0" expanded="true" />
+                <element signature="e#26969#27136#0" expanded="true" />
+                <element signature="e#26969#27136#0" expanded="true" />
+                <element signature="e#27071#27084#0" expanded="true" />
+                <element signature="e#27162#27194#0" expanded="true" />
+                <element signature="e#27162#27194#0" expanded="true" />
+                <element signature="e#27487#27500#0" expanded="true" />
+                <element signature="e#27519#27563#0" expanded="true" />
+                <element signature="e#27519#27563#0" expanded="true" />
+                <element signature="e#27624#27672#1" expanded="true" />
+                <element signature="e#27693#27741#1" expanded="true" />
+                <element signature="e#27812#27855#0" expanded="true" />
+                <element signature="e#27812#27855#0" expanded="true" />
+                <element signature="e#27883#27936#1" expanded="true" />
+                <element signature="e#27961#27993#0" expanded="true" />
+                <element signature="e#27961#27993#0" expanded="true" />
+                <element signature="e#28019#28078#1" expanded="true" />
+                <element signature="e#28103#28152#0" expanded="true" />
+                <element signature="e#28103#28152#0" expanded="true" />
+                <element signature="e#28178#28221#1" expanded="true" />
+                <element signature="e#28246#28499#0" expanded="true" />
+                <element signature="e#28268#28498#0" expanded="true" />
+                <element signature="e#28497#28498#0" expanded="true" />
+                <element signature="e#28246#28499#0" expanded="true" />
+                <element signature="e#28564#28615#1" expanded="true" />
+                <element signature="e#28640#28660#0" expanded="true" />
+                <element signature="e#28800#28845#0" expanded="true" />
+                <element signature="e#28800#28845#0" expanded="true" />
+                <element signature="e#28872#28925#1" expanded="true" />
+                <element signature="e#28950#28969#0" expanded="true" />
+                <element signature="e#28950#28969#0" expanded="true" />
+                <element signature="e#28995#29054#1" expanded="true" />
+                <element signature="e#29079#29129#0" expanded="true" />
+                <element signature="e#29079#29129#0" expanded="true" />
+                <element signature="e#29155#29198#1" expanded="true" />
+                <element signature="e#29223#29476#0" expanded="true" />
+                <element signature="e#29245#29475#0" expanded="true" />
+                <element signature="e#29474#29475#0" expanded="true" />
+                <element signature="e#29223#29476#0" expanded="true" />
+                <element signature="e#29567#29624#0" expanded="true" />
+                <element signature="e#29567#29624#0" expanded="true" />
+                <element signature="e#29651#29704#1" expanded="true" />
+                <element signature="e#29729#29748#0" expanded="true" />
+                <element signature="e#29729#29748#0" expanded="true" />
+                <element signature="e#29774#29833#1" expanded="true" />
+                <element signature="e#29858#29920#0" expanded="true" />
+                <element signature="e#29858#29920#0" expanded="true" />
+                <element signature="e#29946#29989#1" expanded="true" />
+                <element signature="e#30014#30267#0" expanded="true" />
+                <element signature="e#30036#30266#0" expanded="true" />
+                <element signature="e#30265#30266#0" expanded="true" />
+                <element signature="e#30014#30267#0" expanded="true" />
+                <element signature="e#30363#30748#0" expanded="true" />
+                <element signature="e#30363#30748#0" expanded="true" />
+                <element signature="e#30477#30546#1" expanded="true" />
+                <element signature="e#30531#30544#0" expanded="true" />
+                <element signature="e#30563#30598#0" expanded="true" />
+                <element signature="e#30563#30598#0" expanded="true" />
+                <element signature="e#30616#30656#0" expanded="true" />
+                <element signature="e#30616#30656#0" expanded="true" />
+                <element signature="e#30674#30701#0" expanded="true" />
+                <element signature="e#30674#30701#0" expanded="true" />
+                <element signature="e#30830#33453#1" expanded="true" />
+                <element signature="e#31114#32230#0" expanded="true" />
+                <element signature="e#31114#32230#0" expanded="true" />
+                <element signature="e#31197#31240#1" expanded="true" />
+                <element signature="e#31405#31497#0" expanded="true" />
+                <element signature="e#31405#31497#0" expanded="true" />
+                <element signature="e#31521#32230#0" expanded="true" />
+                <element signature="e#31521#32230#0" expanded="true" />
+                <element signature="e#31613#31626#0" expanded="true" />
+                <element signature="e#31711#32230#0" expanded="true" />
+                <element signature="e#31711#32230#0" expanded="true" />
+                <element signature="e#31801#31814#0" expanded="true" />
+                <element signature="e#31897#32230#0" expanded="true" />
+                <element signature="e#31897#32230#0" expanded="true" />
+                <element signature="e#32001#32014#0" expanded="true" />
+                <element signature="e#32148#32161#0" expanded="true" />
+                <element signature="e#32403#32416#0" expanded="true" />
+                <element signature="e#32770#32815#1" expanded="true" />
+                <element signature="e#32832#32868#0" expanded="true" />
+                <element signature="e#32832#32868#0" expanded="true" />
+                <element signature="e#32832#32868#0" expanded="true" />
+                <element signature="e#32886#32917#0" expanded="true" />
+                <element signature="e#32886#32917#0" expanded="true" />
+                <element signature="e#32886#32917#0" expanded="true" />
+                <element signature="e#32935#32989#0" expanded="true" />
+                <element signature="e#32935#32989#0" expanded="true" />
+                <element signature="e#32957#32977#0" expanded="true" />
+                <element signature="e#32935#32989#0" expanded="true" />
+                <element signature="e#33007#33042#0" expanded="true" />
+                <element signature="e#33007#33042#0" expanded="true" />
+                <element signature="e#33007#33042#0" expanded="true" />
+                <element signature="e#33060#33097#0" expanded="true" />
+                <element signature="e#33060#33097#0" expanded="true" />
+                <element signature="e#33060#33097#0" expanded="true" />
+                <element signature="e#33115#33164#0" expanded="true" />
+                <element signature="e#33115#33164#0" expanded="true" />
+                <element signature="e#33115#33164#0" expanded="true" />
+                <element signature="e#33462#33529#1" expanded="true" />
+                <element signature="e#33514#33527#0" expanded="true" />
+                <element signature="e#33538#33710#0" expanded="true" />
+                <element signature="e#33538#33710#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,35 +445,43 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="layoutResourceFile" />
         <option value="resourceFile" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>unbinder</find>
-      <find>job_model_list</find>
-      <find>jobsModelArrayList</find>
-      <find>leftMargin</find>
-      <find>reduceMarginsInTabs</find>
-      <find>fragment</find>
-      <find>f</find>
-      <find>job_title</find>
       <find>mMap</find>
-      <find>lattitude</find>
       <find>jobImagesModelArrayList</find>
       <find>rv_images</find>
       <find>context</find>
       <find>Fancy</find>
-      <find>getImagePath</find>
       <find>fileFirstImage</find>
       <find>count</find>
       <find>ivFirstImage</find>
-      <find>progressBar</find>
-      <find>alertDialog</find>
       <find>firstApiCall</find>
       <find>fragments</find>
+      <find>getDataTime</find>
+      <find>lattitude</find>
+      <find>getLocation</find>
+      <find>str_JobID</find>
+      <find>uri</find>
+      <find>projection</find>
+      <find>flagSecondImage</find>
+      <find>completedJob_id</find>
+      <find>fileSecondImage</find>
+      <find>ivCurrentLocation</find>
+      <find>ivSecondImage</find>
+      <find>setName_layout</find>
+      <find>ed_FirstName</find>
+      <find>imageReturnedIntent</find>
+      <find>getImagePath</find>
+      <find>dialog</find>
+      <find>dialog2</find>
+      <find>alertDialog</find>
+      <find>fileList</find>
+      <find>progressBar</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2611,24 +2905,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/SetNamesFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/round_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserProfileFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_profile.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/AllJobsDataModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/AllJobImagesModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/AllJobsResponse.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/JobImagesModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/jobImagesAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/job_images_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_accepted.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_mission_completed.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/MissionCompletedModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/MissionCompletedAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionCompletedFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/round_back_create_button.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/round_edittext.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/RelatedImagesAdapter.java" />
@@ -2640,28 +2919,43 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/JobCompletedActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable-v24/selector.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_upload_fragments.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/Configuration.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/dialoge_box.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/AlertsUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/mission_completed_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/galleryitem.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/UserAcceptedModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MapFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/LoginFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_job_completed.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UploadFragments.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custome_gridview_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/related_image_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_image_dialogue.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_jobs.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/HomeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/nav_items.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/related_image_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/UserAcceptedAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/accepted_job_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_jobs.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserAcceptedFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/VerificationCodeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/LoginFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_verification_code.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/HomeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserProfileFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/EditProfileFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_job_completed.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/popup_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/AlertsUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserAcceptedFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MapFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/Configuration.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionCompletedFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/mission_completed_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java" />
       </list>
     </option>
   </component>
@@ -2670,6 +2964,28 @@
     <option name="y" value="1" />
     <option name="width" value="1364" />
     <option name="height" value="726" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Code maturity issuesJava</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Deprecation</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -2689,27 +3005,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="POS-app" type="cbb8eebc:String" user="POS-app" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -2726,6 +3021,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2776,16 +3072,6 @@
               <item name="techease" type="462c0819:PsiDirectoryNode" />
               <item name="posapp" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="activities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="POS-app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="techease" type="462c0819:PsiDirectoryNode" />
-              <item name="posapp" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="fragments" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -2827,13 +3113,33 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="POS-app" type="cbb8eebc:String" user="POS-app" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="android.sdk.path" value="E:/Android_SDK/Sdk" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1523037996718" />
-    <property name="device.picker.selection" value="ad0617021677d13364" />
+    <property name="device.picker.selection" value="310089f256f4c235" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
@@ -3093,7 +3399,21 @@
       <option name="project" value="LOCAL" />
       <updated>1524652364906</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="completed till image uploading">
+      <created>1525434246430</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1525434246430</updated>
+    </task>
+    <task id="LOCAL-00006" summary="round layout">
+      <created>1525436089994</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1525436089994</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -3116,15 +3436,15 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256579" sideWeight="0.5030257" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753405" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3223684" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.69078946" sideWeight="0.4969743" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49342105" sideWeight="0.4969743" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26096824" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26928896" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256579" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -3192,34 +3512,17 @@
     <MESSAGE value="job accepted, user accepted api done" />
     <MESSAGE value="Dialogue box,Slider and job completed done" />
     <MESSAGE value="completed till image uploading" />
-    <option name="LAST_COMMIT_MESSAGE" value="completed till image uploading" />
+    <MESSAGE value="round layout" />
+    <MESSAGE value="All Design and till job completed done" />
+    <MESSAGE value="image uploading done" />
+    <option name="LAST_COMMIT_MESSAGE" value="image uploading done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java</url>
-          <line>585</line>
-          <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java</url>
-          <line>587</line>
-          <properties />
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionsFragment.java</url>
-          <line>194</line>
-          <properties />
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="18" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
@@ -3230,7 +3533,22 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>completedJob_id</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>httppost.entity</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>apicall()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>entity.entity</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -3247,359 +3565,176 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_job_completed.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.19/2bac9e638b022ca09262960f83e8c9da93d80468/library-1.0.19-sources.jar!/com/android/volley/ExecutorDelivery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="79" column="24" lean-forward="false" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
+        <state relative-caret-position="198">
+          <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_user_accepted.xml">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.19/2bac9e638b022ca09262960f83e8c9da93d80468/library-1.0.19-sources.jar!/com/android/volley/toolbox/StringRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/nav_items.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="37" lean-forward="true" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/UploadActivity.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/JobCompletedActivity.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/bar.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/cam.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/completed.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_menu_slideshow.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="24" lean-forward="true" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+        <state relative-caret-position="68">
+          <caret line="4" column="36" lean-forward="true" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/image1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/invite.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/select.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/unselect.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/unselect.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/selector.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/jobImagesAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="38" column="90" lean-forward="true" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_upload.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="12" lean-forward="false" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/dialog_box.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_mission_completed.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_upload_fragments.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="48" column="30" lean-forward="true" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+        <state relative-caret-position="416">
+          <caret line="27" column="52" lean-forward="false" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/MissionCompletedAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="28" column="89" lean-forward="false" selection-start-line="28" selection-start-column="89" selection-end-line="28" selection-end-column="89" />
+        <state relative-caret-position="391">
+          <caret line="23" column="41" lean-forward="false" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/mission_completed_layout.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="24" column="15" lean-forward="false" selection-start-line="24" selection-start-column="15" selection-end-line="32" selection-end-column="47" />
-        </state>
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/Configuration.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-          <folding />
+          <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/UserAcceptedModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MapFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="169" column="0" lean-forward="false" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/SetNamesFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-612">
-          <caret line="43" column="13" lean-forward="false" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_job_completed.xml">
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="49" column="56" lean-forward="true" selection-start-line="49" selection-start-column="56" selection-end-line="49" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="16" lean-forward="false" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/galleryitem.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custome_gridview_layout.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-595">
-          <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/related_image_layout.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_image_dialogue.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/GeneralUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="111" column="35" lean-forward="false" selection-start-line="111" selection-start-column="35" selection-end-line="111" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/progress_dialog.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/dialoge_box.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/AlertsUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="64" column="79" lean-forward="false" selection-start-line="64" selection-start-column="79" selection-end-line="64" selection-end-column="79" />
-          <folding>
-            <element signature="e#1444#1514#1" expanded="false" />
-            <element signature="e#1523#1578#1" expanded="false" />
-            <element signature="e#1549#1577#0" expanded="false" />
-            <element signature="e#1587#1677#1" expanded="false" />
-            <element signature="e#1687#1720#0" expanded="false" />
-            <element signature="e#1687#1720#0" expanded="false" />
-            <element signature="e#1730#1794#1" expanded="false" />
-            <element signature="e#1803#1852#1" expanded="false" />
-            <element signature="e#1903#1968#1" expanded="false" />
-            <element signature="e#2197#2274#0" expanded="false" />
-            <element signature="e#2197#2274#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UploadFragments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="129" column="17" lean-forward="false" selection-start-line="129" selection-start-column="17" selection-end-line="129" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/LoginFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="203" column="5" lean-forward="true" selection-start-line="113" selection-start-column="3" selection-end-line="203" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionCompletedFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="72" column="48" lean-forward="false" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
-          <folding>
-            <element signature="e#2936#2949#0" expanded="false" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/RelatedImagesAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="27" column="79" lean-forward="false" selection-start-line="27" selection-start-column="79" selection-end-line="27" selection-end-column="79" />
-          <folding />
+          <caret line="27" column="85" lean-forward="false" selection-start-line="27" selection-start-column="85" selection-end-line="27" selection-end-column="85" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/accepted_job_layout.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/related_image_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="32" lean-forward="true" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="92" column="19" lean-forward="false" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="19" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/UserAcceptedAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="130" column="16" lean-forward="false" selection-start-line="130" selection-start-column="16" selection-end-line="130" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/JobsAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="61" column="86" lean-forward="true" selection-start-line="61" selection-start-column="86" selection-end-line="61" selection-end-column="86" />
-          <folding />
+        <state relative-caret-position="21">
+          <caret line="38" column="83" lean-forward="false" selection-start-line="38" selection-start-column="83" selection-end-line="38" selection-end-column="83" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_jobs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="54" column="35" lean-forward="false" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/accepted_job_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="27" column="45" lean-forward="false" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
-          <folding />
+        <state relative-caret-position="357">
+          <caret line="28" column="45" lean-forward="false" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/selector.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/SetNamesFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-663">
+          <caret line="43" column="13" lean-forward="false" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -3607,67 +3742,628 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/VerificationCodeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="32" column="58" lean-forward="false" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_verification_code.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_user_profile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/com/techease/posapp/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="4616" column="28" lean-forward="false" selection-start-line="4616" selection-start-column="28" selection-end-line="4616" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="44" column="36" lean-forward="false" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="55" column="44" lean-forward="false" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserProfileFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-161">
+          <caret line="54" column="54" lean-forward="false" selection-start-line="54" selection-start-column="54" selection-end-line="54" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/popup_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/alert_dialog.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="29" column="20" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/JobsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1020">
+          <caret line="46" column="13" lean-forward="false" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="45" lean-forward="true" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="57" column="1" lean-forward="true" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/UserAcceptedModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-103">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/AlertsUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="30" column="63" lean-forward="true" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/SplashActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="109" column="31" lean-forward="false" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="31" />
+          <folding>
+            <element signature="e#5026#5047#0" expanded="false" />
+            <element signature="e#5026#5047#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MapFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="88" column="35" lean-forward="false" selection-start-line="88" selection-start-column="35" selection-end-line="88" selection-end-column="35" />
+          <folding>
+            <element signature="e#3074#3087#0" expanded="false" />
+            <element signature="e#3074#3103#0" expanded="false" />
+            <element signature="e#3074#3103#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="191" column="5" lean-forward="false" selection-start-line="191" selection-start-column="5" selection-end-line="191" selection-end-column="5" />
+          <folding>
+            <element signature="e#1961#2033#1" expanded="false" />
+            <element signature="e#2042#2055#0" expanded="false" />
+            <element signature="e#2042#2072#0" expanded="false" />
+            <element signature="e#2042#2072#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="99" lean-forward="false" selection-start-line="13" selection-start-column="99" selection-end-line="13" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/MissionCompletedAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="28" column="92" lean-forward="false" selection-start-line="28" selection-start-column="92" selection-end-line="28" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/mission_completed_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionCompletedFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3350">
+          <caret line="51" column="17" lean-forward="false" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/libs/httpmime-4.3.6.jar!/org/apache/http/entity/mime/content/FileBody.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_single_user_job.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/EditProfileFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="102" column="33" lean-forward="false" selection-start-line="102" selection-start-column="33" selection-end-line="102" selection-end-column="33" />
+          <folding>
+            <element signature="e#4086#4087#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_job_completed.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="207" column="35" lean-forward="true" selection-start-line="207" selection-start-column="35" selection-end-line="207" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/LoginFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="125" column="101" lean-forward="false" selection-start-line="125" selection-start-column="101" selection-end-line="125" selection-end-column="101" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserAcceptedFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="170" column="5" lean-forward="false" selection-start-line="170" selection-start-column="5" selection-end-line="170" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="849">
-          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+        <state relative-caret-position="-187">
+          <caret line="58" column="45" lean-forward="false" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
           <folding>
-            <element signature="e#4152#4172#0" expanded="true" />
-            <element signature="e#4310#4325#0" expanded="true" />
+            <element signature="e#2110#2149#0" expanded="false" />
+            <element signature="e#2110#2149#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/HomeFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="135" column="34" lean-forward="false" selection-start-line="135" selection-start-column="34" selection-end-line="135" selection-end-column="34" />
+        <state relative-caret-position="407">
+          <caret line="716" column="84" lean-forward="false" selection-start-line="716" selection-start-column="84" selection-end-line="716" selection-end-column="84" />
           <folding>
-            <element signature="e#2042#2069#0" expanded="true" />
-            <element signature="e#2042#2069#0" expanded="true" />
-            <element signature="e#2353#2396#0" expanded="true" />
-            <element signature="e#2378#2395#0" expanded="true" />
-            <element signature="e#2353#2396#0" expanded="true" />
-            <element signature="e#3773#4415#0" expanded="true" />
-            <element signature="e#3773#4415#0" expanded="true" />
-            <element signature="e#3837#3884#1" expanded="true" />
-            <element signature="e#4602#4629#0" expanded="true" />
-            <element signature="e#4602#4629#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-fragment/27.0.2/659085cb974e7ec1f25451d23f11578332ea0d7e/support-fragment-27.0.2-sources.jar!/android/support/v4/app/Fragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="2312" column="0" lean-forward="false" selection-start-line="2312" selection-start-column="0" selection-end-line="2312" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="200" column="22" lean-forward="false" selection-start-line="200" selection-start-column="22" selection-end-line="200" selection-end-column="22" />
-          <folding>
-            <element signature="e#2484#2501#0" expanded="true" />
-            <element signature="e#3055#3084#0" expanded="true" />
-            <element signature="e#3055#3084#0" expanded="true" />
-            <element signature="e#7528#7541#0" expanded="true" />
-            <element signature="e#7572#7609#0" expanded="true" />
-            <element signature="e#7572#7609#0" expanded="true" />
+            <element signature="e#5356#5369#0" expanded="true" />
+            <element signature="e#5356#5391#0" expanded="true" />
+            <element signature="e#5356#5391#0" expanded="true" />
+            <element signature="e#5761#5774#0" expanded="true" />
+            <element signature="e#6187#6227#0" expanded="true" />
+            <element signature="e#6187#6227#0" expanded="true" />
+            <element signature="e#6237#6275#0" expanded="true" />
+            <element signature="e#6237#6275#0" expanded="true" />
+            <element signature="e#6342#6355#0" expanded="true" />
+            <element signature="e#6366#6419#0" expanded="true" />
+            <element signature="e#6366#6419#0" expanded="true" />
+            <element signature="e#6527#6544#0" expanded="true" />
+            <element signature="e#6636#6649#0" expanded="true" />
+            <element signature="e#6680#6729#0" expanded="true" />
+            <element signature="e#6680#6729#0" expanded="true" />
+            <element signature="e#6788#6801#0" expanded="true" />
+            <element signature="e#6819#6874#0" expanded="true" />
+            <element signature="e#6819#6874#0" expanded="true" />
+            <element signature="e#6938#6951#0" expanded="true" />
+            <element signature="e#6969#7025#0" expanded="true" />
+            <element signature="e#6969#7025#0" expanded="true" />
+            <element signature="e#7058#7132#0" expanded="true" />
+            <element signature="e#7076#7089#0" expanded="true" />
+            <element signature="e#7142#7375#0" expanded="true" />
+            <element signature="e#7142#7375#0" expanded="true" />
+            <element signature="e#7268#7375#0" expanded="true" />
+            <element signature="e#7268#7375#0" expanded="true" />
+            <element signature="e#7351#7364#0" expanded="true" />
+            <element signature="e#7385#8497#0" expanded="true" />
+            <element signature="e#7417#8496#0" expanded="true" />
+            <element signature="e#7527#7582#1" expanded="true" />
+            <element signature="e#7699#7790#1" expanded="true" />
+            <element signature="e#7759#7788#0" expanded="true" />
+            <element signature="e#7807#7867#0" expanded="true" />
+            <element signature="e#7807#7867#0" expanded="true" />
+            <element signature="e#7885#7933#0" expanded="true" />
+            <element signature="e#7885#7933#0" expanded="true" />
+            <element signature="e#8100#8113#0" expanded="true" />
+            <element signature="e#8152#8201#0" expanded="true" />
+            <element signature="e#8152#8201#0" expanded="true" />
+            <element signature="e#8250#8470#0" expanded="true" />
+            <element signature="e#8279#8469#0" expanded="true" />
+            <element signature="e#8468#8469#0" expanded="true" />
+            <element signature="e#8250#8470#0" expanded="true" />
+            <element signature="e#8495#8496#0" expanded="true" />
+            <element signature="e#7385#8497#0" expanded="true" />
+            <element signature="e#8507#8768#0" expanded="true" />
+            <element signature="e#8540#8767#0" expanded="true" />
+            <element signature="e#8766#8767#0" expanded="true" />
+            <element signature="e#8507#8768#0" expanded="true" />
+            <element signature="e#8778#9234#0" expanded="true" />
+            <element signature="e#8815#9233#0" expanded="true" />
+            <element signature="e#8938#8963#0" expanded="true" />
+            <element signature="e#8938#8963#0" expanded="true" />
+            <element signature="e#8996#9021#0" expanded="true" />
+            <element signature="e#8996#9021#0" expanded="true" />
+            <element signature="e#9040#9172#0" expanded="true" />
+            <element signature="e#9040#9172#0" expanded="true" />
+            <element signature="e#9232#9233#0" expanded="true" />
+            <element signature="e#8778#9234#0" expanded="true" />
+            <element signature="e#9244#9591#0" expanded="true" />
+            <element signature="e#9277#9590#0" expanded="true" />
+            <element signature="e#9386#9399#0" expanded="true" />
+            <element signature="e#9417#9532#0" expanded="true" />
+            <element signature="e#9417#9532#0" expanded="true" />
+            <element signature="e#9589#9590#0" expanded="true" />
+            <element signature="e#9244#9591#0" expanded="true" />
+            <element signature="e#9601#9846#0" expanded="true" />
+            <element signature="e#9637#9845#0" expanded="true" />
+            <element signature="e#9844#9845#0" expanded="true" />
+            <element signature="e#9601#9846#0" expanded="true" />
+            <element signature="e#9856#11355#0" expanded="true" />
+            <element signature="e#9883#11354#0" expanded="true" />
+            <element signature="e#11353#11354#0" expanded="true" />
+            <element signature="e#9856#11355#0" expanded="true" />
+            <element signature="e#11462#11475#0" expanded="true" />
+            <element signature="e#11993#12182#0" expanded="true" />
+            <element signature="e#12181#12182#0" expanded="true" />
+            <element signature="e#12219#12409#0" expanded="true" />
+            <element signature="e#12408#12409#0" expanded="true" />
+            <element signature="e#12489#12554#1" expanded="true" />
+            <element signature="e#12656#12785#1" expanded="true" />
+            <element signature="e#12896#12961#1" expanded="true" />
+            <element signature="e#13200#18124#0" expanded="true" />
+            <element signature="e#13200#18124#0" expanded="true" />
+            <element signature="e#13269#14861#0" expanded="true" />
+            <element signature="e#13269#14861#0" expanded="true" />
+            <element signature="e#13322#13387#1" expanded="true" />
+            <element signature="e#13334#13386#0" expanded="true" />
+            <element signature="e#13343#13374#0" expanded="true" />
+            <element signature="e#13408#13466#1" expanded="true" />
+            <element signature="e#13560#13681#1" expanded="true" />
+            <element signature="e#13979#14079#0" expanded="true" />
+            <element signature="e#13979#14079#0" expanded="true" />
+            <element signature="e#14080#14170#0" expanded="true" />
+            <element signature="e#14080#14170#0" expanded="true" />
+            <element signature="e#14192#14440#0" expanded="true" />
+            <element signature="e#14192#14440#0" expanded="true" />
+            <element signature="e#14238#14269#0" expanded="true" />
+            <element signature="e#14238#14269#0" expanded="true" />
+            <element signature="e#14311#14339#0" expanded="true" />
+            <element signature="e#14461#14715#0" expanded="true" />
+            <element signature="e#14461#14715#0" expanded="true" />
+            <element signature="e#14585#14613#0" expanded="true" />
+            <element signature="e#14779#14792#0" expanded="true" />
+            <element signature="e#14932#17076#0" expanded="true" />
+            <element signature="e#14932#17076#0" expanded="true" />
+            <element signature="e#14995#15024#0" expanded="true" />
+            <element signature="e#15046#15283#0" expanded="true" />
+            <element signature="e#15046#15283#0" expanded="true" />
+            <element signature="e#15093#15128#0" expanded="true" />
+            <element signature="e#15093#15128#0" expanded="true" />
+            <element signature="e#15304#16931#0" expanded="true" />
+            <element signature="e#15304#16931#0" expanded="true" />
+            <element signature="e#15352#16908#0" expanded="true" />
+            <element signature="e#15352#16908#0" expanded="true" />
+            <element signature="e#16776#16789#0" expanded="true" />
+            <element signature="e#16994#17007#0" expanded="true" />
+            <element signature="e#17167#17232#1" expanded="true" />
+            <element signature="e#17179#17231#0" expanded="true" />
+            <element signature="e#17188#17219#0" expanded="true" />
+            <element signature="e#17249#17307#1" expanded="true" />
+            <element signature="e#17393#17514#1" expanded="true" />
+            <element signature="e#17784#17876#0" expanded="true" />
+            <element signature="e#17784#17876#0" expanded="true" />
+            <element signature="e#17877#17959#0" expanded="true" />
+            <element signature="e#17877#17959#0" expanded="true" />
+            <element signature="e#17977#18091#0" expanded="true" />
+            <element signature="e#17977#18091#0" expanded="true" />
+            <element signature="e#18023#18072#0" expanded="true" />
+            <element signature="e#18023#18072#0" expanded="true" />
+            <element signature="e#18183#18236#1" expanded="true" />
+            <element signature="e#18245#18337#1" expanded="true" />
+            <element signature="e#18261#18274#0" expanded="true" />
+            <element signature="e#18261#18295#0" expanded="true" />
+            <element signature="e#18346#18424#1" expanded="true" />
+            <element signature="e#18586#18622#1" expanded="true" />
+            <element signature="e#18599#18621#0" expanded="true" />
+            <element signature="e#18631#18697#1" expanded="true" />
+            <element signature="e#18706#18752#1" expanded="true" />
+            <element signature="e#18739#18750#0" expanded="true" />
+            <element signature="e#18889#20484#0" expanded="true" />
+            <element signature="e#18928#18941#0" expanded="true" />
+            <element signature="e#19093#19106#0" expanded="true" />
+            <element signature="e#18889#20484#0" expanded="true" />
+            <element signature="e#19239#19252#0" expanded="true" />
+            <element signature="e#19254#19308#0" expanded="true" />
+            <element signature="e#19254#19308#0" expanded="true" />
+            <element signature="e#19359#19450#1" expanded="true" />
+            <element signature="e#19463#19551#1" expanded="true" />
+            <element signature="e#19564#19656#1" expanded="true" />
+            <element signature="e#19670#20474#0" expanded="true" />
+            <element signature="e#19670#20474#0" expanded="true" />
+            <element signature="e#19710#19748#1" expanded="true" />
+            <element signature="e#19725#19747#0" expanded="true" />
+            <element signature="e#19765#19804#1" expanded="true" />
+            <element signature="e#19780#19803#0" expanded="true" />
+            <element signature="e#19896#20474#0" expanded="true" />
+            <element signature="e#19896#20474#0" expanded="true" />
+            <element signature="e#19937#19976#1" expanded="true" />
+            <element signature="e#19952#19975#0" expanded="true" />
+            <element signature="e#19993#20033#1" expanded="true" />
+            <element signature="e#20008#20032#0" expanded="true" />
+            <element signature="e#20125#20474#0" expanded="true" />
+            <element signature="e#20125#20474#0" expanded="true" />
+            <element signature="e#20166#20205#1" expanded="true" />
+            <element signature="e#20181#20204#0" expanded="true" />
+            <element signature="e#20222#20262#1" expanded="true" />
+            <element signature="e#20237#20261#0" expanded="true" />
+            <element signature="e#20386#20399#0" expanded="true" />
+            <element signature="e#20547#20622#1" expanded="true" />
+            <element signature="e#20607#20620#0" expanded="true" />
+            <element signature="e#20768#21026#0" expanded="true" />
+            <element signature="e#21025#21026#0" expanded="true" />
+            <element signature="e#21069#21275#0" expanded="true" />
+            <element signature="e#21274#21275#0" expanded="true" />
+            <element signature="e#21286#21329#1" expanded="true" />
+            <element signature="e#21459#23851#1" expanded="true" />
+            <element signature="e#21762#21811#1" expanded="true" />
+            <element signature="e#21840#21896#1" expanded="true" />
+            <element signature="e#21925#22817#0" expanded="true" />
+            <element signature="e#21930#21940#1" expanded="true" />
+            <element signature="e#21925#22817#0" expanded="true" />
+            <element signature="e#22004#22049#1" expanded="true" />
+            <element signature="e#21925#22817#0" expanded="true" />
+            <element signature="e#21925#22817#0" expanded="true" />
+            <element signature="e#22082#22135#1" expanded="true" />
+            <element signature="e#22168#22208#1" expanded="true" />
+            <element signature="e#22241#22276#0" expanded="true" />
+            <element signature="e#22241#22276#0" expanded="true" />
+            <element signature="e#22311#22643#0" expanded="true" />
+            <element signature="e#22316#22326#1" expanded="true" />
+            <element signature="e#22311#22643#0" expanded="true" />
+            <element signature="e#22311#22643#0" expanded="true" />
+            <element signature="e#22311#22643#0" expanded="true" />
+            <element signature="e#22311#22643#0" expanded="true" />
+            <element signature="e#22377#22429#1" expanded="true" />
+            <element signature="e#22466#22514#1" expanded="true" />
+            <element signature="e#22562#22575#0" expanded="true" />
+            <element signature="e#22678#22713#0" expanded="true" />
+            <element signature="e#22678#22713#0" expanded="true" />
+            <element signature="e#22747#22785#0" expanded="true" />
+            <element signature="e#22747#22785#0" expanded="true" />
+            <element signature="e#22918#23134#0" expanded="true" />
+            <element signature="e#22918#23134#0" expanded="true" />
+            <element signature="e#22987#23000#0" expanded="true" />
+            <element signature="e#23017#23029#0" expanded="true" />
+            <element signature="e#23321#23334#0" expanded="true" />
+            <element signature="e#23351#23367#0" expanded="true" />
+            <element signature="e#23703#23748#1" expanded="true" />
+            <element signature="e#23765#23793#0" expanded="true" />
+            <element signature="e#23765#23793#0" expanded="true" />
+            <element signature="e#23765#23793#0" expanded="true" />
+            <element signature="e#23860#23927#1" expanded="true" />
+            <element signature="e#23912#23925#0" expanded="true" />
+            <element signature="e#23936#24108#0" expanded="true" />
+            <element signature="e#23936#24108#0" expanded="true" />
+            <element signature="e#24424#24437#0" expanded="true" />
+            <element signature="e#24452#24485#0" expanded="true" />
+            <element signature="e#24452#24485#0" expanded="true" />
+            <element signature="e#24499#24537#0" expanded="true" />
+            <element signature="e#24499#24537#0" expanded="true" />
+            <element signature="e#24551#24583#0" expanded="true" />
+            <element signature="e#24551#24583#0" expanded="true" />
+            <element signature="e#24845#24893#1" expanded="true" />
+            <element signature="e#24906#24968#1" expanded="true" />
+            <element signature="e#25003#25371#1" expanded="true" />
+            <element signature="e#25081#25369#0" expanded="true" />
+            <element signature="e#25277#25310#0" expanded="true" />
+            <element signature="e#25284#25309#0" expanded="true" />
+            <element signature="e#25291#25302#0" expanded="true" />
+            <element signature="e#25284#25309#0" expanded="true" />
+            <element signature="e#25277#25310#0" expanded="true" />
+            <element signature="e#25368#25369#0" expanded="true" />
+            <element signature="e#25959#25979#0" expanded="true" />
+            <element signature="e#26476#26502#0" expanded="true" />
+            <element signature="e#26476#26502#0" expanded="true" />
+            <element signature="e#26520#26573#1" expanded="true" />
+            <element signature="e#26590#26633#1" expanded="true" />
+            <element signature="e#26612#26632#0" expanded="true" />
+            <element signature="e#26650#26708#1" expanded="true" />
+            <element signature="e#26667#26691#0" expanded="true" />
+            <element signature="e#26667#26707#0" expanded="true" />
+            <element signature="e#26789#26968#0" expanded="true" />
+            <element signature="e#26789#26968#0" expanded="true" />
+            <element signature="e#26903#26916#0" expanded="true" />
+            <element signature="e#26969#27136#0" expanded="true" />
+            <element signature="e#26969#27136#0" expanded="true" />
+            <element signature="e#27071#27084#0" expanded="true" />
+            <element signature="e#27162#27194#0" expanded="true" />
+            <element signature="e#27162#27194#0" expanded="true" />
+            <element signature="e#27487#27500#0" expanded="true" />
+            <element signature="e#27519#27563#0" expanded="true" />
+            <element signature="e#27519#27563#0" expanded="true" />
+            <element signature="e#27624#27672#1" expanded="true" />
+            <element signature="e#27693#27741#1" expanded="true" />
+            <element signature="e#27812#27855#0" expanded="true" />
+            <element signature="e#27812#27855#0" expanded="true" />
+            <element signature="e#27883#27936#1" expanded="true" />
+            <element signature="e#27961#27993#0" expanded="true" />
+            <element signature="e#27961#27993#0" expanded="true" />
+            <element signature="e#28019#28078#1" expanded="true" />
+            <element signature="e#28103#28152#0" expanded="true" />
+            <element signature="e#28103#28152#0" expanded="true" />
+            <element signature="e#28178#28221#1" expanded="true" />
+            <element signature="e#28246#28499#0" expanded="true" />
+            <element signature="e#28268#28498#0" expanded="true" />
+            <element signature="e#28497#28498#0" expanded="true" />
+            <element signature="e#28246#28499#0" expanded="true" />
+            <element signature="e#28564#28615#1" expanded="true" />
+            <element signature="e#28640#28660#0" expanded="true" />
+            <element signature="e#28800#28845#0" expanded="true" />
+            <element signature="e#28800#28845#0" expanded="true" />
+            <element signature="e#28872#28925#1" expanded="true" />
+            <element signature="e#28950#28969#0" expanded="true" />
+            <element signature="e#28950#28969#0" expanded="true" />
+            <element signature="e#28995#29054#1" expanded="true" />
+            <element signature="e#29079#29129#0" expanded="true" />
+            <element signature="e#29079#29129#0" expanded="true" />
+            <element signature="e#29155#29198#1" expanded="true" />
+            <element signature="e#29223#29476#0" expanded="true" />
+            <element signature="e#29245#29475#0" expanded="true" />
+            <element signature="e#29474#29475#0" expanded="true" />
+            <element signature="e#29223#29476#0" expanded="true" />
+            <element signature="e#29567#29624#0" expanded="true" />
+            <element signature="e#29567#29624#0" expanded="true" />
+            <element signature="e#29651#29704#1" expanded="true" />
+            <element signature="e#29729#29748#0" expanded="true" />
+            <element signature="e#29729#29748#0" expanded="true" />
+            <element signature="e#29774#29833#1" expanded="true" />
+            <element signature="e#29858#29920#0" expanded="true" />
+            <element signature="e#29858#29920#0" expanded="true" />
+            <element signature="e#29946#29989#1" expanded="true" />
+            <element signature="e#30014#30267#0" expanded="true" />
+            <element signature="e#30036#30266#0" expanded="true" />
+            <element signature="e#30265#30266#0" expanded="true" />
+            <element signature="e#30014#30267#0" expanded="true" />
+            <element signature="e#30363#30748#0" expanded="true" />
+            <element signature="e#30363#30748#0" expanded="true" />
+            <element signature="e#30477#30546#1" expanded="true" />
+            <element signature="e#30531#30544#0" expanded="true" />
+            <element signature="e#30563#30598#0" expanded="true" />
+            <element signature="e#30563#30598#0" expanded="true" />
+            <element signature="e#30616#30656#0" expanded="true" />
+            <element signature="e#30616#30656#0" expanded="true" />
+            <element signature="e#30674#30701#0" expanded="true" />
+            <element signature="e#30674#30701#0" expanded="true" />
+            <element signature="e#30830#33453#1" expanded="true" />
+            <element signature="e#31114#32230#0" expanded="true" />
+            <element signature="e#31114#32230#0" expanded="true" />
+            <element signature="e#31197#31240#1" expanded="true" />
+            <element signature="e#31405#31497#0" expanded="true" />
+            <element signature="e#31405#31497#0" expanded="true" />
+            <element signature="e#31521#32230#0" expanded="true" />
+            <element signature="e#31521#32230#0" expanded="true" />
+            <element signature="e#31613#31626#0" expanded="true" />
+            <element signature="e#31711#32230#0" expanded="true" />
+            <element signature="e#31711#32230#0" expanded="true" />
+            <element signature="e#31801#31814#0" expanded="true" />
+            <element signature="e#31897#32230#0" expanded="true" />
+            <element signature="e#31897#32230#0" expanded="true" />
+            <element signature="e#32001#32014#0" expanded="true" />
+            <element signature="e#32148#32161#0" expanded="true" />
+            <element signature="e#32403#32416#0" expanded="true" />
+            <element signature="e#32770#32815#1" expanded="true" />
+            <element signature="e#32832#32868#0" expanded="true" />
+            <element signature="e#32832#32868#0" expanded="true" />
+            <element signature="e#32832#32868#0" expanded="true" />
+            <element signature="e#32886#32917#0" expanded="true" />
+            <element signature="e#32886#32917#0" expanded="true" />
+            <element signature="e#32886#32917#0" expanded="true" />
+            <element signature="e#32935#32989#0" expanded="true" />
+            <element signature="e#32935#32989#0" expanded="true" />
+            <element signature="e#32957#32977#0" expanded="true" />
+            <element signature="e#32935#32989#0" expanded="true" />
+            <element signature="e#33007#33042#0" expanded="true" />
+            <element signature="e#33007#33042#0" expanded="true" />
+            <element signature="e#33007#33042#0" expanded="true" />
+            <element signature="e#33060#33097#0" expanded="true" />
+            <element signature="e#33060#33097#0" expanded="true" />
+            <element signature="e#33060#33097#0" expanded="true" />
+            <element signature="e#33115#33164#0" expanded="true" />
+            <element signature="e#33115#33164#0" expanded="true" />
+            <element signature="e#33115#33164#0" expanded="true" />
+            <element signature="e#33462#33529#1" expanded="true" />
+            <element signature="e#33514#33527#0" expanded="true" />
+            <element signature="e#33538#33710#0" expanded="true" />
+            <element signature="e#33538#33710#0" expanded="true" />
           </folding>
         </state>
       </provider>

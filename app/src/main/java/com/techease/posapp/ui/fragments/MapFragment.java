@@ -86,6 +86,7 @@ public class MapFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_map, container, false);
+        getActivity().setTitle("Map");
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -254,13 +255,13 @@ public class MapFragment extends Fragment {
                             alertDialog.dismiss();
 
                         JSONObject jsonObject = new JSONObject(response);
-                        JSONArray jsonArr = jsonObject.getJSONArray("jobs");
+                        JSONArray jsonArr = jsonObject.getJSONArray("All_jobs");
                         for (int i = 0; i < jsonArr.length(); i++) {
                             JSONObject temp = jsonArr.getJSONObject(i);
 
                             JobsModel model = new JobsModel();
                             String job_title = temp.getString("job_title");
-                            String description = temp.getString("description");
+                            String description = temp.getString("shot_desc");
                             String latitude = temp.getString("latitude");
                             String longitude = temp.getString("longitude");
 
@@ -282,18 +283,18 @@ public class MapFragment extends Fragment {
 
                 } else {
 
-                    try {
-                        if (alertDialog != null)
-                            alertDialog.dismiss();
-                        JSONObject jsonObject = new JSONObject(response);
-                        String message = jsonObject.getString("message");
-                        AlertsUtils.showErrorDialog(getActivity(), message);
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        if (alertDialog != null)
-                            alertDialog.dismiss();
-                    }
+//                    try {
+//                        if (alertDialog != null)
+//                            alertDialog.dismiss();
+//                        JSONObject jsonObject = new JSONObject(response);
+//                        String message = jsonObject.getString("message");
+//                        AlertsUtils.showErrorDialog(getActivity(), message);
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                        if (alertDialog != null)
+//                            alertDialog.dismiss();
+//                    }
                 }
             }
 

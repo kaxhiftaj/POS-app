@@ -1,5 +1,6 @@
 package com.techease.posapp.ui.fragments;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,9 +8,11 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -52,19 +55,18 @@ public class MissionsFragment extends Fragment {
 
     @BindView(R.id.rv_jobs)
     RecyclerView recyclerView;
+    Dialog dialog;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_missions, container, false);
-
+        getActivity().setTitle("Home");
         unbinder = ButterKnife.bind(this, v);
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("api_token", "");
         userID = sharedPreferences.getString("user_id","");
-        Log.d("your",token);
-        Log.d("your",userID);
 
         if (InternetUtils.isNetworkConnected(getActivity())) {
 
@@ -136,18 +138,7 @@ public class MissionsFragment extends Fragment {
 
                 } else {
 
-                    try {
-                        if (alertDialog != null)
-                            alertDialog.dismiss();
-                        JSONObject jsonObject = new JSONObject(response);
-                        String message = jsonObject.getString("message");
-                        AlertsUtils.showErrorDialog(getActivity(), message);
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        if (alertDialog != null)
-                            alertDialog.dismiss();
-                    }
+                       showDialog();
                 }
             }
 
@@ -181,30 +172,22 @@ public class MissionsFragment extends Fragment {
 
     }
 
-
-    @Override
-    public void onStart() {
-        super.onStart();
-//        job_model_list.clear();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        job_model_list.clear();
-        if (job_model_list.size()>0){
-            Log.d("zma list size", ">0");
-        }else {
-
-            jobs_adapter = new JobsAdapter(getActivity(), job_model_list);
-            recyclerView.setAdapter(jobs_adapter);
-            apicall();
-            Log.d("zma list size", "0");
-        }
-//        if (alertDialog == null)
-//            alertDialog = AlertsUtils.createProgressDialog(getActivity());
-//        alertDialog.show();
+    public void showDialog(){
+        dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.popup_layout);
+        TextView tv_oops = dialog.findViewById(R.id.tv_oops);
+        tv_oops.setText("");
+        TextView tvMessage = dialog.findViewById(R.id.tv_message);
+        tvMessage.setText("Currently no job available");
+        tvMessage.setGravity(Gravity.CENTER);
+        TextView tv_btn = dialog.findViewById(R.id.ok);
+        tv_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
 
     }
-
 }

@@ -25,8 +25,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/accepted_job_image"
-                    android:layout_width="80dp"
-                    android:layout_height="60dp"
+                    android:layout_width="85dp"
+                    android:layout_height="65dp"
                     android:layout_marginLeft="10sp"
                     android:paddingTop="3sp"
                     android:paddingBottom="2sp"

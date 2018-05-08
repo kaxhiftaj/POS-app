@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300sp"
+    android:layout_height="170sp"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:layout_gravity="center"
+       android:gravity="center">
+       <TextView
+           android:id="@+id/tv_oops"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Opps!"
+           android:layout_marginTop="15sp"
+           android:layout_gravity="center"
+           android:textSize="24sp"
+           android:textStyle="normal"
+           android:textColor="#000"/>
+
+       <TextView
+           android:id="@+id/tv_message"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="We need your name and\n
+               photo"
+           android:layout_gravity="center"
+           android:textSize="20sp"
+           android:textColor="#000"/>
+
+       <TextView
+           android:id="@+id/ok"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="OK"
+           android:layout_gravity="center"
+           android:textSize="22sp"
+           android:textStyle="bold"
+           android:layout_marginTop="30sp"
+           android:textColor="#000"/>
+
+   </LinearLayout>
+</LinearLayout>

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,21 +42,22 @@ public class UserProfileFragment extends Fragment {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     TextView first_name,last_name,email,phone_no;
-    Button edit_profile;
-    FrameLayout setNames_Layout;
-    LinearLayout firstLastNames_layout;
+    Button btnEdit_profile;
+    LinearLayout firstLastNames_layout,setNames_Layout;
+    ImageView iv_profile;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_user_profile, container, false);
+        iv_profile = view.findViewById(R.id.edit_profile_image);
         setNames_Layout = view.findViewById(R.id.setName_layout);
         firstLastNames_layout = view.findViewById(R.id.firstLastNames_layout);
         first_name = (TextView) view.findViewById(R.id.first_name);
         last_name = (TextView)view.findViewById(R.id.last_name);
         email = (TextView)view.findViewById(R.id.email);
         phone_no = (TextView)view.findViewById(R.id.phone_no);
-        edit_profile = (Button) view.findViewById(R.id.edit_profile);
+        btnEdit_profile = (Button) view.findViewById(R.id.edit_profile);
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("api_token", "");
@@ -68,9 +70,10 @@ public class UserProfileFragment extends Fragment {
                 firstLastNames_layout.setVisibility(View.VISIBLE);
             }
         });
-        edit_profile.setOnClickListener(new View.OnClickListener() {
+        btnEdit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Fragment fragment = new EditProfileFragment();
                 getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).addToBackStack("").commit();
             }
