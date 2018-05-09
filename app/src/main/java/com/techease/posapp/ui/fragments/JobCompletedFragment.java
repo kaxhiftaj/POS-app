@@ -56,6 +56,7 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.techease.posapp.R;
 import com.techease.posapp.ui.activities.MainActivity;
 import com.techease.posapp.ui.adapters.RelatedImagesAdapter;
+import com.techease.posapp.ui.helpers.DatabaseHelper;
 import com.techease.posapp.ui.models.JobImagesModel;
 import com.techease.posapp.ui.models.JobsModel;
 import com.techease.posapp.utils.AlertsUtils;
@@ -142,8 +143,8 @@ public class JobCompletedFragment extends Fragment {
     TextView tv_missionTitle, tv_missionDesc;
     RecyclerView rv_relatedImages;
     boolean thirdBoolean=false,fourthBoolean=false,fifthBoolean=false,sixthBoolean=false;
-
     int count = 0;
+    DatabaseHelper databaseHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -158,6 +159,8 @@ public class JobCompletedFragment extends Fragment {
         flagAuthentication = false;
         tv_missionTitle = parentView.findViewById(R.id.missionTitle);
         tv_missionDesc = parentView.findViewById(R.id.missionDesc);
+
+        databaseHelper = new DatabaseHelper(getActivity());
 
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -227,6 +230,7 @@ public class JobCompletedFragment extends Fragment {
                 fancydialog();
                 flagSecondImage = true;
                 flagFirstImage = false;
+
             }
         });
         ivCurrentLocation.setOnClickListener(new View.OnClickListener() {
@@ -283,7 +287,13 @@ public class JobCompletedFragment extends Fragment {
 //                    firstApiCall();
                     new UploadFileToServer().execute();
                 }
-
+                boolean insert = databaseHelper.insertData(etComments.getText().toString(),strSecondImage);
+                if(insert){
+                    Toast.makeText(getActivity(), "Data Inserted", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getActivity(), "Not Inserted", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
