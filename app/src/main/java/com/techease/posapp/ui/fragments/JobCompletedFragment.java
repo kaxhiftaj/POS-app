@@ -122,9 +122,14 @@ public class JobCompletedFragment extends Fragment {
     EditText etComments;
     Boolean flagFirstImage, flagSecondImage, flagLocation, flagTime, flagAuthentication;
     String strFirstImage, strSecondImage, strApiToken, str_JobID, strCurrentDateandTime, strLatitude, strLongitude;
-    String strThirdImage, strFourthImage, strFifthImage, strSixthImage;
+    String strThirdImage="", strFourthImage="", strFifthImage="", strSixthImage="";
     Uri image_uri;
-    File fileFirstImage=null, fileSecondImage=null, filethirdImage=null, fileFourthImage=null, fileFifthImage=null, fileSixthImage=null;
+    File fileFirstImage = null;
+    File fileSecondImage = null;
+    File filethirdImage = null;
+    File fileFourthImage = null;
+    File fileFifthImage = null;
+    File fileSixthImage = null;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     double lattitude, longitude;
@@ -136,6 +141,7 @@ public class JobCompletedFragment extends Fragment {
     String strMissionTitle, strMissionDesc, strCompletedJob_id;
     TextView tv_missionTitle, tv_missionDesc;
     RecyclerView rv_relatedImages;
+    boolean thirdBoolean=false,fourthBoolean=false,fifthBoolean=false,sixthBoolean=false;
 
     int count = 0;
 
@@ -185,6 +191,11 @@ public class JobCompletedFragment extends Fragment {
         } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             getLocation();
         }
+
+//        filethirdImage = new File(strThirdImage);
+//        fileFourthImage = new File(strFourthImage);
+//        fileFifthImage = new File(strFifthImage);
+//        fileSixthImage = new File(strSixthImage);
 
         ivFirstImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -389,25 +400,37 @@ public class JobCompletedFragment extends Fragment {
                                 count++;
                                 break;
                             case 1:
-                                strThirdImage = getImagePath(image_uri);
-                                filethirdImage = new File(strThirdImage);
+                                thirdBoolean = true;
+                                if(thirdBoolean){
+                                    strThirdImage = getImagePath(image_uri);
+                                    filethirdImage = new File(strThirdImage);
+                                }
                                 count++;
                                 break;
 
                             case 2:
-                                strFourthImage = getImagePath(image_uri);
-                                fileFourthImage = new File(strFourthImage);
+                                fourthBoolean = true;
+                                if(fourthBoolean){
+                                    strFourthImage = getImagePath(image_uri);
+                                    fileFourthImage = new File(strFourthImage);
+                                }
                                 count++;
                                 break;
                             case 3:
-                                strFifthImage = getImagePath(image_uri);
-                                fileFifthImage = new File(strFifthImage);
+                                fifthBoolean = true;
+                                if(fifthBoolean){
+                                    strFifthImage = getImagePath(image_uri);
+                                    fileFifthImage = new File(strFifthImage);
+                                }
                                 count++;
                                 break;
 
                             case 4:
-                                strSixthImage = getImagePath(image_uri);
-                                fileSixthImage = new File(strSixthImage);
+                                sixthBoolean = true;
+                                if(sixthBoolean){
+                                    strSixthImage = getImagePath(image_uri);
+                                    fileSixthImage = new File(strSixthImage);
+                                }
                                 count++;
                                 break;
 
@@ -631,10 +654,23 @@ public class JobCompletedFragment extends Fragment {
                         });
 
                 entity.addPart("img1", new FileBody(fileSecondImage));
-                entity.addPart("img2", new FileBody(filethirdImage));
-                entity.addPart("img3", new FileBody(fileFourthImage));
-                entity.addPart("img4", new FileBody(fileFifthImage));
-                entity.addPart("img5", new FileBody(fileSixthImage));
+                if(thirdBoolean){
+                    entity.addPart("img2", new FileBody(filethirdImage));
+                    thirdBoolean = false;
+                }
+                if(fourthBoolean){
+                    entity.addPart("img3", new FileBody(fileFourthImage));
+                    fourthBoolean = false;
+                }
+                if(fifthBoolean){
+                    entity.addPart("img4", new FileBody(fileFifthImage));
+                    fifthBoolean = false;
+                }
+                if(sixthBoolean){
+                    entity.addPart("img5", new FileBody(fileSixthImage));
+                    sixthBoolean = false;
+                }
+
                 Looper.prepare();
                 entity.addPart("api_token", new StringBody(strApiToken));
                 entity.addPart("job_id", new StringBody(str_JobID));
@@ -714,7 +750,8 @@ public class JobCompletedFragment extends Fragment {
                         TextView tv_oops = dialog.findViewById(R.id.tv_oops);
                         tv_oops.setText("");
                         TextView tv_message = dialog.findViewById(R.id.tv_message);
-                        tv_message.setText("Time Interval is Greater than 10 minutes");
+                        tv_message.setText("Time Interval is Greater than\n 10 minutes");
+                        tv_message.setGravity(Gravity.CENTER);
                         TextView ok = dialog.findViewById(R.id.ok);
                         ok.setOnClickListener(new View.OnClickListener() {
                             @Override
