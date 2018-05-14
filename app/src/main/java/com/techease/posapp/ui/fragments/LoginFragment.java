@@ -116,7 +116,7 @@ public class LoginFragment extends Fragment {
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("zma response", response);
+                Log.d("login response", response);
                 editor.putString("response",response).commit();
                 if(response.contains("false")){
                     if (alertDialog != null)

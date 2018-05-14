@@ -50,6 +50,7 @@ public class UserProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_user_profile, container, false);
+        getActivity().setTitle("User Info");
         iv_profile = view.findViewById(R.id.edit_profile_image);
         setNames_Layout = view.findViewById(R.id.setName_layout);
         firstLastNames_layout = view.findViewById(R.id.firstLastNames_layout);

@@ -1,6 +1,7 @@
 package com.techease.posapp.ui.fragments;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -13,6 +14,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.hardware.Camera;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -62,6 +64,7 @@ import com.techease.posapp.ui.models.JobsModel;
 import com.techease.posapp.utils.AlertsUtils;
 import com.techease.posapp.utils.Configuration;
 import com.techease.posapp.utils.HTTPMultiPartEntity;
+import com.techease.posapp.utils.InternetUtils;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -96,6 +99,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static android.app.Activity.RESULT_OK;
+import static com.android.volley.VolleyLog.TAG;
 
 
 public class JobCompletedFragment extends Fragment {
@@ -121,16 +125,12 @@ public class JobCompletedFragment extends Fragment {
     Button btnSend;
     @BindView(R.id.et_comments)
     EditText etComments;
+    android.support.v7.app.AlertDialog alertDialog;
     Boolean flagFirstImage, flagSecondImage, flagLocation, flagTime, flagAuthentication;
     String strFirstImage, strSecondImage, strApiToken, str_JobID, strCurrentDateandTime, strLatitude, strLongitude;
-    String strThirdImage="", strFourthImage="", strFifthImage="", strSixthImage="";
+    String strThirdImage = "", strFourthImage = "", strFifthImage = "", strSixthImage = "";
     Uri image_uri;
-    File fileFirstImage = null;
-    File fileSecondImage = null;
-    File filethirdImage = null;
-    File fileFourthImage = null;
-    File fileFifthImage = null;
-    File fileSixthImage = null;
+    File fileFirstImage, fileSecondImage, filethirdImage, fileFourthImage, fileFifthImage, fileSixthImage;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     double lattitude, longitude;
@@ -142,7 +142,7 @@ public class JobCompletedFragment extends Fragment {
     String strMissionTitle, strMissionDesc, strCompletedJob_id;
     TextView tv_missionTitle, tv_missionDesc;
     RecyclerView rv_relatedImages;
-    boolean thirdBoolean=false,fourthBoolean=false,fifthBoolean=false,sixthBoolean=false;
+    boolean thirdBoolean = false, fourthBoolean = false, fifthBoolean = false, sixthBoolean = false;
     int count = 0;
     DatabaseHelper databaseHelper;
 
@@ -150,7 +150,7 @@ public class JobCompletedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         parentView = inflater.inflate(R.layout.fragment_job_completed, container, false);
-        getActivity().setTitle("Completed");
+        getActivity().setTitle("User Accepted");
         ButterKnife.bind(this, parentView);
         flagFirstImage = false;
         flagSecondImage = false;
@@ -172,13 +172,19 @@ public class JobCompletedFragment extends Fragment {
         tv_missionDesc.setText(strMissionDesc);
 
         //showing job related image
-        dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.custom_image_dialogue);
-        rv_relatedImages = dialog.findViewById(R.id.rv_job_completedImages);
-        related_image_list = new ArrayList<>();
-        ApiCallImages(str_JobID);
-        relatedImagesAdapter = new RelatedImagesAdapter(getActivity(), related_image_list);
-        rv_relatedImages.setAdapter(relatedImagesAdapter);
+        if (InternetUtils.isNetworkConnected(getActivity())) {
+            dialog = new Dialog(getActivity());
+            dialog.setContentView(R.layout.custom_image_dialogue);
+            rv_relatedImages = dialog.findViewById(R.id.rv_job_completedImages);
+            related_image_list = new ArrayList<>();
+            ApiCallImages(str_JobID);
+            if (alertDialog == null)
+                alertDialog = AlertsUtils.createProgressDialog(getActivity());
+            alertDialog.show();
+            relatedImagesAdapter = new RelatedImagesAdapter(getActivity(), related_image_list);
+            rv_relatedImages.setAdapter(relatedImagesAdapter);
+        }
+
         //end
 
         ActivityCompat.requestPermissions(getActivity(),
@@ -195,21 +201,14 @@ public class JobCompletedFragment extends Fragment {
             getLocation();
         }
 
-//        filethirdImage = new File(strThirdImage);
-//        fileFourthImage = new File(strFourthImage);
-//        fileFifthImage = new File(strFifthImage);
-//        fileSixthImage = new File(strSixthImage);
-
         ivFirstImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 ImageView iv_cancel = dialog.findViewById(R.id.cancel);
-//                RecyclerView rv_relatedImages = dialog.findViewById(R.id.rv_job_completedImages);
                 LinearLayoutManager layoutManager = new LinearLayoutManager(rv_relatedImages.getContext());
                 layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 rv_relatedImages.setLayoutManager(layoutManager);
-//                related_image_list = new ArrayList<>();
 
                 ApiCallImages(str_JobID);
                 relatedImagesAdapter = new RelatedImagesAdapter(getActivity(), related_image_list);
@@ -267,10 +266,9 @@ public class JobCompletedFragment extends Fragment {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(fileSecondImage == null){
+                if (fileSecondImage == null) {
                     Toast.makeText(getActivity(), "select at least one image", Toast.LENGTH_SHORT).show();
-                }
-                else  if (etComments.getText() == null) {
+                } else if (etComments.getText() == null) {
                     Toast.makeText(getActivity(), "Please add comment", Toast.LENGTH_SHORT).show();
                 } else if (strLatitude == null || strLongitude == null) {
                     Toast.makeText(getActivity(), "Please confirm your location", Toast.LENGTH_SHORT).show();
@@ -278,22 +276,27 @@ public class JobCompletedFragment extends Fragment {
                     Toast.makeText(getActivity(), "Please confirm your time", Toast.LENGTH_SHORT).show();
                 } else if (str_JobID == null || strApiToken == null) {
                     Toast.makeText(getActivity(), "Incorrect job id or token", Toast.LENGTH_SHORT).show();
-                }
-//                if (fileSecondImage == null || etComments.getText().toString() == null
-//                        || strCurrentDateandTime == null || str_JobID == null || strLongitude == null || strLatitude == null) {
-//                    Toast.makeText(getActivity(), "Missing Some Parameter", Toast.LENGTH_SHORT).show();
-//                }
-                else {
-//                    firstApiCall();
+                } else {
                     new UploadFileToServer().execute();
                 }
-                boolean insert = databaseHelper.insertData(etComments.getText().toString(),strSecondImage);
-                if(insert){
-                    Toast.makeText(getActivity(), "Data Inserted", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(getActivity(), "Not Inserted", Toast.LENGTH_SHORT).show();
-                }
+
+//                //inserting data into sqliteDatabase
+//                boolean insert = databaseHelper.insertData(etComments.getText().toString(),strSecondImage);
+//                if(insert){
+//                    Toast.makeText(getActivity(), "Data Inserted to local database", Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    Toast.makeText(getActivity(), "Not Inserted", Toast.LENGTH_SHORT).show();
+//                }
+//                //end
+
+//                //showing sqliteDatabase Data
+//                Cursor cursor = databaseHelper.getData();
+//                while (cursor.moveToNext()){
+//                    Toast.makeText(getActivity(), cursor.getString(1), Toast.LENGTH_SHORT).show();
+//                }
+//                //end
+
             }
         });
 
@@ -350,15 +353,13 @@ public class JobCompletedFragment extends Fragment {
             case 0://camera
                 if (resultCode == RESULT_OK) {
 
-
                     Bitmap bm = (Bitmap) imageReturnedIntent.getExtras().get("data");
                     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                    bm.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+                    bm.compress(Bitmap.CompressFormat.JPEG, 80, bytes);
 
-                    File sourceFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Pos/img.jpg");
-
-
+                    File sourceFile = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
                     FileOutputStream fo;
+
                     try {
                         sourceFile.createNewFile();
                         fo = new FileOutputStream(sourceFile);
@@ -377,16 +378,55 @@ public class JobCompletedFragment extends Fragment {
 
                     }
                     if (flagSecondImage) {
-//                        ivSecondImage.setImageBitmap(bm);
-                        strSecondImage = sourceFile.getAbsolutePath().toString();
-                        fileSecondImage = new File(strSecondImage);
+                        switch (count) {
+                            case 0:
+                                strSecondImage = sourceFile.getAbsolutePath().toString();
+                                fileSecondImage = new File(strSecondImage);
+                                count++;
+                                break;
+                            case 1:
+                                thirdBoolean = true;
+                                if (thirdBoolean) {
+                                    strThirdImage = sourceFile.getAbsolutePath().toString();
+                                    filethirdImage = new File(strThirdImage);
+                                    count++;
+                                }
+
+                                break;
+                            case 2:
+                                fourthBoolean = true;
+                                if (fourthBoolean) {
+                                    strFourthImage = sourceFile.getAbsolutePath().toString();
+                                    fileFourthImage = new File(strFourthImage);
+                                    count++;
+                                }
+
+                                break;
+
+                            case 3:
+                                fifthBoolean = true;
+                                if (fifthBoolean) {
+                                    strFifthImage = sourceFile.getAbsolutePath().toString();
+                                    fileFifthImage = new File(strFifthImage);
+                                    count++;
+                                }
+
+                                break;
+
+                            case 4:
+                                sixthBoolean = true;
+                                if (sixthBoolean) {
+                                    strSixthImage = sourceFile.getAbsolutePath().toString();
+                                    fileSixthImage = new File(strSixthImage);
+                                    count++;
+                                }
+
+                                break;
+                        }
                     }
 
-
                 } else {
-
                     Toast.makeText(getActivity(), "No Image Selected", Toast.LENGTH_SHORT).show();
-
                 }
                 break;
 
@@ -411,7 +451,7 @@ public class JobCompletedFragment extends Fragment {
                                 break;
                             case 1:
                                 thirdBoolean = true;
-                                if(thirdBoolean){
+                                if (thirdBoolean) {
                                     strThirdImage = getImagePath(image_uri);
                                     filethirdImage = new File(strThirdImage);
                                 }
@@ -420,7 +460,7 @@ public class JobCompletedFragment extends Fragment {
 
                             case 2:
                                 fourthBoolean = true;
-                                if(fourthBoolean){
+                                if (fourthBoolean) {
                                     strFourthImage = getImagePath(image_uri);
                                     fileFourthImage = new File(strFourthImage);
                                 }
@@ -428,7 +468,7 @@ public class JobCompletedFragment extends Fragment {
                                 break;
                             case 3:
                                 fifthBoolean = true;
-                                if(fifthBoolean){
+                                if (fifthBoolean) {
                                     strFifthImage = getImagePath(image_uri);
                                     fileFifthImage = new File(strFifthImage);
                                 }
@@ -437,7 +477,7 @@ public class JobCompletedFragment extends Fragment {
 
                             case 4:
                                 sixthBoolean = true;
-                                if(sixthBoolean){
+                                if (sixthBoolean) {
                                     strSixthImage = getImagePath(image_uri);
                                     fileSixthImage = new File(strSixthImage);
                                 }
@@ -447,7 +487,6 @@ public class JobCompletedFragment extends Fragment {
                             case 5:
                                 Toast.makeText(getActivity(), "Maximum limit is 5", Toast.LENGTH_SHORT).show();
                                 break;
-
 
 
                         }
@@ -573,6 +612,7 @@ public class JobCompletedFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        alertDialog.dismiss();
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray jsonArray = jsonObject.getJSONArray("images");
@@ -603,7 +643,7 @@ public class JobCompletedFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), String.valueOf(error.getCause()), Toast.LENGTH_SHORT).show();
+                Log.d("error", error.getCause().toString());
             }
         }) {
             @Override
@@ -631,6 +671,7 @@ public class JobCompletedFragment extends Fragment {
 
     private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
         ProgressDialog progressBar;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -639,7 +680,6 @@ public class JobCompletedFragment extends Fragment {
             progressBar.setMessage("please wait!");
             progressBar.setCancelable(false);
             progressBar.show();
-
         }
 
         @Override
@@ -664,19 +704,19 @@ public class JobCompletedFragment extends Fragment {
                         });
 
                 entity.addPart("img1", new FileBody(fileSecondImage));
-                if(thirdBoolean){
+                if (thirdBoolean) {
                     entity.addPart("img2", new FileBody(filethirdImage));
                     thirdBoolean = false;
                 }
-                if(fourthBoolean){
+                if (fourthBoolean) {
                     entity.addPart("img3", new FileBody(fileFourthImage));
                     fourthBoolean = false;
                 }
-                if(fifthBoolean){
+                if (fifthBoolean) {
                     entity.addPart("img4", new FileBody(fileFifthImage));
                     fifthBoolean = false;
                 }
-                if(sixthBoolean){
+                if (sixthBoolean) {
                     entity.addPart("img5", new FileBody(fileSixthImage));
                     sixthBoolean = false;
                 }
@@ -723,9 +763,9 @@ public class JobCompletedFragment extends Fragment {
                 if (message != null) {
                     JSONObject jsonObject = new JSONObject(message);
                     String result = jsonObject.getString("message");
-                    Log.d("message",result);
+                    Log.d("message", result);
 
-                    if (result.equals("Job Completed Successfully")){
+                    if (result.equals("Job Completed Successfully")) {
 
                         TextView tv_oops = dialog.findViewById(R.id.tv_oops);
                         tv_oops.setText("Job Completed");
@@ -741,8 +781,7 @@ public class JobCompletedFragment extends Fragment {
                         dialog.show();
                         Fragment fragment = new MissionCompletedFragment();
                         getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("XYZ").commit();
-                    }
-                    else if(result.equals("Distance is out of 200 meter")){
+                    } else if (result.equals("Distance is out of 200 meter")) {
                         TextView tv_oops = dialog.findViewById(R.id.tv_oops);
                         tv_oops.setText("");
                         TextView tv_message = dialog.findViewById(R.id.tv_message);
@@ -755,8 +794,7 @@ public class JobCompletedFragment extends Fragment {
                             }
                         });
                         dialog.show();
-                    }
-                    else if(result.equals("Time Interval is Greater than 10 minutes")){
+                    } else if (result.equals("Time Interval is Greater than 10 minutes")) {
                         TextView tv_oops = dialog.findViewById(R.id.tv_oops);
                         tv_oops.setText("");
                         TextView tv_message = dialog.findViewById(R.id.tv_message);
@@ -778,83 +816,12 @@ public class JobCompletedFragment extends Fragment {
                 progressBar.dismiss();
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Server Response");
-                builder.setMessage("you got some error");
+                builder.setMessage("Time out Please try again!");
                 builder.setCancelable(true);
                 builder.show();
             }
         }
     }
-
-
-  //skip this for now
-    public void firstApiCall() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.JOB_COMPLETED
-                , new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("first", response);
-
-                if (response.contains("true")) {
-                    try {
-                        JSONObject json = new JSONObject(response);
-                        strCompletedJob_id = json.getString("job_completed_id");
-                        new UploadFileToServer().execute();
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                } else if (response.contains("Distance is out of 200 meter")) {
-                    Toast.makeText(getActivity(), "Distance is out of 200 meter", Toast.LENGTH_SHORT).show();
-                } else if (response.contains("This job already completed")) {
-                    Toast.makeText(getActivity(), "This job already completed", Toast.LENGTH_SHORT).show();
-                } else if (response.contains("Time Interval is Greater than 10 minutes")) {
-                    Toast.makeText(getActivity(), "Time Interval is Greater than 10 minutes", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), "You got some error", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            public String getBodyContentType() {
-                return "application/x-www-form-urlencoded;charset=UTF-8";
-            }
-
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("api_token", strApiToken);
-                params.put("job_id", str_JobID);
-                params.put("comment", etComments.getText().toString());
-                params.put("latitude", strLatitude);
-                params.put("longitude", strLongitude);
-                params.put("current_time", strCurrentDateandTime);
-
-                Log.d("show", strApiToken);
-                Log.d("show", str_JobID);
-                Log.d("show", strLatitude);
-                Log.d("show", strLongitude);
-                Log.d("show", strCurrentDateandTime);
-
-                return params;
-            }
-
-        };
-        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        mRequestQueue.add(stringRequest);
-//end
-    }
-
 
 }
 

@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context=".ui.fragments.UserProfileFragment">
 
-
     <FrameLayout
 
         android:layout_width="match_parent"

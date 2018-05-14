@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 Fragment fragment = new UserProfileFragment();
                 getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).addToBackStack("abc").commit();
-                setTitle("My Account");
                 drawer.closeDrawer(Gravity.LEFT);
             }
         });
@@ -133,7 +132,7 @@ public class MainActivity extends AppCompatActivity
 
         getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("tag").commit();
         item.setChecked(true);
-        setTitle(item.getTitle());
+//        setTitle(item.getTitle());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

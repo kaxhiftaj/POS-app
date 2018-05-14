@@ -50,7 +50,7 @@
             android:textSize="14sp"/>
         <TextView
             android:id="@+id/myTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="250sp"
             android:layout_height="wrap_content"
             android:text="Job Title"
             android:layout_marginLeft="15sp"
