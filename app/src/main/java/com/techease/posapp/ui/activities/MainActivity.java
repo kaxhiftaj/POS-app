@@ -89,6 +89,9 @@ public class MainActivity extends AppCompatActivity
         editor = sharedPreferences.edit();
         str_mobileNo = sharedPreferences.getString("mobile_no", "");
         strToken = sharedPreferences.getString("api_token", "null");
+        str_firstName = sharedPreferences.getString("user_firstName","");
+        str_lastName = sharedPreferences.getString("user_lastName","");
+        str_image = sharedPreferences.getString("user_image","");
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -105,16 +108,9 @@ public class MainActivity extends AppCompatActivity
         profile_image = headerView.findViewById(R.id.iv_profile);
         TextView tv_edit = headerView.findViewById(R.id.et_edit);
 
-        if (InternetUtils.isNetworkConnected(MainActivity.this)) {
-            apiCall();
-            if (alertDialog == null)
-                alertDialog = AlertsUtils.createProgressDialog(MainActivity.this);
-            alertDialog.show();
-
-        } else {
-            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
-        }
-
+        Glide.with(MainActivity.this).load(str_image).into(profile_image);
+        tv_firstName.setText(str_firstName + " " + str_lastName);
+        tv_mobile_no.setText(mobile_no);
 
         tv_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,29 +204,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        apiCall();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        apiCall();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        apiCall();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        apiCall();
-    }
 
     public void apiCall() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.USER_LOGIN

@@ -34,6 +34,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.techease.posapp.R;
+import com.techease.posapp.ui.activities.MainActivity;
 import com.techease.posapp.ui.models.JobsModel;
 import com.techease.posapp.utils.AlertsUtils;
 import com.techease.posapp.utils.Configuration;
@@ -63,17 +64,17 @@ import static android.app.Activity.RESULT_OK;
 
 
 public class EditProfileFragment extends Fragment {
-    EditText ed_FirstName, ed_LastName, ed_Email,et_sex,et_dob;
-    String api_token, user_id, strFirstName, strLastName, strProfileImage,strEmail,strSex,strDob;
+    EditText ed_FirstName, ed_LastName, ed_Email, et_sex, et_dob;
+    String api_token, user_id, strFirstName, strLastName, strProfileImage, strEmail, strSex, strDob;
     Button btn_save;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Dialog dialog;
-    LinearLayout showNamesLayout, setFirstNameLayout,setLastNameLayout;
+    LinearLayout showNamesLayout, setFirstNameLayout, setLastNameLayout;
     File profileImage_file;
     CircleImageView ivProfile;
     Uri image_uri;
-    String str_firstName,str_lastName;
+    String str_firstName, str_lastName;
 
 
     @Override
@@ -117,7 +118,7 @@ public class EditProfileFragment extends Fragment {
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(profileImage_file == null && str_firstName == null){
+                if (profileImage_file == null && str_firstName == null) {
                     dialog = new Dialog(getActivity());
                     dialog.setContentView(R.layout.popup_layout);
                     TextView tvOK = dialog.findViewById(R.id.ok);
@@ -128,11 +129,8 @@ public class EditProfileFragment extends Fragment {
                         }
                     });
                     dialog.show();
-                }
-
-
-                else {
-                     new setProfile().execute();
+                } else {
+                    new setProfile().execute();
                 }
             }
         });
@@ -175,10 +173,10 @@ public class EditProfileFragment extends Fragment {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONObject temp = jsonObject.getJSONObject("user_data");
                     strFirstName = temp.getString("first_name");
-                     strLastName = temp.getString("last_name");
-                     strEmail = temp.getString("email");
-                     strSex = temp.getString("sex");
-                     strDob = temp.getString("dob");
+                    strLastName = temp.getString("last_name");
+                    strEmail = temp.getString("email");
+                    strSex = temp.getString("sex");
+                    strDob = temp.getString("dob");
 
 
                     ed_FirstName.setText(strFirstName);
@@ -207,7 +205,7 @@ public class EditProfileFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("api_token", api_token);
-                params.put("user_id",user_id);
+                params.put("user_id", user_id);
                 return params;
             }
 
@@ -305,6 +303,11 @@ public class EditProfileFragment extends Fragment {
 
                     if (result.equals("User Updated")) {
 
+                        editor.putString("user_firstName",str_firstName);
+                        editor.putString("user_lastName",str_lastName);
+                        editor.putString("user_image",strProfileImage);
+                        editor.commit();
+
                         TextView tv_oops = dialog.findViewById(R.id.tv_oops);
                         tv_oops.setText("Profile Updated");
                         TextView tv_message = dialog.findViewById(R.id.tv_message);
@@ -314,10 +317,12 @@ public class EditProfileFragment extends Fragment {
                             @Override
                             public void onClick(View v) {
                                 dialog.dismiss();
+                                startActivity(new Intent(getActivity(), MainActivity.class));
+                                getActivity().finish();
                             }
                         });
                         dialog.show();
-                }
+                    }
 
                 }
             } catch (Exception e) {
