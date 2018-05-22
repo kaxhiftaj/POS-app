@@ -66,7 +66,6 @@ public class SingleUserJobFragment extends Fragment {
     private static final int REQUEST_LOCATION = 1;
     double lattitude, longitude;
     TextView textView;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,9 +77,9 @@ public class SingleUserJobFragment extends Fragment {
         apiToken = sharedPreferences.getString("api_token", "null");
         user_id = sharedPreferences.getString("user_id", "null");
         job_id = sharedPreferences.getString("selectedJob", "null");
-        Log.d("zma_token", apiToken);
-        Log.d("zma_user_id", user_id);
-        Log.d("job_id", job_id);
+        Log.d("zma_token",apiToken);
+        Log.d("zma_user_id",user_id);
+        Log.d("job_id",job_id);
 
         user_mapView = (MapView) view.findViewById(R.id.UsermapView);
         user_mapView.onCreate(savedInstanceState);
@@ -111,8 +110,8 @@ public class SingleUserJobFragment extends Fragment {
                 String lng = sharedPreferences.getString("selectedLongitude", "");
                 final String title = sharedPreferences.getString("title", "");
                 final String description = sharedPreferences.getString("descp", "");
-                Log.d("selectlat", Lat);
-                Log.d("selectlng", lng);
+                Log.d("selectlat",Lat);
+                Log.d("selectlng",lng);
 
                 if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
@@ -127,8 +126,8 @@ public class SingleUserJobFragment extends Fragment {
 
 
                 user_googleMap.setMyLocationEnabled(true);
-                LatLng jobLatLng = new LatLng(Double.parseDouble(Lat), Double.parseDouble(lng));
-                LatLng currentlocation = new LatLng(lattitude, longitude);
+                    LatLng jobLatLng = new LatLng(Double.parseDouble(Lat), Double.parseDouble(lng));
+                    LatLng currentlocation = new LatLng(lattitude,longitude);
                 //finding the distance between two location
                 Location locationA = new Location("pointA");
                 locationA.setLatitude(lattitude);
@@ -137,94 +136,94 @@ public class SingleUserJobFragment extends Fragment {
                 locationB.setLatitude(Double.parseDouble(Lat));
                 locationB.setLongitude(Double.parseDouble(lng));
                 distance = locationA.distanceTo(locationB);
-                CalculationByDistance(jobLatLng, currentlocation);
+                CalculationByDistance(jobLatLng,currentlocation);
+                //textView.setText(String.valueOf("Total Distance = "+distance));
                 //end
 
-                user_googleMap.addMarker(new MarkerOptions().position(jobLatLng).title(title).snippet(description));
-                user_googleMap.addMarker(new MarkerOptions().position(currentlocation).title("Current Location").snippet("i am here"));
-//                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(jobLatLng, 12);
-//                cameraUpdate.zzatl();
-
-//                user_googleMap.animateCamera(cameraUpdate);
-                user_googleMap.addPolyline(new PolylineOptions()
-                        .add(new LatLng(lattitude, longitude), new LatLng(Double.parseDouble(Lat), Double.parseDouble(lng)))
-                        .width(5).color(Color.BLUE));
+                    user_googleMap.addMarker(new MarkerOptions().position(jobLatLng).title(title).snippet(description));
+                    user_googleMap.addMarker(new MarkerOptions().position(currentlocation).title("Current Location").snippet("i am here"));
+                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(currentlocation,9);
+                    user_googleMap.animateCamera(cameraUpdate);
+                    user_googleMap.addPolyline(new PolylineOptions()
+                            .add(new LatLng(lattitude,longitude), new LatLng(Double.parseDouble(Lat), Double.parseDouble(lng)))
+                            .width(5).color(Color.BLUE));
                 googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                    @Override
-                    public boolean onMarkerClick(Marker marker) {
-                        if (marker.getTitle().equals(title)) {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            builder.setTitle(title);
-                            builder.setMessage(description);
-                            builder.setCancelable(false);
-                            builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    apiCall();
-                                }
-                            });
-                            builder.setNegativeButton("Reject", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Toast.makeText(getActivity(), "you Rejected", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                            builder.show();
-                        } else {
-                            AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
-                            builder1.setTitle("Current Location");
-                            builder1.setMessage("I am here");
-                            builder1.setCancelable(true);
-                            builder1.show();
+                        @Override
+                        public boolean onMarkerClick(Marker marker) {
+                            if(marker.getTitle().equals(title)){
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                builder.setTitle(title);
+                                builder.setMessage(description);
+                                builder.setCancelable(false);
+                                builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        apiCall();
+                                    }
+                                });
+                                builder.setNegativeButton("Reject", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Toast.makeText(getActivity(),"you Rejected",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                builder.show();
+                            }
+                            else {
+                                AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+                                builder1.setTitle("Current Location");
+                                builder1.setMessage("I am here");
+                                builder1.setCancelable(true);
+                                builder1.show();
+                            }
+                            return false;
                         }
-                        return false;
-                    }
-                });
+                    });
 
-            }
-        });
+                }
+            });
 
-        return view;
-    }
+            return view;
+        }
 
-    private void apiCall() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.JOB_ACCEPTED,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getActivity(), "" + response, Toast.LENGTH_SHORT).show();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (alertDialog != null)
-                    alertDialog.dismiss();
+        private void apiCall(){
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.JOB_ACCEPTED,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    if (alertDialog != null)
+                        alertDialog.dismiss();
 
-            }
-        }) {
-            @Override
-            public String getBodyContentType() {
-                return "application/x-www-form-urlencoded;charset=UTF-8";
-            }
+                }
+            }) {
+                @Override
+                public String getBodyContentType() {
+                    return "application/x-www-form-urlencoded;charset=UTF-8";
+                }
 
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                Log.d("zma_job_id", job_id);
-                params.put("api_token", apiToken);
-                params.put("job_id", job_id);
-                params.put("users_id", user_id);
-                return params;
-            }
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    Log.d("zma_job_id",job_id);
+                    params.put("api_token", apiToken);
+                    params.put("job_id",job_id);
+                    params.put("users_id",user_id);
+                    return params;
+                }
 
-        };
-        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        mRequestQueue.add(stringRequest);
+            };
+            RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+            stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            mRequestQueue.add(stringRequest);
 
-    }
+        }
 
     //getting current location
     private void getLocation() {
@@ -237,7 +236,7 @@ public class SingleUserJobFragment extends Fragment {
         } else {
             Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             Location location1 = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            Location location2 = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+            Location location2 = locationManager.getLastKnownLocation(LocationManager. PASSIVE_PROVIDER);
 
             if (location != null) {
                 double latti = location.getLatitude();
@@ -245,22 +244,22 @@ public class SingleUserJobFragment extends Fragment {
                 lattitude = latti;
                 longitude = longi;
 
-            } else if (location1 != null) {
+            } else  if (location1 != null) {
                 double latti = location1.getLatitude();
                 double longi = location1.getLongitude();
                 lattitude = latti;
                 longitude = longi;
 
-            } else if (location2 != null) {
+            } else  if (location2 != null) {
                 double latti = location2.getLatitude();
                 double longi = location2.getLongitude();
                 lattitude = latti;
                 longitude = longi;
 
 
-            } else {
+            }else{
 
-                Toast.makeText(getActivity(), "Unble to Trace your location", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Unble to Trace your location", Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -305,7 +304,7 @@ public class SingleUserJobFragment extends Fragment {
         double meter = valueResult % 1000;
         int meterInDec = Integer.valueOf(newFormat.format(meter));
         // Toast.makeText(this, "Radius Value" + valueResult + "   KM  " + kmInDec + " Meter   " + meterInDec, Toast.LENGTH_SHORT).show();
-        textView.setText(" KiloMeter =" + kmInDec);
+        textView.setText(" KiloMeter =" + kmInDec );
         return Radius * c;
     }
-}
+    }
