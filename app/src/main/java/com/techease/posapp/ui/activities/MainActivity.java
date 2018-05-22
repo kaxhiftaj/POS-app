@@ -11,14 +11,30 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.techease.posapp.R;
 import com.techease.posapp.ui.fragments.HomeFragment;
 import com.techease.posapp.ui.fragments.JobCompletedFragment;
@@ -27,6 +43,17 @@ import com.techease.posapp.ui.fragments.MissionCompletedFragment;
 import com.techease.posapp.ui.fragments.RegsiterFragment;
 import com.techease.posapp.ui.fragments.UserAcceptedFragment;
 import com.techease.posapp.ui.fragments.UserProfileFragment;
+import com.techease.posapp.ui.fragments.VerificationCodeFragment;
+import com.techease.posapp.utils.AlertsUtils;
+import com.techease.posapp.utils.Configuration;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.android.volley.Request.Method.HEAD;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,6 +61,10 @@ public class MainActivity extends AppCompatActivity
     Fragment fragment;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    String str_mobileNo,strToken,str_firstName,str_lastName,str_image,mobile_no;
+    ImageView profile_image;
+    TextView tv_firstName,tv_mobile_no;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +77,6 @@ public class MainActivity extends AppCompatActivity
         getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).commit();
         setTitle("HOME");
 
-<<<<<<< HEAD
         sharedPreferences = this.getSharedPreferences(Configuration.MY_PREF, MODE_PRIVATE);
         editor = sharedPreferences.edit();
         str_mobileNo = sharedPreferences.getString("mobile_no", "");
@@ -55,8 +85,7 @@ public class MainActivity extends AppCompatActivity
         str_lastName = sharedPreferences.getString("user_lastName","");
         str_image = sharedPreferences.getString("user_image","");
 
-=======
->>>>>>> 7a5e69b08a0e99a4895fccb84acb390edae71054
+
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -67,15 +96,16 @@ public class MainActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         navigationView.setNavigationItemSelectedListener(this);
 
+        profile_image = headerView.findViewById(R.id.imageView);
         TextView tv_edit = headerView.findViewById(R.id.et_edit);
-<<<<<<< HEAD
+        tv_firstName = headerView.findViewById(R.id.et_name);
+        tv_mobile_no = headerView.findViewById(R.id.et_phone);
+
 
         Glide.with(MainActivity.this).load(str_image).into(profile_image);
         tv_firstName.setText(str_firstName + " " + str_lastName);
         tv_mobile_no.setText(mobile_no);
 
-=======
->>>>>>> 7a5e69b08a0e99a4895fccb84acb390edae71054
         tv_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,99 +188,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-<<<<<<< HEAD
 
-
-    public void apiCall() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.USER_LOGIN
-                , new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("main", response);
-                editor.putString("response", response).commit();
-                if (response.contains("false")) {
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
-
-                    Fragment fragment = new VerificationCodeFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-                } else if (response.contains("true")) {
-                    try {
-                        if (alertDialog != null)
-                            alertDialog.dismiss();
-                        JSONObject jsonObject = new JSONObject(response).getJSONObject("user_data");
-
-                        str_firstName = jsonObject.getString("first_name");
-                        str_lastName = jsonObject.getString("last_name");
-                        mobile_no = jsonObject.getString("mobile_no");
-                        str_image = jsonObject.getString("user_img");
-
-
-                        Glide.with(MainActivity.this).load(str_image).into(profile_image);
-                        tv_firstName.setText(str_firstName + " " + str_lastName);
-                        tv_mobile_no.setText(mobile_no);
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        if (alertDialog != null)
-                            alertDialog.dismiss();
-                        Log.d("error", String.valueOf(e.getMessage()));
-                    }
-
-                } else {
-                    try {
-                        if (alertDialog != null)
-                            alertDialog.dismiss();
-                        JSONObject jsonObject = new JSONObject(response);
-                        String message = jsonObject.getString("message");
-                        AlertsUtils.showErrorDialog(MainActivity.this, message);
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (alertDialog != null)
-                    alertDialog.dismiss();
-
-                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
-
-                } else if (error instanceof AuthFailureError) {
-                    AlertsUtils.showErrorDialog(MainActivity.this, "Auth Failure");
-                } else if (error instanceof ServerError) {
-                    AlertsUtils.showErrorDialog(MainActivity.this, "Server Error");
-                } else if (error instanceof NetworkError) {
-                    AlertsUtils.showErrorDialog(MainActivity.this, "Network Error");
-                } else if (error instanceof ParseError) {
-                    AlertsUtils.showErrorDialog(MainActivity.this, "Parsing Error");
-                }
-
-            }
-        }) {
-            @Override
-            public String getBodyContentType() {
-                return "application/x-www-form-urlencoded;charset=UTF-8";
-            }
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("mobile_no", str_mobileNo);
-
-                return params;
-            }
-
-        };
-        RequestQueue mRequestQueue = Volley.newRequestQueue(MainActivity.this);
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(200000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        mRequestQueue.add(stringRequest);
-    }
-=======
->>>>>>> 7a5e69b08a0e99a4895fccb84acb390edae71054
 }

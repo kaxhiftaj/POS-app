@@ -27,6 +27,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.techease.posapp.R;
+import com.techease.posapp.ui.fragments.HomeFragment;
+import com.techease.posapp.ui.fragments.JobCompletedFragment;
 import com.techease.posapp.ui.fragments.SingleUserJobFragment;
 import com.techease.posapp.ui.models.JobImagesModel;
 import com.techease.posapp.ui.models.JobsModel;
@@ -132,6 +134,8 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.MyViewHolder> 
                         String str_user_id =  holder.sharedPreferences.getString("user_id","");
                         apiCall(str_token,userJobId,str_user_id);
                         dialog.dismiss();
+                        Fragment fragment = new HomeFragment();
+                        ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).commit();
                    }
                 });
 
