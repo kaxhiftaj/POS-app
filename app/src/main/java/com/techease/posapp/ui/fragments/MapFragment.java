@@ -2,6 +2,7 @@ package com.techease.posapp.ui.fragments;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -79,6 +80,7 @@ public class MapFragment extends Fragment {
     android.support.v7.app.AlertDialog alertDialog;
     double lattitude, longitude;
     private static final int REQUEST_LOCATION = 1;
+    Dialog mapDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,15 +88,15 @@ public class MapFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_map, container, false);
-        getActivity().setTitle("Map");
+
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
         token = sharedPreferences.getString("api_token", "");
 
-        unbinder = ButterKnife.bind(this,v );
+        unbinder = ButterKnife.bind(this, v);
 
-        locationManager = (LocationManager)getActivity(). getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             buildAlertMessageNoGps();
 
@@ -102,8 +104,7 @@ public class MapFragment extends Fragment {
             getLocation();
         }
 
-        if(InternetUtils.isNetworkConnected(getActivity()))
-        {
+        if (InternetUtils.isNetworkConnected(getActivity())) {
             mMapView.onCreate(savedInstanceState);
             mMapView.onResume();
 
@@ -118,47 +119,37 @@ public class MapFragment extends Fragment {
                 public void onMapReady(GoogleMap mMap) {
                     googleMap = mMap;
                     editor.putString("currentLat", String.valueOf(longitude)).commit();
-                    editor.putString("currentLng",String.valueOf(lattitude)).commit();
-                    LatLng latLng = new LatLng(lattitude,longitude);
+                    editor.putString("currentLng", String.valueOf(lattitude)).commit();
+                    LatLng latLng = new LatLng(lattitude, longitude);
                     // For showing a move to my location button
                     if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
                         return;
                     }
                     googleMap.setMyLocationEnabled(true);
-                    LatLng sydney = new LatLng(lattitude,longitude );
+                    LatLng sydney = new LatLng(lattitude, longitude);
                     googleMap.addMarker(new MarkerOptions().position(sydney).title("My Current Location").snippet("This is My Current Location"));
-                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(sydney,12);
+                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(sydney, 12);
                     googleMap.animateCamera(cameraUpdate);
 
                 }
             });
-        }
-        else
-        {
-            Toast.makeText(getActivity(),"No Internet Connection",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_SHORT).show();
         }
         apicall();
         return v;
     }
 
-    public void showMarker(String lat, String lng, final String title, final String description) {
+    public void showMarker(String lat, String lng, final String title, String name, final String shot_desc) {
         double latt = Double.parseDouble(lat);
         double lngg = Double.parseDouble(lng);
         LatLng apiLatLng = new LatLng(latt, lngg);
-        final Marker my_marker = googleMap.addMarker(new MarkerOptions().position(apiLatLng).title(title).snippet(description));
+        final Marker my_marker = googleMap.addMarker(new MarkerOptions().position(apiLatLng).title(title).snippet(shot_desc));
         googleMap.setInfoWindowAdapter(new InfoWindowCustom(getActivity()));
-      /*  googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                Log.d("snippet",my_marker.getSnippet());
-                AlertsUtils.showErrorDialog(getActivity(),my_marker.getSnippet());
-                return false;
-            }
-        });*/
-
 
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -194,7 +185,7 @@ public class MapFragment extends Fragment {
         } else {
             Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             Location location1 = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            Location location2 = locationManager.getLastKnownLocation(LocationManager. PASSIVE_PROVIDER);
+            Location location2 = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
 
             if (location != null) {
                 double latti = location.getLatitude();
@@ -203,23 +194,23 @@ public class MapFragment extends Fragment {
                 lattitude = latti;
                 longitude = longi;
 
-            } else  if (location1 != null) {
+            } else if (location1 != null) {
                 double latti = location1.getLatitude();
                 double longi = location1.getLongitude();
 
                 lattitude = latti;
                 longitude = longi;
 
-            } else  if (location2 != null) {
+            } else if (location2 != null) {
                 double latti = location2.getLatitude();
                 double longi = location2.getLongitude();
                 lattitude = latti;
                 longitude = longi;
 
 
-            }else{
+            } else {
 
-                Toast.makeText(getActivity(),"Unble to Trace your location", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Unble to Trace your location", Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -243,9 +234,9 @@ public class MapFragment extends Fragment {
         final AlertDialog alert = builder.create();
         alert.show();
     }
- 
+
     private void apicall() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.USER_URL+"jobs"
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.USER_URL + "jobs"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -261,16 +252,19 @@ public class MapFragment extends Fragment {
 
                             JobsModel model = new JobsModel();
                             String job_title = temp.getString("job_title");
-                            String description = temp.getString("shot_desc");
+                            String company_Name = temp.getString("company_name");
+                            String shot_desc = temp.getString("shot_desc");
                             String latitude = temp.getString("latitude");
                             String longitude = temp.getString("longitude");
 
+
                             model.setJob_title(job_title);
-                            model.setJob_desc(description);
+                            model.setCompany_name(company_Name);
+                            model.setJob_desc(shot_desc);
                             model.setLatitude(latitude);
                             model.setLongitude(longitude);
-                            showMarker(latitude,longitude,job_title,description);
-                        
+                            showMarker(latitude, longitude, job_title, company_Name, shot_desc);
+
                         }
 
 
@@ -280,21 +274,8 @@ public class MapFragment extends Fragment {
                             alertDialog.dismiss();
                     }
 
-
                 } else {
 
-//                    try {
-//                        if (alertDialog != null)
-//                            alertDialog.dismiss();
-//                        JSONObject jsonObject = new JSONObject(response);
-//                        String message = jsonObject.getString("message");
-//                        AlertsUtils.showErrorDialog(getActivity(), message);
-//
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                        if (alertDialog != null)
-//                            alertDialog.dismiss();
-//                    }
                 }
             }
 
@@ -330,46 +311,29 @@ public class MapFragment extends Fragment {
     public class InfoWindowCustom implements GoogleMap.InfoWindowAdapter {
         Context context;
         LayoutInflater inflater;
+
         public InfoWindowCustom(Context context) {
             this.context = context;
         }
+
         @Override
         public View getInfoContents(Marker marker) {
             return null;
         }
+
         @Override
         public View getInfoWindow(Marker marker) {
             inflater = (LayoutInflater)
                     context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View v = inflater.inflate(R.layout.custom_info_window, null);
+            View v = inflater.inflate(R.layout.map_popup, null);
 
-          //  TextView title = (TextView) v.findViewById(R.id.myTitle);
-          //  TextView subtitle = (TextView) v.findViewById(R.id.description);
-          //  Button accept = v.findViewById(R.id.accept);
-          //  Button reject = v.findViewById(R.id.reject);
-          //  title.setText(marker.getTitle());
-          //  subtitle.setText(marker.getSnippet());
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle(marker.getTitle());
-            builder.setMessage(marker.getSnippet());
-           // builder.setView(R.layout.custom_info_window);
-            builder.setCancelable(false);
-            builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(getActivity(), "you Accepted", Toast.LENGTH_SHORT).show();
-                }
-            });
-            builder.setNegativeButton("Reject", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                   Toast.makeText(getActivity(),"you Rejected",Toast.LENGTH_SHORT).show();
-                }
-            });
-            builder.show();
+            TextView title = (TextView) v.findViewById(R.id.tv_title);
+            TextView subtitle = (TextView) v.findViewById(R.id.tv_snippet);
+            title.setText(marker.getTitle());
+            subtitle.setText(marker.getSnippet());
+
             return v;
         }
     }
-
 }
 

@@ -17,6 +17,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.techease.posapp.ui.fragments.HomeFragment;
+import com.techease.posapp.ui.fragments.MissionsFragment;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -132,6 +134,8 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.MyViewHolder> 
                         String str_user_id =  holder.sharedPreferences.getString("user_id","");
                         apiCall(str_token,userJobId,str_user_id);
                         dialog.dismiss();
+                        Fragment fragment = new HomeFragment();
+                        ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).commit();
                    }
                 });
 
@@ -182,8 +186,6 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.MyViewHolder> 
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(context, ""+response, Toast.LENGTH_SHORT).show();
-
 
                     }
                 }, new Response.ErrorListener() {

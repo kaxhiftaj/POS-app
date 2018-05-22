@@ -1,9 +1,18 @@
 package com.techease.posapp.ui.fragments;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,6 +43,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,6 +66,9 @@ public class MissionsFragment extends Fragment {
     @BindView(R.id.rv_jobs)
     RecyclerView recyclerView;
     Dialog dialog;
+    LocationManager locationManager;
+    private static final int REQUEST_LOCATION = 100;
+    double lattitude, longitude;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,8 +81,20 @@ public class MissionsFragment extends Fragment {
         token = sharedPreferences.getString("api_token", "");
         userID = sharedPreferences.getString("user_id","");
 
-        if (InternetUtils.isNetworkConnected(getActivity())) {
+        deleteCache(getActivity());
 
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            buildAlertMessageNoGps();
+
+        } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            getLocation();
+        }
+
+        Log.d("show",String.valueOf(lattitude));
+        Log.d("show",String.valueOf(longitude));
+
+        if (InternetUtils.isNetworkConnected(getActivity())) {
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             job_model_list = new ArrayList<>();
             apicall();
@@ -92,7 +117,7 @@ public class MissionsFragment extends Fragment {
             public void onResponse(String response) {
                 alertDialog.dismiss();
                 Log.d("response",response);
-
+                job_model_list.clear();
                 if (response.contains("200")) {
                     try {
                         if (alertDialog != null)
@@ -160,6 +185,8 @@ public class MissionsFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("api_token", token);
+                params.put("lat",String.valueOf(lattitude));
+                params.put("lng",String.valueOf(longitude));
                 return params;
             }
 
@@ -190,4 +217,91 @@ public class MissionsFragment extends Fragment {
         dialog.show();
 
     }
+
+
+    public static void deleteCache(Context context) {
+        try {
+            File dir = context.getCacheDir();
+            deleteDir(dir);
+        } catch (Exception e) {}
+    }
+
+    public static boolean deleteDir(File dir) {
+        if (dir != null && dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+            return dir.delete();
+        } else if(dir!= null && dir.isFile()) {
+            return dir.delete();
+        } else {
+            return false;
+        }
+    }
+
+
+
+    //getting current location
+    private void getLocation() {
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission
+                (getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+
+        } else {
+            Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            Location location1 = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            Location location2 = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+
+            if (location != null) {
+                double latti = location.getLatitude();
+                double longi = location.getLongitude();
+
+                lattitude = latti;
+                longitude = longi;
+
+            } else if (location1 != null) {
+                double latti = location1.getLatitude();
+                double longi = location1.getLongitude();
+
+                lattitude = latti;
+                longitude = longi;
+
+            } else if (location2 != null) {
+                double latti = location2.getLatitude();
+                double longi = location2.getLongitude();
+                lattitude = latti;
+                longitude = longi;
+
+            } else {
+                Toast.makeText(getActivity(), "Unble to Trace your location", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    protected void buildAlertMessageNoGps() {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage("Please Turn ON your GPS Connection")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+
 }

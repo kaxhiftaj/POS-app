@@ -116,7 +116,7 @@ public class LoginFragment extends Fragment {
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("zma response", response);
+                Log.d("login response", response);
                 editor.putString("response",response).commit();
                 if(response.contains("false")){
                     if (alertDialog != null)
@@ -133,11 +133,21 @@ public class LoginFragment extends Fragment {
                         JSONObject jsonObject = new JSONObject(response).getJSONObject("user_data");
                         String api_token = jsonObject.getString("api_token");
                         int user_id = jsonObject.getInt("user_id");
+                        String first_name = jsonObject.getString("first_name");
+                        String last_name = jsonObject.getString("last_name");
+                        String mobile_no = jsonObject.getString("mobile_no");
+                        String user_img = jsonObject.getString("user_img");
                         Log.d("my",api_token);
                         Log.d("my",String.valueOf(user_id));
+                        Log.d("my",first_name);
+                        Log.d("my",mobile_no);
 
                         editor.putString("api_token", api_token);
                         editor.putString("user_id", String.valueOf(user_id));
+                        editor.putString("user_firstName",first_name);
+                        editor.putString("user_lastName",last_name);
+                        editor.putString("mobile_no",mobile_no);
+                        editor.putString("user_image",user_img);
                         editor.commit();
                         Fragment fragment = new VerificationCodeFragment();
                         getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();

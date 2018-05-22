@@ -9,41 +9,41 @@
     android:theme="@style/NavigationViewStyle">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_profile"
         android:layout_width="90sp"
         android:layout_height="90sp"
         android:layout_marginLeft="5sp"
         android:layout_marginTop="30sp"
-        android:src="@drawable/vectorsmart"/>
+        android:src="@drawable/profile"/>
 
     <TextView
         android:id="@+id/et_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit"
-        android:layout_below="@id/imageView"
+        android:layout_below="@id/iv_profile"
         android:layout_marginLeft="42sp"
         android:textColor="@color/colorPrimary"/>
 
     <TextView
-        android:id="@+id/et_name"
+        android:id="@+id/tv_Firstname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:layout_alignBaseline="@id/imageView"
-        android:layout_toRightOf="@id/imageView"
-        android:nextFocusRight="@id/imageView"
+        android:layout_alignBaseline="@id/iv_profile"
+        android:layout_toRightOf="@id/iv_profile"
+        android:nextFocusRight="@id/iv_profile"
         android:layout_marginTop="35sp"
         android:text="Marcus Ryan"
         android:layout_marginLeft="15dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/et_location"
+        android:id="@+id/tv_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_name"
-        android:layout_toRightOf="@id/imageView"
+        android:layout_below="@+id/tv_Firstname"
+        android:layout_toRightOf="@id/iv_profile"
         android:layout_marginLeft="15dp"
         android:text="Kingston - Jamaica" />
 
@@ -51,16 +51,16 @@
         android:id="@+id/cell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_location"
-        android:layout_toRightOf="@id/imageView"
+        android:layout_below="@+id/tv_location"
+        android:layout_toRightOf="@id/iv_profile"
         android:layout_marginLeft="15dp"
         android:text="Phone:" />
 
     <TextView
-        android:id="@+id/et_phone"
+        android:id="@+id/tv_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_location"
+        android:layout_below="@+id/tv_location"
         android:layout_toRightOf="@id/cell"
         android:layout_marginLeft="5dp"
         android:text="+1876 5555555" />

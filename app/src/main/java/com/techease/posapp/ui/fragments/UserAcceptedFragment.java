@@ -107,8 +107,6 @@ public class UserAcceptedFragment extends Fragment {
                             String image = temp.getString("image");
                             String company_name = temp.getString("company_name");
 
-                            Log.d("nido",jobTitle);
-                            Log.d("nido",company_name);
                             model.setJob_id(jobId);
                             model.setCompany_name(company_name);
                             model.setJob_title(jobTitle);
@@ -132,7 +130,6 @@ public class UserAcceptedFragment extends Fragment {
                             alertDialog.dismiss();
                         JSONObject jsonObject = new JSONObject(response);
                         String message = jsonObject.getString("message");
-//                        AlertsUtils.showErrorDialog(getActivity(), "This User ID have no job Accepted Yet");
                         dialog = new Dialog(getActivity());
                         dialog.setContentView(R.layout.popup_layout);
                         TextView tv_oops = dialog.findViewById(R.id.tv_oops);

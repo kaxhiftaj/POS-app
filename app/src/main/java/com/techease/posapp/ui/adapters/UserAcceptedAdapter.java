@@ -30,7 +30,7 @@ public class UserAcceptedAdapter extends RecyclerView.Adapter<UserAcceptedAdapte
     Context context;
 
     public UserAcceptedAdapter(Context context, ArrayList<UserAcceptedModel> acceptedModelArrayList) {
-        this.context=context;
+        this.context = context;
         this.acceptedModelArrayList = acceptedModelArrayList;
     }
 
@@ -50,12 +50,11 @@ public class UserAcceptedAdapter extends RecyclerView.Adapter<UserAcceptedAdapte
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.editor.putString("jobID",model.getJob_id()).commit();
-                holder.editor.putString("missionTitle",model.getJob_title()).commit();
-                holder.editor.putString("missionDesc",model.getDescription()).commit();
+                holder.editor.putString("jobID", model.getJob_id()).commit();
+                holder.editor.putString("missionTitle", model.getJob_title()).commit();
+                holder.editor.putString("missionDesc", model.getDescription()).commit();
                 Fragment fragment = new JobCompletedFragment();
-                ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).addToBackStack("asd").commit();
-                ((AppCompatActivity) context).setTitle("Accepted");
+                ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("abc").commit();
             }
         });
     }
@@ -65,9 +64,9 @@ public class UserAcceptedAdapter extends RecyclerView.Adapter<UserAcceptedAdapte
         return acceptedModelArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView name,title,description,date;
+        TextView name, title, description, date;
         RelativeLayout relativeLayout;
         SharedPreferences sharedPreferences;
         SharedPreferences.Editor editor;
@@ -79,7 +78,7 @@ public class UserAcceptedAdapter extends RecyclerView.Adapter<UserAcceptedAdapte
             title = (TextView) itemView.findViewById(R.id.accepted_job_title);
             description = (TextView) itemView.findViewById(R.id.accepted_job_desc);
             relativeLayout = itemView.findViewById(R.id.individual_layout);
-            sharedPreferences = context.getSharedPreferences(Configuration.MY_PREF,Context.MODE_PRIVATE);
+            sharedPreferences = context.getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
             editor = sharedPreferences.edit();
         }
     }
