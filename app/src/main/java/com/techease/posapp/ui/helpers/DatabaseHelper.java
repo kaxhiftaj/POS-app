@@ -2,7 +2,6 @@ package com.techease.posapp.ui.helpers;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -40,12 +39,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else {
             return true;
         }
-    }
-
-    public Cursor getData(){
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-    String query = "SELECT * FROM "+TABLE_NAME;
-    Cursor cursor  = sqLiteDatabase.rawQuery(query,null);
-    return cursor;
     }
 }
