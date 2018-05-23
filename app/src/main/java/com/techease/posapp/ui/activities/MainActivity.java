@@ -36,6 +36,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.techease.posapp.R;
+import com.techease.posapp.ui.fragments.EditProfileFragment;
 import com.techease.posapp.ui.fragments.HomeFragment;
 import com.techease.posapp.ui.fragments.JobCompletedFragment;
 import com.techease.posapp.ui.fragments.LoginFragment;
@@ -104,14 +105,23 @@ public class MainActivity extends AppCompatActivity
 
         Glide.with(MainActivity.this).load(str_image).into(profile_image);
         tv_firstName.setText(str_firstName + " " + str_lastName);
-        tv_mobile_no.setText(mobile_no);
+        tv_mobile_no.setText(str_mobileNo);
 
         tv_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new UserProfileFragment();
+                Fragment fragment = new EditProfileFragment();
                 getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).addToBackStack("abc").commit();
                 setTitle("My Account");
+                drawer.closeDrawer(Gravity.LEFT);
+            }
+        });
+
+        profile_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new EditProfileFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).addToBackStack("abc").commit();
                 drawer.closeDrawer(Gravity.LEFT);
             }
         });
@@ -182,7 +192,7 @@ public class MainActivity extends AppCompatActivity
 
         getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("tag").commit();
         item.setChecked(true);
-        setTitle(item.getTitle());
+//        setTitle(item.getTitle());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

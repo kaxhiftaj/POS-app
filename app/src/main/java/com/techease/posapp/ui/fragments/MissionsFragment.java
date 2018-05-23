@@ -78,7 +78,6 @@ public class MissionsFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("api_token", "");
-        Log.d("nido",token);
         userID = sharedPreferences.getString("user_id","");
 
         locationManager = (LocationManager)getActivity(). getSystemService(Context.LOCATION_SERVICE);

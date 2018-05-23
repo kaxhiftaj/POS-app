@@ -64,24 +64,13 @@ import static android.app.Activity.RESULT_OK;
 
 public class EditProfileFragment extends Fragment {
 
-    EditText ed_FirstName, ed_LastName, ed_Email, et_sex, et_dob,ed_MobileNo;
-    String api_token, user_id, strFirstName, strLastName, strProfileImage, strEmail, strSex, strDob,str_firstName,str_lastName;
- //   EditText ed_FirstName, ed_LastName, ed_Email, ed_MobileNo;
-//    String api_token, user_id,strFirstName,strLastName,strProfileImage;
-
+    EditText ed_FirstName, ed_LastName, ed_Email, et_sex, et_dob;
+    String api_token, user_id, strProfileImage, strEmail, strSex, strDob, str_firstName, str_lastName;
     Button btn_save;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Dialog dialog;
-
-//    LinearLayout showNamesLayout, setFirstNameLayout, setLastNameLayout;
-//    File profileImage_file;
-//    CircleImageView ivProfile;
-//    Uri image_uri;
-//    String str_firstName, str_lastName;
-
-
-    LinearLayout showNamesLayout,setNameLayout;
+    LinearLayout showNamesLayout, setNameLayout;
     File profileImage_file;
     CircleImageView ivProfile;
     Uri image_uri;
@@ -91,10 +80,12 @@ public class EditProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
+        getActivity().setTitle("My Account");
         ed_FirstName = (EditText) view.findViewById(R.id.edit_firstName);
         ed_LastName = (EditText) view.findViewById(R.id.edit_lastName);
         ed_Email = (EditText) view.findViewById(R.id.edit_email);
-        ed_MobileNo = (EditText) view.findViewById(R.id.edit_mobileNo);
+        et_sex  = view.findViewById(R.id.edit_sex);
+        et_dob = view.findViewById(R.id.edit_dob);
         btn_save = view.findViewById(R.id.edit_done);
         ivProfile = view.findViewById(R.id.set_profilePictr);
         setNameLayout = view.findViewById(R.id.edit_Name_layout);
@@ -105,12 +96,15 @@ public class EditProfileFragment extends Fragment {
         api_token = sharedPreferences.getString("api_token", "");
         user_id = sharedPreferences.getString("user_id", "");
 
+        apicall();
+
         setNameLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showNamesLayout.setVisibility(View.VISIBLE);
             }
         });
+
 
         ivProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,9 +117,6 @@ public class EditProfileFragment extends Fragment {
             public void onClick(View v) {
 
                 if (profileImage_file == null) {
-
-
-//                if (profileImage_file == null && ed_FirstName.getText().toString() == null && ed_LastName.getText().toString() == null) {
 
                     dialog = new Dialog(getActivity());
                     dialog.setContentView(R.layout.popup_layout);
@@ -141,16 +132,9 @@ public class EditProfileFragment extends Fragment {
                     new setProfile().execute();
                 }
 
-
-//                }
-//                else {
-//                    apicall();
-//                    Fragment fragment = new UserProfileFragment();
-//                    getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("").commit();
-//                }
-
             }
         });
+
         return view;
     }
 
@@ -181,42 +165,35 @@ public class EditProfileFragment extends Fragment {
 
     }
 
-    private void apicall(){
-        final String str_firstName = ed_FirstName.getText().toString().trim();
-        final String str_lastName = ed_LastName.getText().toString().trim();
-        final String str_Email = ed_Email.getText().toString().trim();
-        final String str_Mobile = ed_MobileNo.getText().toString().trim();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.USER_EDIT_PROFILE
+    private void apicall() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Configuration.USER_PROFILE
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONObject temp = jsonObject.getJSONObject("user_data");
-                    strFirstName = temp.getString("first_name");
-                    strLastName = temp.getString("last_name");
-                    strEmail = temp.getString("email");
-                    strSex = temp.getString("sex");
-                    strDob = temp.getString("dob");
-
+                    String strFirstName = temp.getString("first_name");
+                    String strLastName = temp.getString("last_name");
+                    String strEmail = temp.getString("email");
+                    String strGender = temp.getString("sex");
+                    String strDob = temp.getString("dob");
 
                     ed_FirstName.setText(strFirstName);
                     ed_LastName.setText(strLastName);
                     ed_Email.setText(strEmail);
-                    et_sex.setText(strSex);
+                    et_sex.setText(strGender);
                     et_dob.setText(strDob);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "you got some error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "got some error", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -227,14 +204,8 @@ public class EditProfileFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("user_id", user_id);
-                params.put("first_name", str_firstName);
-                params.put("last_name", str_lastName);
-                params.put("email", str_Email);
-                params.put("mobile_no", str_Mobile);
                 params.put("api_token", api_token);
                 params.put("user_id", user_id);
-
                 return params;
             }
 
@@ -246,6 +217,7 @@ public class EditProfileFragment extends Fragment {
         mRequestQueue.add(stringRequest);
 
     }
+
 
     private class setProfile extends AsyncTask<Void, Integer, String> {
         ProgressDialog progressBar;
@@ -259,7 +231,6 @@ public class EditProfileFragment extends Fragment {
             progressBar.setCancelable(false);
             progressBar.show();
 
-
         }
 
         @Override
@@ -271,9 +242,9 @@ public class EditProfileFragment extends Fragment {
         protected String doInBackground(Void... params) {
             str_firstName = ed_FirstName.getText().toString().trim();
             str_lastName = ed_LastName.getText().toString().trim();
-            final String str_Email = ed_Email.getText().toString().trim();
-            final String str_sex = et_sex.getText().toString().trim();
-            final String str_dob = et_dob.getText().toString().trim();
+            strEmail = ed_Email.getText().toString().trim();
+            strSex = et_sex.getText().toString().trim();
+            strDob = et_dob.getText().toString().trim();
 
             String responseString;
             HttpClient httpclient = new DefaultHttpClient();
@@ -294,9 +265,9 @@ public class EditProfileFragment extends Fragment {
                 entity.addPart("user_id", new StringBody(user_id));
                 entity.addPart("first_name", new StringBody(str_firstName));
                 entity.addPart("last_name", new StringBody(str_lastName));
-                entity.addPart("sex", new StringBody(str_sex));
-                entity.addPart("dob", new StringBody(str_dob));
-                entity.addPart("email", new StringBody(str_Email));
+                entity.addPart("sex", new StringBody(strSex));
+                entity.addPart("dob", new StringBody(strDob));
+                entity.addPart("email", new StringBody(strEmail));
                 entity.addPart("api_token", new StringBody(api_token));
 
 
@@ -332,9 +303,9 @@ public class EditProfileFragment extends Fragment {
 
                     if (result.equals("User Updated")) {
 
-                        editor.putString("user_firstName",str_firstName);
-                        editor.putString("user_lastName",str_lastName);
-                        editor.putString("user_image",strProfileImage);
+                        editor.putString("user_firstName", str_firstName);
+                        editor.putString("user_lastName", str_lastName);
+                        editor.putString("user_image", strProfileImage);
                         editor.commit();
 
                         TextView tv_oops = dialog.findViewById(R.id.tv_oops);
@@ -352,6 +323,20 @@ public class EditProfileFragment extends Fragment {
                         });
                         dialog.show();
                     }
+                    else {
+                        TextView tv_oops = dialog.findViewById(R.id.tv_oops);
+                        tv_oops.setText("Incorrect File format");
+                        TextView tv_message = dialog.findViewById(R.id.tv_message);
+                        tv_message.setText("choose another image and try again");
+                        TextView ok = dialog.findViewById(R.id.ok);
+                        ok.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                            }
+                        });
+                        dialog.show();
+                    }
 
                 }
             } catch (Exception e) {
@@ -365,5 +350,4 @@ public class EditProfileFragment extends Fragment {
             }
         }
     }
-
 }

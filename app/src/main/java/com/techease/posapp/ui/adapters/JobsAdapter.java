@@ -129,13 +129,13 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.MyViewHolder> 
                     public void onClick(View v) {
                         Toast.makeText(context, "accepted", Toast.LENGTH_SHORT).show();
                         final String userJobId =model.getJob_id();
-                        Log.d("job",userJobId);
                         String str_token = holder.sharedPreferences.getString("api_token","");
                         String str_user_id =  holder.sharedPreferences.getString("user_id","");
                         apiCall(str_token,userJobId,str_user_id);
                         dialog.dismiss();
                         Fragment fragment = new HomeFragment();
                         ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).commit();
+                        ((AppCompatActivity) context).setTitle("User Accepted");
                    }
                 });
 

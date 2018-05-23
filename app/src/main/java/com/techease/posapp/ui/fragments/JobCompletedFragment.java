@@ -150,7 +150,7 @@ public class JobCompletedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         parentView = inflater.inflate(R.layout.fragment_job_completed, container, false);
-        getActivity().setTitle("Completed");
+        getActivity().setTitle("Accepted");
         ButterKnife.bind(this, parentView);
         flagFirstImage = false;
         flagSecondImage = false;
@@ -279,21 +279,18 @@ public class JobCompletedFragment extends Fragment {
                 } else if (str_JobID == null || strApiToken == null) {
                     Toast.makeText(getActivity(), "Incorrect job id or token", Toast.LENGTH_SHORT).show();
                 }
-//                if (fileSecondImage == null || etComments.getText().toString() == null
-//                        || strCurrentDateandTime == null || str_JobID == null || strLongitude == null || strLatitude == null) {
-//                    Toast.makeText(getActivity(), "Missing Some Parameter", Toast.LENGTH_SHORT).show();
-//                }
                 else {
-//                    firstApiCall();
                     new UploadFileToServer().execute();
                 }
-                boolean insert = databaseHelper.insertData(etComments.getText().toString(),strSecondImage);
-                if(insert){
-                    Toast.makeText(getActivity(), "Data Inserted", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(getActivity(), "Not Inserted", Toast.LENGTH_SHORT).show();
-                }
+
+                //data insertion into sqlite
+//                boolean insert = databaseHelper.insertData(etComments.getText().toString(),strSecondImage);
+//                if(insert){
+//                    Toast.makeText(getActivity(), "Data Inserted", Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    Toast.makeText(getActivity(), "Not Inserted", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 
