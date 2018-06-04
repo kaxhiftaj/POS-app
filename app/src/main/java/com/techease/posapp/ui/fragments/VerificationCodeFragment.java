@@ -36,7 +36,6 @@ public class VerificationCodeFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF,Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         res = sharedPreferences.getString("response","null");
-        Log.d("res",res);
 
         btn_verifyCode.setOnClickListener(new View.OnClickListener() {
             @Override

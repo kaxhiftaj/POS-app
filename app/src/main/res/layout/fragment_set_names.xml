@@ -22,6 +22,39 @@
             android:gravity="center"
             android:textSize="25dp"/>
 
+        <FrameLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50sp">
+
+            <LinearLayout
+                android:id="@+id/profileImage_layout"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:layout_gravity="center"
+                android:background="@drawable/round_layout"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="10sp"
+                    android:text="click to add your picture"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/set_profileImage"
+                android:layout_width="100sp"
+                android:layout_height="60sp"
+                android:src="@drawable/profile" />
+        </FrameLayout>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -38,6 +71,16 @@
             android:paddingLeft="30dp"
             android:background="@drawable/round_back_edittext"
             android:id="@+id/set_last_name"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Sex"
+            android:paddingLeft="30dp"
+            android:background="@drawable/round_back_edittext"
+            android:id="@+id/set_gender"
             android:inputType="textEmailAddress"
             android:layout_marginTop="10dp"/>
 

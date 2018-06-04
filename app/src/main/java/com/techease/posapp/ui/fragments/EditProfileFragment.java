@@ -64,8 +64,8 @@ import static android.app.Activity.RESULT_OK;
 
 public class EditProfileFragment extends Fragment {
 
-    EditText ed_FirstName, ed_LastName, ed_Email, et_sex, et_dob;
-    String api_token, user_id, strProfileImage, strEmail, strSex, strDob, str_firstName, str_lastName;
+    EditText ed_FirstName, ed_LastName, ed_Email, et_sex, et_dob,et_phone;
+    String api_token, user_id, strProfileImage, strEmail, strSex, strDob, str_firstName, str_lastName,str_phone;
     Button btn_save;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -86,6 +86,7 @@ public class EditProfileFragment extends Fragment {
         ed_Email = (EditText) view.findViewById(R.id.edit_email);
         et_sex  = view.findViewById(R.id.edit_sex);
         et_dob = view.findViewById(R.id.edit_dob);
+        et_phone = view.findViewById(R.id.edit_phone);
         btn_save = view.findViewById(R.id.edit_done);
         ivProfile = view.findViewById(R.id.set_profilePictr);
         setNameLayout = view.findViewById(R.id.edit_Name_layout);
@@ -178,12 +179,14 @@ public class EditProfileFragment extends Fragment {
                     String strEmail = temp.getString("email");
                     String strGender = temp.getString("sex");
                     String strDob = temp.getString("dob");
+                    String strPhone = temp.getString("mobile_no");
 
                     ed_FirstName.setText(strFirstName);
                     ed_LastName.setText(strLastName);
                     ed_Email.setText(strEmail);
                     et_sex.setText(strGender);
                     et_dob.setText(strDob);
+                    et_phone.setText(strPhone);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -245,6 +248,8 @@ public class EditProfileFragment extends Fragment {
             strEmail = ed_Email.getText().toString().trim();
             strSex = et_sex.getText().toString().trim();
             strDob = et_dob.getText().toString().trim();
+            str_phone = et_phone.getText().toString().trim();
+
 
             String responseString;
             HttpClient httpclient = new DefaultHttpClient();
@@ -268,6 +273,7 @@ public class EditProfileFragment extends Fragment {
                 entity.addPart("sex", new StringBody(strSex));
                 entity.addPart("dob", new StringBody(strDob));
                 entity.addPart("email", new StringBody(strEmail));
+                entity.addPart("mobile_no",new StringBody(str_phone));
                 entity.addPart("api_token", new StringBody(api_token));
 
 
@@ -306,6 +312,7 @@ public class EditProfileFragment extends Fragment {
                         editor.putString("user_firstName", str_firstName);
                         editor.putString("user_lastName", str_lastName);
                         editor.putString("user_image", strProfileImage);
+                        editor.putString("mobile_no",str_phone);
                         editor.commit();
 
                         TextView tv_oops = dialog.findViewById(R.id.tv_oops);

@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity
     Fragment fragment;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    String str_mobileNo,strToken,str_firstName,str_lastName,str_image,mobile_no;
+    String str_mobileNo,strToken,str_firstName,str_lastName,str_image,str_mobile_no;
     ImageView profile_image;
     TextView tv_firstName,tv_mobile_no;
 
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity
         str_lastName = sharedPreferences.getString("user_lastName","");
         str_image = sharedPreferences.getString("user_image","");
 
+        Log.d("umer",str_mobileNo);
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

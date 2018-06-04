@@ -350,9 +350,10 @@ public class JobCompletedFragment extends Fragment {
 
                     Bitmap bm = (Bitmap) imageReturnedIntent.getExtras().get("data");
                     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                    bm.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+                    bm.compress(Bitmap.CompressFormat.JPEG, 80, bytes);
 
-                    File sourceFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Pos/img.jpg");
+                    File sourceFile = new File(Environment.getExternalStorageDirectory(),
+                            System.currentTimeMillis() + ".jpg");
 
 
                     FileOutputStream fo;
@@ -374,7 +375,6 @@ public class JobCompletedFragment extends Fragment {
 
                     }
                     if (flagSecondImage) {
-//                        ivSecondImage.setImageBitmap(bm);
                         strSecondImage = sourceFile.getAbsolutePath().toString();
                         fileSecondImage = new File(strSecondImage);
                     }
@@ -659,7 +659,6 @@ public class JobCompletedFragment extends Fragment {
 
                             }
                         });
-
                 entity.addPart("img1", new FileBody(fileSecondImage));
                 if(thirdBoolean){
                     entity.addPart("img2", new FileBody(filethirdImage));
@@ -677,7 +676,6 @@ public class JobCompletedFragment extends Fragment {
                     entity.addPart("img5", new FileBody(fileSixthImage));
                     sixthBoolean = false;
                 }
-
                 Looper.prepare();
                 entity.addPart("api_token", new StringBody(strApiToken));
                 entity.addPart("job_id", new StringBody(str_JobID));
@@ -686,11 +684,13 @@ public class JobCompletedFragment extends Fragment {
                 entity.addPart("longitude", new StringBody(strLongitude));
                 entity.addPart("current_time", new StringBody(strCurrentDateandTime));
 
-                Log.d("show", strApiToken);
-                Log.d("show", str_JobID);
-                Log.d("show", strLatitude);
-                Log.d("show", strLongitude);
-                Log.d("show", strCurrentDateandTime);
+                Log.d("umer",strApiToken);
+                Log.d("umer",str_JobID);
+                Log.d("umer",fileSecondImage.toString());
+                Log.d("umer",etComments.getText().toString());
+                Log.d("umer",strLatitude);
+                Log.d("umer",strLongitude);
+                Log.d("umer",strCurrentDateandTime);
 
                 httppost.setEntity(entity);
                 HttpResponse response = httpclient.execute(httppost);
