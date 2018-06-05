@@ -18,12 +18,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8043f6bc-1814-4d10-bef1-e997f6986a54" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edittextshape.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/MainActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/EditProfileFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/EditProfileFragment.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MapFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MapFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/SetNamesFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/SetNamesFragment.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/VerificationCodeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/VerificationCodeFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserProfileFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserProfileFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_set_names.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_set_names.xml" />
     </list>
@@ -58,66 +58,7 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SetNamesFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/SetNamesFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="176" column="65" lean-forward="false" selection-start-line="175" selection-start-column="18" selection-end-line="176" selection-end-column="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4307#4454#0" expanded="true" />
-                <element signature="e#4453#4454#0" expanded="true" />
-                <element signature="e#6131#7965#0" expanded="true" />
-                <element signature="e#6131#7965#0" expanded="true" />
-                <element signature="e#6200#7521#0" expanded="true" />
-                <element signature="e#6200#7521#0" expanded="true" />
-                <element signature="e#6252#6317#1" expanded="true" />
-                <element signature="e#6338#6396#1" expanded="true" />
-                <element signature="e#6490#6625#1" expanded="true" />
-                <element signature="e#6517#6558#0" expanded="true" />
-                <element signature="e#6588#6623#0" expanded="true" />
-                <element signature="e#6588#6623#0" expanded="true" />
-                <element signature="e#7593#7955#0" expanded="true" />
-                <element signature="e#7593#7955#0" expanded="true" />
-                <element signature="e#7656#7685#0" expanded="true" />
-                <element signature="e#7707#7936#0" expanded="true" />
-                <element signature="e#7707#7936#0" expanded="true" />
-                <element signature="e#7753#7791#0" expanded="true" />
-                <element signature="e#7753#7791#0" expanded="true" />
-                <element signature="e#8693#8715#0" expanded="true" />
-                <element signature="e#11864#11940#1" expanded="true" />
-                <element signature="e#11961#12014#1" expanded="true" />
-                <element signature="e#12035#12078#1" expanded="true" />
-                <element signature="e#12099#12156#1" expanded="true" />
-                <element signature="e#12177#12232#1" expanded="true" />
-                <element signature="e#12253#12308#1" expanded="true" />
-                <element signature="e#12329#12386#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JobCompletedFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="355" column="65" lean-forward="false" selection-start-line="355" selection-start-column="65" selection-end-line="355" selection-end-column="65" />
-              <folding>
-                <element signature="e#8797#8987#0" expanded="true" />
-                <element signature="e#8986#8987#0" expanded="true" />
-                <element signature="e#13848#15394#0" expanded="true" />
-                <element signature="e#13848#15394#0" expanded="true" />
-                <element signature="e#14139#14274#1" expanded="true" />
-                <element signature="e#14166#14207#0" expanded="true" />
-                <element signature="e#14237#14272#0" expanded="true" />
-                <element signature="e#14237#14272#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -130,7 +71,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setName_layout</find>
       <find>ed_FirstName</find>
       <find>imageReturnedIntent</find>
       <find>dialog</find>
@@ -160,6 +100,7 @@
       <find>RESULT_OK</find>
       <find>ivProfile</find>
       <find>getImagePath</find>
+      <find>strProfileImage</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2611,7 +2552,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/accepted_job_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_verification_code.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserProfileFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_job_completed.xml" />
@@ -2624,16 +2564,17 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/utils/Configuration.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/JobsAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MapFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/HomeFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/mission_completed_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/VerificationCodeFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/EditProfileFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MapFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserProfileFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_set_names.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/SetNamesFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/EditProfileFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml" />
       </list>
     </option>
   </component>
@@ -2682,6 +2623,42 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="POS-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="POS-app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="POS-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="POS-app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="POS-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="POS-app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="POS-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="POS-app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="POS-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="POS-app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2724,61 +2701,25 @@
               <item name="posapp" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
             <path>
-              <item name="POS-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="POS-app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="POS-app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="techease" type="462c0819:PsiDirectoryNode" />
+              <item name="posapp" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="activities" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="POS-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="POS-app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="POS-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="POS-app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="libs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="POS-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="POS-app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="POS-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="POS-app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-              <item name="app" type="cbb8eebc:String" user="app" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="POS-app" type="cbb8eebc:String" user="POS-app" />
+              <item name="POS-app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="techease" type="462c0819:PsiDirectoryNode" />
+              <item name="posapp" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="fragments" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -2800,6 +2741,26 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="POS-app" type="cbb8eebc:String" user="POS-app" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2814,12 +2775,8 @@
     <property name="android.profiler.active" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ak603\Documents\GitHub\POS-app\app\src\main\res\drawable" />
-      <recent name="C:\Users\ak603\Documents\GitHub\POS-app\app\src\main\res\drawable-v24" />
-      <recent name="C:\Users\ak603\Documents\GitHub\POS-app\app\src\main\res\layout" />
-      <recent name="C:\Users\ak603\Documents\GitHub\POS-app\app\src\main\java\com\techease\posapp\assets" />
-      <recent name="C:\Users\ak603\Documents\GitHub\POS-app\app\src\main\java\com\techease\posapp\utils" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ak603\Documents\GitHub\POS-app\app" />
     </key>
     <key name="android.template.packageName">
       <recent name="com.techease.posapp.ui.activities" />
@@ -2827,8 +2784,12 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.techease.posapp.ui.activities" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ak603\Documents\GitHub\POS-app\app" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ak603\Documents\GitHub\POS-app\app\src\main\res\drawable" />
+      <recent name="C:\Users\ak603\Documents\GitHub\POS-app\app\src\main\res\drawable-v24" />
+      <recent name="C:\Users\ak603\Documents\GitHub\POS-app\app\src\main\res\layout" />
+      <recent name="C:\Users\ak603\Documents\GitHub\POS-app\app\src\main\java\com\techease\posapp\assets" />
+      <recent name="C:\Users\ak603\Documents\GitHub\POS-app\app\src\main\java\com\techease\posapp\utils" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -3115,7 +3076,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527071594211</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="uploading camera and all sign up work done.">
+      <created>1528143261156</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1528143261156</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -3129,7 +3097,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730263" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -3146,7 +3113,7 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26928896" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26928896" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256579" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -3221,7 +3188,8 @@
     <MESSAGE value="fixed issue" />
     <MESSAGE value="done" />
     <MESSAGE value="fixed missing code and working perfect now" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed missing code and working perfect now" />
+    <MESSAGE value="uploading camera and all sign up work done." />
+    <option name="LAST_COMMIT_MESSAGE" value="uploading camera and all sign up work done." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3271,68 +3239,54 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="27" column="52" lean-forward="false" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/RelatedImagesAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="27" column="85" lean-forward="false" selection-start-line="27" selection-start-column="85" selection-end-line="27" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/related_image_layout.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="32" lean-forward="true" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_jobs.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_jobs.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
           <caret line="54" column="35" lean-forward="false" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/accepted_job_layout.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/accepted_job_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="28" column="45" lean-forward="false" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/selector.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/selector.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/FullScreenActivity.java">
@@ -3343,13 +3297,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_verification_code.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/com/techease/posapp/R.java">
@@ -3361,23 +3315,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="44" column="36" lean-forward="false" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/alert_dialog.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/alert_dialog.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
           <caret line="29" column="20" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
@@ -3410,23 +3364,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_single_user_job.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_job_completed.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_job_completed.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="207" column="35" lean-forward="true" selection-start-line="207" selection-start-column="35" selection-end-line="207" selection-end-column="35" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/models/JobsModel.java">
@@ -3458,13 +3412,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/SingleUserJobFragment.java">
@@ -3476,13 +3430,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="27" column="4" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
@@ -3502,13 +3456,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/popup_layout.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/UserAcceptedAdapter.java">
@@ -3525,26 +3479,6 @@
           <folding>
             <element signature="e#2110#2149#0" expanded="false" />
             <element signature="e#2110#2149#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserProfileFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1598">
-          <caret line="133" column="0" lean-forward="true" selection-start-line="83" selection-start-column="4" selection-end-line="133" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MapFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1292">
-          <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding>
-            <element signature="e#3074#3087#0" expanded="false" />
-            <element signature="e#3074#3103#0" expanded="false" />
-            <element signature="e#3074#3103#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3576,13 +3510,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_mission_completed.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionCompletedFragment.java">
@@ -3593,30 +3527,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/mission_completed_layout.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
           <caret line="77" column="37" lean-forward="false" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/adapters/MissionCompletedAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="28" column="86" lean-forward="false" selection-start-line="28" selection-start-column="86" selection-end-line="28" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="75" column="22" lean-forward="false" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
-          <folding>
-            <element signature="e#2488#2518#0" expanded="false" />
-            <element signature="e#2488#2518#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3651,117 +3574,131 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="35" column="37" lean-forward="true" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/AndroidSDK/Sdk/sources/android-24/android/app/ActivityThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="4517" column="0" lean-forward="false" selection-start-line="4517" selection-start-column="0" selection-end-line="4517" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/EditProfileFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="150" column="38" lean-forward="false" selection-start-line="150" selection-start-column="38" selection-end-line="150" selection-end-column="38" />
-          <folding>
-            <element signature="e#5481#5495#0" expanded="false" />
-            <element signature="e#5509#5541#0" expanded="false" />
-            <element signature="e#5509#5541#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_user_profile.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="36" column="35" lean-forward="false" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="355" column="65" lean-forward="false" selection-start-line="355" selection-start-column="65" selection-end-line="355" selection-end-column="65" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/RegsiterFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="46" column="13" lean-forward="false" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MapFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="87" column="75" lean-forward="false" selection-start-line="87" selection-start-column="75" selection-end-line="87" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/UserProfileFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-868">
+          <caret line="52" column="42" lean-forward="false" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
+          <folding>
+            <element signature="e#1787#1800#0" expanded="false" />
+            <element signature="e#1787#1823#0" expanded="false" />
+            <element signature="e#1787#1823#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/MissionsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="254" column="9" lean-forward="false" selection-start-line="254" selection-start-column="9" selection-end-line="254" selection-end-column="9" />
+          <folding>
+            <element signature="e#2407#2479#1" expanded="false" />
+            <element signature="e#2488#2501#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_set_names.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
-          <caret line="82" column="24" lean-forward="false" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+          <caret line="92" column="24" lean-forward="false" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/activities/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="82" column="61" lean-forward="false" selection-start-line="82" selection-start-column="52" selection-end-line="82" selection-end-column="61" />
+        <state relative-caret-position="136">
+          <caret line="86" column="65" lean-forward="true" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/SetNamesFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="176" column="65" lean-forward="false" selection-start-line="175" selection-start-column="18" selection-end-line="176" selection-end-column="65" />
+        <state relative-caret-position="493">
+          <caret line="336" column="60" lean-forward="false" selection-start-line="336" selection-start-column="60" selection-end-line="336" selection-end-column="60" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4307#4454#0" expanded="true" />
-            <element signature="e#4453#4454#0" expanded="true" />
-            <element signature="e#6131#7965#0" expanded="true" />
-            <element signature="e#6131#7965#0" expanded="true" />
-            <element signature="e#6200#7521#0" expanded="true" />
-            <element signature="e#6200#7521#0" expanded="true" />
-            <element signature="e#6252#6317#1" expanded="true" />
-            <element signature="e#6338#6396#1" expanded="true" />
-            <element signature="e#6490#6625#1" expanded="true" />
-            <element signature="e#6517#6558#0" expanded="true" />
-            <element signature="e#6588#6623#0" expanded="true" />
-            <element signature="e#6588#6623#0" expanded="true" />
-            <element signature="e#7593#7955#0" expanded="true" />
-            <element signature="e#7593#7955#0" expanded="true" />
-            <element signature="e#7656#7685#0" expanded="true" />
-            <element signature="e#7707#7936#0" expanded="true" />
-            <element signature="e#7707#7936#0" expanded="true" />
-            <element signature="e#7753#7791#0" expanded="true" />
-            <element signature="e#7753#7791#0" expanded="true" />
-            <element signature="e#8693#8715#0" expanded="true" />
-            <element signature="e#11864#11940#1" expanded="true" />
-            <element signature="e#11961#12014#1" expanded="true" />
-            <element signature="e#12035#12078#1" expanded="true" />
-            <element signature="e#12099#12156#1" expanded="true" />
-            <element signature="e#12177#12232#1" expanded="true" />
-            <element signature="e#12253#12308#1" expanded="true" />
-            <element signature="e#12329#12386#1" expanded="true" />
+            <element signature="e#8822#8841#0" expanded="false" />
+            <element signature="e#12053#12129#1" expanded="false" />
+            <element signature="e#12150#12203#1" expanded="false" />
+            <element signature="e#12224#12267#1" expanded="false" />
+            <element signature="e#12288#12345#1" expanded="false" />
+            <element signature="e#12366#12421#1" expanded="false" />
+            <element signature="e#12442#12497#1" expanded="false" />
+            <element signature="e#12518#12575#1" expanded="false" />
+            <element signature="e#12596#12644#1" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/JobCompletedFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/edittextshape.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="355" column="65" lean-forward="false" selection-start-line="355" selection-start-column="65" selection-end-line="355" selection-end-column="65" />
-          <folding>
-            <element signature="e#8797#8987#0" expanded="true" />
-            <element signature="e#8986#8987#0" expanded="true" />
-            <element signature="e#13848#15394#0" expanded="true" />
-            <element signature="e#13848#15394#0" expanded="true" />
-            <element signature="e#14139#14274#1" expanded="true" />
-            <element signature="e#14166#14207#0" expanded="true" />
-            <element signature="e#14237#14272#0" expanded="true" />
-            <element signature="e#14237#14272#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="218" column="59" lean-forward="false" selection-start-line="218" selection-start-column="59" selection-end-line="218" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/posapp/ui/fragments/EditProfileFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="82" column="54" lean-forward="false" selection-start-line="82" selection-start-column="54" selection-end-line="82" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>

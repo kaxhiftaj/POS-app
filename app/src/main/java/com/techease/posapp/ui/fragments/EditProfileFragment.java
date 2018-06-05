@@ -32,6 +32,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.techease.posapp.R;
 import com.techease.posapp.ui.activities.MainActivity;
 import com.techease.posapp.ui.models.JobsModel;
@@ -65,7 +66,7 @@ import static android.app.Activity.RESULT_OK;
 public class EditProfileFragment extends Fragment {
 
     EditText ed_FirstName, ed_LastName, ed_Email, et_sex, et_dob,et_phone;
-    String api_token, user_id, strProfileImage, strEmail, strSex, strDob, str_firstName, str_lastName,str_phone;
+    String api_token, user_id, strProfileImage, strEmail, strSex, strDob, str_firstName, str_lastName,str_phone,strImg;
     Button btn_save;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -96,6 +97,7 @@ public class EditProfileFragment extends Fragment {
         editor = sharedPreferences.edit();
         api_token = sharedPreferences.getString("api_token", "");
         user_id = sharedPreferences.getString("user_id", "");
+        strImg = sharedPreferences.getString("user_image","");
 
         apicall();
 
@@ -181,6 +183,7 @@ public class EditProfileFragment extends Fragment {
                     String strDob = temp.getString("dob");
                     String strPhone = temp.getString("mobile_no");
 
+                    Glide.with(getActivity()).load(strImg).into(ivProfile);
                     ed_FirstName.setText(strFirstName);
                     ed_LastName.setText(strLastName);
                     ed_Email.setText(strEmail);

@@ -10,7 +10,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50sp">
+        android:layout_marginTop="40sp">
 
         <LinearLayout
             android:id="@+id/edit_Name_layout"
@@ -51,24 +51,68 @@
         android:visibility="gone"
        >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/round_back_edittext"
+            android:layout_marginTop="15dp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textColor="@color/colorPrimary"
+                android:paddingLeft="40dp"
+                android:text="FirstName"
+                android:cursorVisible="false"
+                android:background="@drawable/edittextshape"
+                />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="FirstName"
-                android:paddingLeft="30dp"
+                android:gravity="right"
+                android:paddingRight="30dp"
                 android:id="@+id/edit_firstName"
-                android:background="@drawable/round_back_edittext"
-                android:layout_marginTop="20dp"/>
+                android:background="@drawable/edittextshape"
+               />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/round_back_edittext"
+            android:layout_marginTop="15dp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textColor="@color/colorPrimary"
+                android:paddingLeft="40dp"
+                android:text="LastName"
+                android:cursorVisible="false"
+                android:background="@drawable/edittextshape"
+                />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="LastName"
                 android:paddingLeft="30dp"
-                android:layout_marginTop="10dp"
+                android:gravity="right"
+                android:paddingRight="30dp"
                 android:inputType="text"
                 android:id="@+id/edit_lastName"
-                android:background="@drawable/round_back_edittext"
+                android:background="@drawable/edittextshape"
                 />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -78,45 +122,138 @@
         android:orientation="vertical"
         android:layout_marginLeft="20sp"
         android:layout_marginRight="20dp">
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:hint="Sex"
-        android:paddingLeft="30dp"
-        android:id="@+id/edit_sex"
-        android:background="@drawable/round_back_edittext"
-        android:layout_marginTop="15dp"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:hint="Date of Birth"
-        android:paddingLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:inputType="text"
-        android:id="@+id/edit_dob"
-        android:background="@drawable/round_back_edittext"
-        />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:hint="Email"
-        android:paddingLeft="30dp"
-        android:background="@drawable/round_back_edittext"
-        android:layout_marginTop="10dp"
-        android:id="@+id/edit_email"
-        android:inputType="textEmailAddress"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/round_back_edittext"
+            android:layout_marginTop="15dp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textColor="@color/colorPrimary"
+                android:paddingLeft="40dp"
+                android:text="Sex"
+                android:cursorVisible="false"
+                android:background="@drawable/edittextshape"
+              />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Sex"
+                android:id="@+id/edit_sex"
+                android:gravity="right"
+                android:paddingRight="30dp"
+                android:background="@drawable/edittextshape" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/round_back_edittext"
+            android:layout_marginTop="15dp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textColor="@color/colorPrimary"
+                android:paddingLeft="40dp"
+                android:text="Date of Birth"
+                android:cursorVisible="false"
+                android:background="@drawable/edittextshape"
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Date of Birth"
+                android:paddingLeft="30dp"
+                android:inputType="text"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:paddingRight="30dp"
+                android:id="@+id/edit_dob"
+                android:background="@drawable/round_back_edittext"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/round_back_edittext"
+            android:layout_marginTop="15dp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textColor="@color/colorPrimary"
+                android:paddingLeft="40dp"
+                android:text="Email"
+                android:cursorVisible="false"
+                android:background="@drawable/edittextshape"
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Email"
+                android:paddingLeft="30dp"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:paddingRight="30dp"
+                android:background="@drawable/edittextshape"
+                android:id="@+id/edit_email"
+                android:inputType="textEmailAddress"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/round_back_edittext"
+            android:layout_marginTop="15dp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textColor="@color/colorPrimary"
+                android:paddingLeft="40dp"
+                android:text="Phone"
+                android:cursorVisible="false"
+                android:background="@drawable/edittextshape"
+                />
+
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:hint="Phone"
-            android:paddingLeft="30dp"
-            android:background="@drawable/round_back_edittext"
-            android:layout_marginTop="10dp"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:paddingRight="30dp"
+            android:background="@drawable/edittextshape"
             android:id="@+id/edit_phone"
             android:inputType="textEmailAddress"/>
+
+        </LinearLayout>
 
 
     <Button

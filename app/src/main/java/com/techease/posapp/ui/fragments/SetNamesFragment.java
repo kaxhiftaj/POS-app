@@ -77,9 +77,9 @@ import static android.app.Activity.RESULT_OK;
 
 
 public class SetNamesFragment extends Fragment {
-    EditText et_set_FirstName, et_setLastName, et_setGender;
+    EditText et_set_FirstName, et_setLastName, et_setGender,et_setDob;
     Button btn_Go;
-    String strFirstName, strLastName, strMobile, strImage, strGender;
+    String strFirstName, strLastName, strMobile, strImage, strGender,strDob;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     android.support.v7.app.AlertDialog alertDialog;
@@ -99,6 +99,7 @@ public class SetNamesFragment extends Fragment {
         et_set_FirstName = view.findViewById(R.id.set_first_name);
         et_setLastName = view.findViewById(R.id.set_last_name);
         et_setGender = view.findViewById(R.id.set_gender);
+        et_setDob = view.findViewById(R.id.set_dob);
         btn_Go = (Button) view.findViewById(R.id.go);
         iv_profileImage = view.findViewById(R.id.set_profileImage);
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
@@ -237,6 +238,8 @@ public class SetNamesFragment extends Fragment {
         strFirstName = et_set_FirstName.getText().toString().trim();
         strLastName = et_setLastName.getText().toString().trim();
         strGender = et_setGender.getText().toString().trim();
+        strDob = et_setDob.getText().toString().trim();
+
         if (strFirstName.equals("")) {
             et_set_FirstName.setError("Please enter your First Name");
 
@@ -290,6 +293,7 @@ public class SetNamesFragment extends Fragment {
                 entity.addPart("last_name", new StringBody(strLastName));
                 entity.addPart("mobile_no", new StringBody(strMobile));
                 entity.addPart("sex", new StringBody(strGender));
+                entity.addPart("dob",new StringBody(strDob));
 
                 httppost.setEntity(entity);
                 HttpResponse response = httpclient.execute(httppost);
@@ -322,6 +326,7 @@ public class SetNamesFragment extends Fragment {
                     String strLastName = jsonObject.getString("last_name");
                     String strProfileImg = jsonObject.getString("userImg");
                     String strUserMobile = jsonObject.getString("mobile_no");
+                    String strUserDob = jsonObject.getString("dob");
 
                     editor.putString("api_token", api_token);
                     editor.putString("user_id", String.valueOf(user_id));
@@ -329,6 +334,7 @@ public class SetNamesFragment extends Fragment {
                     editor.putString("user_lastName", strLastName);
                     editor.putString("user_image", strProfileImg);
                     editor.putString("mobile_no", strUserMobile);
+                    editor.putString("user_dob",strUserDob);
 
                     editor.commit();
                     startActivity(new Intent(getActivity(), MainActivity.class));
