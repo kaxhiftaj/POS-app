@@ -14,12 +14,15 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Looper;
 import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,7 +70,7 @@ public class EditProfileFragment extends Fragment {
 
     EditText ed_FirstName, ed_LastName, ed_Email, et_sex, et_dob,et_phone;
     String api_token, user_id, strProfileImage, strEmail, strSex, strDob, str_firstName, str_lastName,str_phone,strImg;
-    Button btn_save;
+//    Button btn_save;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Dialog dialog;
@@ -81,14 +84,21 @@ public class EditProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
-        getActivity().setTitle("My Account");
+//        getActivity().setTitle("Edit Info");
+
+        Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+        TextView tv_toolbarTitle = toolbar.findViewById(R.id.toolbar_title);
+        TextView tv_toolbarSave = toolbar.findViewById(R.id.toolbar_save);
+        tv_toolbarSave.setVisibility(View.VISIBLE);
+        tv_toolbarTitle.setText("Edit Info");
+
         ed_FirstName = (EditText) view.findViewById(R.id.edit_firstName);
         ed_LastName = (EditText) view.findViewById(R.id.edit_lastName);
         ed_Email = (EditText) view.findViewById(R.id.edit_email);
         et_sex  = view.findViewById(R.id.edit_sex);
         et_dob = view.findViewById(R.id.edit_dob);
         et_phone = view.findViewById(R.id.edit_phone);
-        btn_save = view.findViewById(R.id.edit_done);
+//        btn_save = view.findViewById(R.id.edit_done);
         ivProfile = view.findViewById(R.id.set_profilePictr);
         setNameLayout = view.findViewById(R.id.edit_Name_layout);
         showNamesLayout = view.findViewById(R.id.edit_NameLayout);
@@ -115,10 +125,32 @@ public class EditProfileFragment extends Fragment {
                 galleryPic();
             }
         });
-        btn_save.setOnClickListener(new View.OnClickListener() {
+//        btn_save.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if (profileImage_file == null) {
+//
+//                    dialog = new Dialog(getActivity());
+//                    dialog.setContentView(R.layout.popup_layout);
+//                    TextView tvOK = dialog.findViewById(R.id.ok);
+//                    tvOK.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            dialog.dismiss();
+//                        }
+//                    });
+//                    dialog.show();
+//                } else {
+//                    new setProfile().execute();
+//                }
+//
+//            }
+//        });
+
+        tv_toolbarSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (profileImage_file == null) {
 
                     dialog = new Dialog(getActivity());
@@ -134,7 +166,6 @@ public class EditProfileFragment extends Fragment {
                 } else {
                     new setProfile().execute();
                 }
-
             }
         });
 
@@ -359,5 +390,19 @@ public class EditProfileFragment extends Fragment {
                 builder.show();
             }
         }
+    }
+
+    public void customActionBar() {
+        android.support.v7.app.ActionBar mActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        mActionBar.setDisplayShowHomeEnabled(false);
+        mActionBar.setDisplayShowTitleEnabled(false);
+        LayoutInflater mInflater = LayoutInflater.from(getActivity());
+        View mCustomView = mInflater.inflate(R.layout.custom_actinbar, null);
+        TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setText("Edit Info");
+        TextView Save = mCustomView.findViewById(R.id.tvSave);
+        Save.setVisibility(View.VISIBLE);
+        mActionBar.setCustomView(mCustomView);
+        mActionBar.setDisplayShowCustomEnabled(true);
     }
 }

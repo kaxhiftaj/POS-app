@@ -26,6 +26,7 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -150,7 +151,12 @@ public class JobCompletedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         parentView = inflater.inflate(R.layout.fragment_job_completed, container, false);
-        getActivity().setTitle("Accepted");
+//        getActivity().setTitle("Accepted");
+        Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+        TextView tv_toolbarTitle = toolbar.findViewById(R.id.toolbar_title);
+        TextView tv_toolbarSave = toolbar.findViewById(R.id.toolbar_save);
+        tv_toolbarSave.setVisibility(View.GONE);
+        tv_toolbarTitle.setText("Accepted");
         ButterKnife.bind(this, parentView);
         flagFirstImage = false;
         flagSecondImage = false;

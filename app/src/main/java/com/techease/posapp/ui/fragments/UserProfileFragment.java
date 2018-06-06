@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,12 @@ public class UserProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_user_profile, container, false);
-        getActivity().setTitle("User  Info");
+//        getActivity().setTitle("User  Info");
+        Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+        TextView tv_toolbarTitle = toolbar.findViewById(R.id.toolbar_title);
+        TextView tv_toolbarSave = toolbar.findViewById(R.id.toolbar_save);
+        tv_toolbarSave.setVisibility(View.GONE);
+        tv_toolbarTitle.setText("User Info");
         iv_profile = view.findViewById(R.id.edit_profile_image);
         setNames_Layout = view.findViewById(R.id.setName_layout);
         firstLastNames_layout = view.findViewById(R.id.firstLastNames_layout);

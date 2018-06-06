@@ -61,7 +61,6 @@ public class RegsiterFragment extends Fragment {
     @BindView(R.id.already_signed)
     TextView already_sgined;
 
-
     Unbinder unbinder;
     String strmobileNum, strFirstName, strLastName;
     SharedPreferences sharedPreferences;
@@ -77,7 +76,6 @@ public class RegsiterFragment extends Fragment {
 
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-
         already_sgined.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
@@ -86,11 +84,9 @@ public class RegsiterFragment extends Fragment {
          }
         });
 
-
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 onDataInput();
             }
         });
@@ -120,7 +116,7 @@ public class RegsiterFragment extends Fragment {
         } else if (strFirstName == "") {
             signup_firstName.setError("Please enter valid email id");
         } else if (strLastName == "") {
-            signup_lastName.setError("Please enter a scure password");
+            signup_lastName.setError("Please enter a secure password");
         } else {
             if (alertDialog == null)
                 alertDialog = AlertsUtils.createProgressDialog(getActivity());

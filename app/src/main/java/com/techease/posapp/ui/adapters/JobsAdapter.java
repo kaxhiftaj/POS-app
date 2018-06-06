@@ -135,7 +135,7 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.MyViewHolder> 
                         dialog.dismiss();
                         Fragment fragment = new HomeFragment();
                         ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).commit();
-                        ((AppCompatActivity) context).setTitle("User Accepted");
+//                        ((AppCompatActivity) context).setTitle("User Accepted");
                    }
                 });
 

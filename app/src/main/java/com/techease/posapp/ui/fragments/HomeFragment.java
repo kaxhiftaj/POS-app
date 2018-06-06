@@ -9,9 +9,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.techease.posapp.R;
 import com.techease.posapp.utils.Configuration;
@@ -39,6 +41,12 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         unbinder = ButterKnife.bind(this, v);
+//        getActivity().setTitle("Home");
+        Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+        TextView tv_toolbarTitle = toolbar.findViewById(R.id.toolbar_title);
+        TextView tv_toolbarSave = toolbar.findViewById(R.id.toolbar_save);
+        tv_toolbarSave.setVisibility(View.GONE);
+        tv_toolbarTitle.setText("Home");
 
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();

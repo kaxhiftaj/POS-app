@@ -1,5 +1,6 @@
 package com.techease.posapp.ui.activities;
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -65,18 +66,21 @@ public class MainActivity extends AppCompatActivity
     String str_mobileNo,strToken,str_firstName,str_lastName,str_image,str_mobile_no;
     ImageView profile_image;
     TextView tv_firstName,tv_mobile_no;
-
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        TextView tv_toolbarTitle = toolbar.findViewById(R.id.toolbar_title);
+        tv_toolbarTitle.setText("Home");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         fragment = new HomeFragment();
         getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).commit();
-        setTitle("HOME");
+//        setTitle("HOME");
 
         sharedPreferences = this.getSharedPreferences(Configuration.MY_PREF, MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -86,11 +90,9 @@ public class MainActivity extends AppCompatActivity
         str_lastName = sharedPreferences.getString("user_lastName","");
         str_image = sharedPreferences.getString("user_image","");
 
-        Log.d("umer",str_mobileNo);
-
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer,toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -138,27 +140,27 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -189,6 +191,7 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_logout) {
            startActivity(new Intent(MainActivity.this,FullScreenActivity.class));
+           this.finish();
         }
 
         getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("tag").commit();

@@ -58,7 +58,6 @@ public class LoginFragment extends Fragment {
 
     @BindView(R.id.signin)
     Button signin;
-    TextView tvSignIn;
     Typeface typeface;
     String strPhone;
     Unbinder unbinder ;
@@ -132,14 +131,11 @@ public class LoginFragment extends Fragment {
                             alertDialog.dismiss();
                         JSONObject jsonObject = new JSONObject(response).getJSONObject("user_data");
                         String api_token = jsonObject.getString("api_token");
-                        Log.d("nido",api_token);
                         int user_id = jsonObject.getInt("user_id");
                         String str_firstName = jsonObject.getString("first_name");
                         String  str_lastName = jsonObject.getString("last_name");
                         String  mobile_no = jsonObject.getString("mobile_no");
                         String  str_image = jsonObject.getString("user_img");
-                        Log.d("my",api_token);
-                        Log.d("my",String.valueOf(user_id));
 
                         editor.putString("api_token", api_token);
                         editor.putString("user_id", String.valueOf(user_id));

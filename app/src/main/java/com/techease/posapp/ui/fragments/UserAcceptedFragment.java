@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -56,7 +57,12 @@ public class UserAcceptedFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user_accepted, container, false);
-        getActivity().setTitle("User Accepted");
+//        getActivity().setTitle("User Accepted");
+        Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+        TextView tv_toolbarTitle = toolbar.findViewById(R.id.toolbar_title);
+        TextView tv_toolbarSave = toolbar.findViewById(R.id.toolbar_save);
+        tv_toolbarSave.setVisibility(View.GONE);
+        tv_toolbarTitle.setText("User Accepted");
         rv_userAccepted = view.findViewById(R.id.rv_user_accepted);
 
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF,Context.MODE_PRIVATE);
