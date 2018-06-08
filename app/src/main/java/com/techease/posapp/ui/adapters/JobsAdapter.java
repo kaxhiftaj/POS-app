@@ -127,7 +127,6 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.MyViewHolder> 
                accept.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(context, "accepted", Toast.LENGTH_SHORT).show();
                         final String userJobId =model.getJob_id();
                         String str_token = holder.sharedPreferences.getString("api_token","");
                         String str_user_id =  holder.sharedPreferences.getString("user_id","");
@@ -186,9 +185,7 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.MyViewHolder> 
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(context, ""+response, Toast.LENGTH_SHORT).show();
-
-
+                        Toast.makeText(context, "accepted", Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
             @Override

@@ -55,16 +55,18 @@ public class LoginFragment extends Fragment {
 
     @BindView(R.id.signin_phone_no)
     EditText etSignin_phone;
+    @BindView(R.id.setCode)
+    TextView tv_setCode;
 
     @BindView(R.id.signin)
     Button signin;
     Typeface typeface;
-    String strPhone;
+    String strPhone,strPhoneWithCode;
     Unbinder unbinder ;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     android.support.v7.app.AlertDialog alertDialog;
-    String countryCodeAndroid = "91";
+    String countryCode = "91";
     CountryCodePicker ccp;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,10 +85,15 @@ public class LoginFragment extends Fragment {
                 onDataInput();
             }
         });
+
+        countryCode = ccp.getSelectedCountryCode();
+        ccp.getSelectedCountryName();
+        tv_setCode.setText("+"+countryCode);
         ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
             @Override
             public void onCountrySelected() {
-                countryCodeAndroid = ccp.getSelectedCountryCode();
+                countryCode = ccp.getSelectedCountryCode();
+                tv_setCode.setText("+"+countryCode);
             }
         });
 
@@ -94,9 +101,11 @@ public class LoginFragment extends Fragment {
     }
 
     public void onDataInput() {
-        strPhone = etSignin_phone.getText().toString().trim();
+        strPhoneWithCode = etSignin_phone.getText().toString().trim();
+        strPhone  = tv_setCode.getText().toString()+strPhoneWithCode;
+
         editor.putString("phone_no",strPhone).commit();
-        if (strPhone.equals("")) {
+        if (strPhoneWithCode.equals("")) {
             etSignin_phone.setError("Please enter valid phone number");
         }/* else if (strFirstName.equals("")) {
             etFistName.setError("Please enter your FirstName");

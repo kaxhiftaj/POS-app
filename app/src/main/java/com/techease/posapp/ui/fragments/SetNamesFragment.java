@@ -1,5 +1,6 @@
 package com.techease.posapp.ui.fragments;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -17,6 +18,7 @@ import android.app.Fragment;
 import android.os.Environment;
 import android.os.Looper;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -41,6 +43,11 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.techease.posapp.R;
@@ -67,6 +74,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -105,6 +113,25 @@ public class SetNamesFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         strMobile = sharedPreferences.getString("phone_no", "");
+
+        Dexter.withActivity(getActivity())
+                .withPermissions(
+                        Manifest.permission.INTERNET,
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                ).withListener(new MultiplePermissionsListener() {
+            @Override
+            public void onPermissionsChecked(MultiplePermissionsReport report) {
+
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+
+            }
+
+        }).check();
 
         profileImage_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,7 +199,7 @@ public class SetNamesFragment extends Fragment {
 
                     Bitmap bm = (Bitmap) imageReturnedIntent.getExtras().get("data");
                     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                    bm.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+                    bm.compress(Bitmap.CompressFormat.JPEG, 60, bytes);
 
                     File sourceFile = new File(Environment.getExternalStorageDirectory(),
                             System.currentTimeMillis() + ".jpg");
@@ -193,6 +220,7 @@ public class SetNamesFragment extends Fragment {
                         iv_profileImage.setImageBitmap(bm);
                         strImage = sourceFile.getAbsolutePath().toString();
                         fileFirstImage = new File(strImage);
+                        Log.d("zma",fileFirstImage.toString());
 
                     }
 
@@ -317,6 +345,7 @@ public class SetNamesFragment extends Fragment {
             super.onPostExecute(response);
             if (response.contains("true")) {
                 try {
+                    progressBar.dismiss();
                     if (alertDialog != null)
                         alertDialog.dismiss();
                     JSONObject jsonObject = new JSONObject(response).getJSONObject("user_data");
@@ -335,24 +364,27 @@ public class SetNamesFragment extends Fragment {
                     editor.putString("user_image", strProfileImg);
                     editor.putString("mobile_no", strUserMobile);
                     editor.putString("user_dob",strUserDob);
-
                     editor.commit();
+
                     startActivity(new Intent(getActivity(), MainActivity.class));
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                     if (alertDialog != null)
                         alertDialog.dismiss();
-                    Log.d("error", String.valueOf(e.getMessage()));
+                    progressBar.dismiss();
+                    Toast.makeText(getActivity(), "something went wrong", Toast.LENGTH_SHORT).show();
                 }
 
             } else {
                 try {
+                    progressBar.dismiss();
                     if (alertDialog != null)
                         alertDialog.dismiss();
                     JSONObject jsonObject = new JSONObject(response);
                     String message = jsonObject.getString("message");
                     AlertsUtils.showErrorDialog(getActivity(), message);
+                    Toast.makeText(getActivity(), "something went wrong", Toast.LENGTH_SHORT).show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();

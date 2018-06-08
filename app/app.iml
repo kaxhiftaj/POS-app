@@ -136,6 +136,7 @@
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-location-11.4.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-maps-11.4.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: net.sf.kxml:kxml2:2.3.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.karumi:dexter-4.2.0" level="project" />
     <orderEntry type="library" name="Gradle: com.hbb20:ccp-1.7.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:runner-1.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.github.Shashank02051997:FancyAlertDialog-Android-0.1" level="project" />

@@ -52,6 +52,11 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.google.gson.JsonObject;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.techease.posapp.R;
@@ -186,12 +191,34 @@ public class JobCompletedFragment extends Fragment {
         relatedImagesAdapter = new RelatedImagesAdapter(getActivity(), related_image_list);
         rv_relatedImages.setAdapter(relatedImagesAdapter);
         //end
+//
+//        ActivityCompat.requestPermissions(getActivity(),
+//                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+//                1);
+//        ActivityCompat.requestPermissions(getActivity(),
+//                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+//
+//        ActivityCompat.requestPermissions(getActivity(),
+//                new String[]{Manifest.permission.CAMERA}, 3);
 
-        ActivityCompat.requestPermissions(getActivity(),
-                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                1);
-        ActivityCompat.requestPermissions(getActivity(),
-                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+        Dexter.withActivity(getActivity())
+                .withPermissions(
+                        Manifest.permission.INTERNET,
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                ).withListener(new MultiplePermissionsListener() {
+            @Override
+            public void onPermissionsChecked(MultiplePermissionsReport report) {
+
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+
+            }
+
+        }).check();
 
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -200,11 +227,6 @@ public class JobCompletedFragment extends Fragment {
         } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             getLocation();
         }
-
-//        filethirdImage = new File(strThirdImage);
-//        fileFourthImage = new File(strFourthImage);
-//        fileFifthImage = new File(strFifthImage);
-//        fileSixthImage = new File(strSixthImage);
 
         ivFirstImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -356,7 +378,7 @@ public class JobCompletedFragment extends Fragment {
 
                     Bitmap bm = (Bitmap) imageReturnedIntent.getExtras().get("data");
                     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                    bm.compress(Bitmap.CompressFormat.JPEG, 80, bytes);
+                    bm.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
 
                     File sourceFile = new File(Environment.getExternalStorageDirectory(),
                             System.currentTimeMillis() + ".jpg");
@@ -470,8 +492,8 @@ public class JobCompletedFragment extends Fragment {
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                 bm.compress(Bitmap.CompressFormat.JPEG, 60, bytes);
 
-                File sourceFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Pos/img.jpg");
-
+                File sourceFile = new File(Environment.getExternalStorageDirectory(),
+                        System.currentTimeMillis() + ".jpg");
 
                 FileOutputStream fo;
                 try {
@@ -501,7 +523,6 @@ public class JobCompletedFragment extends Fragment {
         return cursor.getString(column_index);
 
     }
-
     //getting current date and time
     public void getDataTime() {
         Calendar c = Calendar.getInstance();
@@ -689,14 +710,6 @@ public class JobCompletedFragment extends Fragment {
                 entity.addPart("latitude", new StringBody(strLatitude));
                 entity.addPart("longitude", new StringBody(strLongitude));
                 entity.addPart("current_time", new StringBody(strCurrentDateandTime));
-
-                Log.d("umer",strApiToken);
-                Log.d("umer",str_JobID);
-                Log.d("umer",fileSecondImage.toString());
-                Log.d("umer",etComments.getText().toString());
-                Log.d("umer",strLatitude);
-                Log.d("umer",strLongitude);
-                Log.d("umer",strCurrentDateandTime);
 
                 httppost.setEntity(entity);
                 HttpResponse response = httpclient.execute(httppost);

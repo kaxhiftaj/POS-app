@@ -11,34 +11,35 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="Please enter the code you\n received via SMS "
-        android:textColor="#00A0F1"
-        android:textSize="30dp"
+        android:textColor="#000"
+        android:textSize="18dp"
         android:layout_marginTop="70sp"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:hint="Enter your verification code"
+        android:hint="Enter your  code"
         android:paddingLeft="30dp"
         android:gravity="center"
         android:background="@drawable/round_back_edittext"
         android:id="@+id/verification_code"
         android:inputType="number"
         android:layout_marginTop="50dp"
-        android:layout_margin="16sp"/>
+        android:layout_margin="18sp"/>
 
     <Button
         android:id="@+id/btn_verify_code"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="37dp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/round_back_create_button"
         android:gravity="center"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:text="Verify"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="Enter"
+        android:textStyle="normal"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 </LinearLayout>

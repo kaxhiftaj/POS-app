@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.techease.posapp.R;
 import com.techease.posapp.ui.models.JobsModel;
 import com.techease.posapp.utils.AlertsUtils;
@@ -36,16 +37,18 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class UserProfileFragment extends Fragment {
     android.support.v7.app.AlertDialog alertDialog;
-    String token,user_id;
+    String token,user_id,userProfileImage;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     TextView first_name,last_name,email,phone_no;
     Button btnEdit_profile;
     LinearLayout firstLastNames_layout,setNames_Layout;
-    ImageView iv_profile;
+    CircleImageView iv_profile;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,7 +59,7 @@ public class UserProfileFragment extends Fragment {
         TextView tv_toolbarTitle = toolbar.findViewById(R.id.toolbar_title);
         TextView tv_toolbarSave = toolbar.findViewById(R.id.toolbar_save);
         tv_toolbarSave.setVisibility(View.GONE);
-        tv_toolbarTitle.setText("User Info");
+        tv_toolbarTitle.setText("Profile Info");
         iv_profile = view.findViewById(R.id.edit_profile_image);
         setNames_Layout = view.findViewById(R.id.setName_layout);
         firstLastNames_layout = view.findViewById(R.id.firstLastNames_layout);
@@ -69,6 +72,8 @@ public class UserProfileFragment extends Fragment {
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("api_token", "");
         user_id = sharedPreferences.getString("user_id","");
+        userProfileImage  = sharedPreferences.getString("user_image","");
+        Glide.with(getActivity()).load(userProfileImage).into(iv_profile);
         apicall();
 
         setNames_Layout.setOnClickListener(new View.OnClickListener() {

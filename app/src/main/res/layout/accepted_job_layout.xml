@@ -27,7 +27,7 @@
                     android:id="@+id/accepted_job_image"
                     android:layout_width="85dp"
                     android:layout_height="65dp"
-                    android:layout_marginLeft="10sp"
+                    android:layout_marginLeft="5sp"
                     android:paddingTop="3sp"
                     android:paddingBottom="2sp"
                     android:src="@drawable/profile" />
@@ -39,9 +39,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:layout_marginLeft="8sp"
+                    android:layout_marginLeft="4sp"
                     android:text="Company Name"
-                    android:maxLength="20"
+                    android:maxLength="25"
                     android:textSize="13dp"
                     android:textStyle="bold"
                     android:paddingBottom="3sp"/>
