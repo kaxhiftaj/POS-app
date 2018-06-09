@@ -122,8 +122,6 @@ public class RegsiterFragment extends Fragment {
                 alertDialog = AlertsUtils.createProgressDialog(getActivity());
             alertDialog.show();
             apiCall();
-
-
         }
 
     }

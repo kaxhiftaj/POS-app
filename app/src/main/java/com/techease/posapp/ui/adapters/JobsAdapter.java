@@ -84,7 +84,8 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.MyViewHolder> 
                 holder.editor.putString("selectedLatitude",String.valueOf(model.getLatitude())).commit();
                 holder.editor.putString("selectedLongitude",String.valueOf(model.getLongitude())).commit();
                 holder.editor.putString("title",String.valueOf(model.getJob_title())).commit();
-                holder.editor.putString("descp",String.valueOf(model.getJob_desc())).commit();
+                holder.editor.putString("descp",String.valueOf(model.getShort_desc())).commit();
+
 
                 Fragment fragment = new SingleUserJobFragment();
                 ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_main,fragment).addToBackStack("").commit();

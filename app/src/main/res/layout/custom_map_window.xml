@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300sp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#eee"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/map_myTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Opps!"
+                android:layout_marginTop="15sp"
+                android:layout_gravity="center"
+                android:textSize="24sp"
+                android:textStyle="normal"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/map_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="We need your name and"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColor="#000"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10sp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/map_accept"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Accept"
+                    android:layout_gravity="center"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5sp"
+                    android:padding="10sp"
+                    android:textColor="#000"/>
+
+                <TextView
+                    android:id="@+id/map_reject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reject"
+                    android:layout_gravity="center"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5sp"
+                    android:padding="10sp"
+                    android:textColor="#000"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>

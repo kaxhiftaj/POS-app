@@ -2,6 +2,7 @@ package com.techease.posapp.ui.fragments;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -110,8 +111,8 @@ public class SingleUserJobFragment extends Fragment {
                 String lng = sharedPreferences.getString("selectedLongitude", "");
                 final String title = sharedPreferences.getString("title", "");
                 final String description = sharedPreferences.getString("descp", "");
-                Log.d("selectlat",Lat);
-                Log.d("selectlng",lng);
+                Log.d("map",description);
+                Log.d("map",title);
 
                 if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
@@ -137,7 +138,7 @@ public class SingleUserJobFragment extends Fragment {
                 locationB.setLongitude(Double.parseDouble(lng));
                 distance = locationA.distanceTo(locationB);
                 CalculationByDistance(jobLatLng,currentlocation);
-                //textView.setText(String.valueOf("Total Distance = "+distance));
+
                 //end
 
                     user_googleMap.addMarker(new MarkerOptions().position(jobLatLng).title(title).snippet(description));
@@ -150,31 +151,53 @@ public class SingleUserJobFragment extends Fragment {
                 googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                         @Override
                         public boolean onMarkerClick(Marker marker) {
-                            if(marker.getTitle().equals(title)){
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                builder.setTitle(title);
-                                builder.setMessage(description);
-                                builder.setCancelable(false);
-                                builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+                            if(marker.getTitle().contains(title)){
+
+                                final Dialog dialog = new Dialog(getActivity());
+                                dialog.setContentView(R.layout.custom_map_window);
+                                TextView title = (TextView) dialog.findViewById(R.id.map_myTitle);
+                                TextView subtitle = (TextView) dialog.findViewById(R.id.map_description);
+                                TextView accept = dialog.findViewById(R.id.map_accept);
+                                final TextView reject = dialog.findViewById(R.id.map_reject);
+                                title.setText(marker.getTitle());
+                                subtitle.setText(marker.getSnippet());
+
+                                accept.setOnClickListener(new View.OnClickListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialog, int which) {
+                                    public void onClick(View v) {
                                         apiCall();
+                                        dialog.dismiss();
                                     }
                                 });
-                                builder.setNegativeButton("Reject", new DialogInterface.OnClickListener() {
+                                reject.setOnClickListener(new View.OnClickListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Toast.makeText(getActivity(),"you Rejected",Toast.LENGTH_SHORT).show();
+                                    public void onClick(View v) {
+                                            Toast.makeText(getActivity(), "you Rejected", Toast.LENGTH_SHORT).show();
+                                            dialog.dismiss();
+
                                     }
                                 });
-                                builder.show();
+                                dialog.show();
                             }
-                            else {
-                                AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
-                                builder1.setTitle("Current Location");
-                                builder1.setMessage("I am here");
-                                builder1.setCancelable(true);
-                                builder1.show();
+                            else if(marker.getTitle().contains("Current Location")) {
+
+                                final Dialog dialog = new Dialog(getActivity());
+                                dialog.setContentView(R.layout.custom_map_window);
+                                TextView title = (TextView) dialog.findViewById(R.id.map_myTitle);
+                                TextView subtitle = (TextView) dialog.findViewById(R.id.map_description);
+                                TextView accept = dialog.findViewById(R.id.map_accept);
+                                final TextView reject = dialog.findViewById(R.id.map_reject);
+                                title.setText("Current Location");
+                                subtitle.setText("I'm Here");
+                                accept.setVisibility(View.GONE);
+                                reject.setText("Ok");
+                                reject.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                                dialog.show();
                             }
                             return false;
                         }
@@ -191,8 +214,8 @@ public class SingleUserJobFragment extends Fragment {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
-                        }
+                            Toast.makeText(getActivity(), "job Accepted Please check user accepted screen", Toast.LENGTH_SHORT).show();
+                                                    }
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {

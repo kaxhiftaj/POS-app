@@ -45,7 +45,7 @@ public class UserProfileFragment extends Fragment {
     String token,user_id,userProfileImage;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    TextView first_name,last_name,email,phone_no;
+    TextView first_name,last_name,email,phone_no,sex,dob;
     Button btnEdit_profile;
     LinearLayout firstLastNames_layout,setNames_Layout;
     CircleImageView iv_profile;
@@ -67,6 +67,8 @@ public class UserProfileFragment extends Fragment {
         last_name = (TextView)view.findViewById(R.id.last_name);
         email = (TextView)view.findViewById(R.id.email);
         phone_no = (TextView)view.findViewById(R.id.phone_no);
+        sex = view.findViewById(R.id.sex);
+        dob = view.findViewById(R.id.dob);
         btnEdit_profile = (Button) view.findViewById(R.id.edit_profile);
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -105,12 +107,14 @@ public class UserProfileFragment extends Fragment {
                     String strLastName = temp.getString("last_name");
                     String strEmail = temp.getString("email");
                     String strPhoneno = temp.getString("mobile_no");
-                    Log.d("first", strFirstName);
-
+                    String strDob = temp.getString("");
+                    String strSex = temp.getString("");
+                    
                     first_name.setText(strFirstName);
                     last_name.setText(strLastName);
                     email.setText(strEmail);
                     phone_no.setText(strPhoneno);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

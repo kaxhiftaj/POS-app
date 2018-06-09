@@ -2,6 +2,7 @@ package com.techease.posapp.ui.fragments;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -146,16 +148,48 @@ public class MapFragment extends Fragment {
         double latt = Double.parseDouble(lat);
         double lngg = Double.parseDouble(lng);
         LatLng apiLatLng = new LatLng(latt, lngg);
-        final Marker my_marker = googleMap.addMarker(new MarkerOptions().position(apiLatLng).title(title).snippet(description));
-        googleMap.setInfoWindowAdapter(new InfoWindowCustom(getActivity()));
-      /*  googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+        googleMap.addMarker(new MarkerOptions().position(apiLatLng).title(title).snippet(description));
+//        googleMap.setInfoWindowAdapter(new InfoWindowCustom(getActivity()));
+        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                Log.d("snippet",my_marker.getSnippet());
-                AlertsUtils.showErrorDialog(getActivity(),my_marker.getSnippet());
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.custom_map_window);
+                TextView title = (TextView) dialog.findViewById(R.id.map_myTitle);
+                TextView subtitle = (TextView) dialog.findViewById(R.id.map_description);
+                TextView accept = dialog.findViewById(R.id.map_accept);
+                final TextView reject = dialog.findViewById(R.id.map_reject);
+                title.setText(marker.getTitle());
+                subtitle.setText(marker.getSnippet());
+
+                if(marker.getTitle().contains("My Current Location")){
+                    accept.setVisibility(View.GONE);
+                    reject.setText("OK");
+                }
+                accept.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getActivity(), "you Accepted", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+                reject.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(reject.getText() == "OK"){
+                           dialog.dismiss();
+                        }
+                        else {
+                            Toast.makeText(getActivity(), "you Rejected", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }
+
+                    }
+                });
+                dialog.show();
                 return false;
             }
-        });*/
+        });
 
 
     }
@@ -222,6 +256,7 @@ public class MapFragment extends Fragment {
                 Toast.makeText(getActivity(),"Unble to Trace your location", Toast.LENGTH_SHORT).show();
 
             }
+
         }
     }
 
@@ -249,6 +284,7 @@ public class MapFragment extends Fragment {
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("map",response);
                 if (response.contains("200")) {
                     try {
                         if (alertDialog != null)
@@ -260,8 +296,10 @@ public class MapFragment extends Fragment {
                             JSONObject temp = jsonArr.getJSONObject(i);
 
                             JobsModel model = new JobsModel();
+                            String companyName = temp.getString("company_name");
                             String job_title = temp.getString("job_title");
                             String description = temp.getString("shot_desc");
+                            String long_desc = temp.getString("brief_desc");
                             String latitude = temp.getString("latitude");
                             String longitude = temp.getString("longitude");
 
@@ -315,6 +353,8 @@ public class MapFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("api_token", token);
+                params.put("lat",String.valueOf(lattitude));
+                params.put("lng",String.valueOf(longitude));
                 return params;
             }
 
@@ -341,32 +381,28 @@ public class MapFragment extends Fragment {
         public View getInfoWindow(Marker marker) {
             inflater = (LayoutInflater)
                     context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View v = inflater.inflate(R.layout.custom_info_window, null);
+            View v = inflater.inflate(R.layout.custom_map_window, null);
 
-          //  TextView title = (TextView) v.findViewById(R.id.myTitle);
-          //  TextView subtitle = (TextView) v.findViewById(R.id.description);
-          //  Button accept = v.findViewById(R.id.accept);
-          //  Button reject = v.findViewById(R.id.reject);
-          //  title.setText(marker.getTitle());
-          //  subtitle.setText(marker.getSnippet());
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle(marker.getTitle());
-            builder.setMessage(marker.getSnippet());
-           // builder.setView(R.layout.custom_info_window);
-            builder.setCancelable(false);
-            builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+            TextView title = (TextView) v.findViewById(R.id.map_myTitle);
+            TextView subtitle = (TextView) v.findViewById(R.id.map_description);
+            Button accept = v.findViewById(R.id.map_accept);
+            Button reject = v.findViewById(R.id.map_reject);
+            title.setText(marker.getTitle());
+            subtitle.setText(marker.getSnippet());
+
+            accept.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(DialogInterface dialog, int which) {
+                public void onClick(View v) {
                     Toast.makeText(getActivity(), "you Accepted", Toast.LENGTH_SHORT).show();
                 }
             });
-            builder.setNegativeButton("Reject", new DialogInterface.OnClickListener() {
+            reject.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(DialogInterface dialog, int which) {
-                   Toast.makeText(getActivity(),"you Rejected",Toast.LENGTH_SHORT).show();
+                public void onClick(View v) {
+                    Toast.makeText(getActivity(), "you Rejected", Toast.LENGTH_SHORT).show();
                 }
             });
-            builder.show();
+
             return v;
         }
     }
